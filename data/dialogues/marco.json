@@ -9,7 +9,7 @@
         { "who": "kiril", "text": "Mmmh... altri cinque minuti..." },
         { "who": "kiril", "text": "...Marco?" },
         { "who": "kiril", "text": "Il suo lato del letto è vuoto. E freddo. Sul cuscino c'è un biglietto." },
-        "«Buon compleanno, amore. Oggi non mi trovi. Non è un incidente: è un PIANO. E i piani di Marco non falliscono mai.»",
+        "«Buon compleanno, ciccio. Oggi non mi trovi. Non è un incidente: è un PIANO. E i piani di Marco non falliscono mai.»",
         "«Per cominciare ti ho lasciato un regalino. L'ho nascosto dove dormi quando ti offendi con me. Cioè, spesso.»",
         "«P.S. Non ti offendere per il P.S.»"
       ],
@@ -54,19 +54,19 @@
     },
     "word_risata": {
       "lines": [
-        "«Prima cosa che amo di te: la tua RISATA. Quella che fai quando ridi delle mie battute brutte. Cioè tutte.»"
+        "«Prima cosa che mi piace di te: la tua RISATA. Quella che fai quando ridi delle mie battute brutte. Cioè tutte.»"
       ],
       "do": ["word:nicole:RISATA", "set:got_risata", "sound:solve"]
     },
     "word_broncio": {
       "lines": [
-        "«Seconda cosa che amo di te: il tuo BRONCIO. Sì, proprio quello. Quando ti offendi fai una faccia che vorrei incorniciare.»"
+        "«Seconda cosa che mi piace di te: il tuo BRONCIO. Sì, proprio quello. Quando ti offendi fai una faccia che vorrei incorniciare.»"
       ],
       "do": ["word:leryn:BRONCIO", "set:got_broncio", "sound:solve"]
     },
     "word_coraggio": {
       "lines": [
-        "«Terza cosa che amo di te: il tuo CORAGGIO. Sei venuto a vivere su un'isola dove nessuno sa pronunciare il tuo nome. E ridi lo stesso.»"
+        "«Terza cosa che mi piace di te: il tuo CORAGGIO. Sei venuto a vivere su un'isola dove nessuno sa pronunciare il tuo nome. E ridi lo stesso.»"
       ],
       "do": ["word:elisa:CORAGGIO", "set:got_coraggio", "sound:solve"]
     },
@@ -74,7 +74,7 @@
       "lines": [
         { "who": "bullone", "text": "BZZT. Rilevate cinque offese in un giorno solo. Sblocco il messaggio segreto numero 5." },
         "«Lo sapevo che ti saresti offeso cinque volte prima di sera. Ti conosco.»",
-        "«Ti amo lo stesso. Anzi, un pochino di più per ogni volta.»",
+        "«Ti voglio tanto bene lo stesso. Anzi, un pochino di più per ogni volta.»",
         { "who": "kiril", "text": "...questo non vale. Non si può essere offesi e commossi insieme." }
       ],
       "do": ["set:permalosometro"]
