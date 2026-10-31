@@ -222,6 +222,188 @@
           "text": "Il carciofo, ora vuoto, sembra fiero di me."
         }
       ]
+    },
+    "duck_1": {
+      "lines": [
+        "Una paperella di gomma verde! Ha un'aria smarrita e un po' offesa.",
+        {
+          "cond": "ducks==0",
+          "text": "È di Moka, sicuro. Ne mancano altre sei in giro per il paese."
+        },
+        {
+          "cond": "ducks>=1 & ducks<5",
+          "text": "Un'altra per la collezione di Moka. Quack."
+        },
+        {
+          "cond": "ducks==5",
+          "text": "Ne manca solo una! Moka sta già facendo quack di anticipazione, lo sento."
+        },
+        {
+          "cond": "ducks==6",
+          "text": "L'ultima! Tutte e sette! Qualcuno dovrebbe avvisare Moka. Qualcuno di robotico."
+        }
+      ],
+      "do": [
+        "set:duck_1",
+        "inc:ducks",
+        "sound:item"
+      ]
+    },
+    "duck_2": {
+      "lines": [
+        "Una paperella di gomma verde! Ha un'aria smarrita e un po' offesa.",
+        {
+          "cond": "ducks==0",
+          "text": "È di Moka, sicuro. Ne mancano altre sei in giro per il paese."
+        },
+        {
+          "cond": "ducks>=1 & ducks<5",
+          "text": "Un'altra per la collezione di Moka. Quack."
+        },
+        {
+          "cond": "ducks==5",
+          "text": "Ne manca solo una! Moka sta già facendo quack di anticipazione, lo sento."
+        },
+        {
+          "cond": "ducks==6",
+          "text": "L'ultima! Tutte e sette! Qualcuno dovrebbe avvisare Moka. Qualcuno di robotico."
+        }
+      ],
+      "do": [
+        "set:duck_2",
+        "inc:ducks",
+        "sound:item"
+      ]
+    },
+    "duck_3": {
+      "lines": [
+        "Una paperella di gomma verde! Ha un'aria smarrita e un po' offesa.",
+        {
+          "cond": "ducks==0",
+          "text": "È di Moka, sicuro. Ne mancano altre sei in giro per il paese."
+        },
+        {
+          "cond": "ducks>=1 & ducks<5",
+          "text": "Un'altra per la collezione di Moka. Quack."
+        },
+        {
+          "cond": "ducks==5",
+          "text": "Ne manca solo una! Moka sta già facendo quack di anticipazione, lo sento."
+        },
+        {
+          "cond": "ducks==6",
+          "text": "L'ultima! Tutte e sette! Qualcuno dovrebbe avvisare Moka. Qualcuno di robotico."
+        }
+      ],
+      "do": [
+        "set:duck_3",
+        "inc:ducks",
+        "sound:item"
+      ]
+    },
+    "duck_4": {
+      "lines": [
+        "Una paperella di gomma verde! Ha un'aria smarrita e un po' offesa.",
+        {
+          "cond": "ducks==0",
+          "text": "È di Moka, sicuro. Ne mancano altre sei in giro per il paese."
+        },
+        {
+          "cond": "ducks>=1 & ducks<5",
+          "text": "Un'altra per la collezione di Moka. Quack."
+        },
+        {
+          "cond": "ducks==5",
+          "text": "Ne manca solo una! Moka sta già facendo quack di anticipazione, lo sento."
+        },
+        {
+          "cond": "ducks==6",
+          "text": "L'ultima! Tutte e sette! Qualcuno dovrebbe avvisare Moka. Qualcuno di robotico."
+        }
+      ],
+      "do": [
+        "set:duck_4",
+        "inc:ducks",
+        "sound:item"
+      ]
+    },
+    "duck_5": {
+      "lines": [
+        "Una paperella di gomma verde! Ha un'aria smarrita e un po' offesa.",
+        {
+          "cond": "ducks==0",
+          "text": "È di Moka, sicuro. Ne mancano altre sei in giro per il paese."
+        },
+        {
+          "cond": "ducks>=1 & ducks<5",
+          "text": "Un'altra per la collezione di Moka. Quack."
+        },
+        {
+          "cond": "ducks==5",
+          "text": "Ne manca solo una! Moka sta già facendo quack di anticipazione, lo sento."
+        },
+        {
+          "cond": "ducks==6",
+          "text": "L'ultima! Tutte e sette! Qualcuno dovrebbe avvisare Moka. Qualcuno di robotico."
+        }
+      ],
+      "do": [
+        "set:duck_5",
+        "inc:ducks",
+        "sound:item"
+      ]
+    },
+    "duck_6": {
+      "lines": [
+        "Una paperella di gomma verde! Ha un'aria smarrita e un po' offesa.",
+        {
+          "cond": "ducks==0",
+          "text": "È di Moka, sicuro. Ne mancano altre sei in giro per il paese."
+        },
+        {
+          "cond": "ducks>=1 & ducks<5",
+          "text": "Un'altra per la collezione di Moka. Quack."
+        },
+        {
+          "cond": "ducks==5",
+          "text": "Ne manca solo una! Moka sta già facendo quack di anticipazione, lo sento."
+        },
+        {
+          "cond": "ducks==6",
+          "text": "L'ultima! Tutte e sette! Qualcuno dovrebbe avvisare Moka. Qualcuno di robotico."
+        }
+      ],
+      "do": [
+        "set:duck_6",
+        "inc:ducks",
+        "sound:item"
+      ]
+    },
+    "duck_7": {
+      "lines": [
+        "Una paperella di gomma verde! Ha un'aria smarrita e un po' offesa.",
+        {
+          "cond": "ducks==0",
+          "text": "È di Moka, sicuro. Ne mancano altre sei in giro per il paese."
+        },
+        {
+          "cond": "ducks>=1 & ducks<5",
+          "text": "Un'altra per la collezione di Moka. Quack."
+        },
+        {
+          "cond": "ducks==5",
+          "text": "Ne manca solo una! Moka sta già facendo quack di anticipazione, lo sento."
+        },
+        {
+          "cond": "ducks==6",
+          "text": "L'ultima! Tutte e sette! Qualcuno dovrebbe avvisare Moka. Qualcuno di robotico."
+        }
+      ],
+      "do": [
+        "set:duck_7",
+        "inc:ducks",
+        "sound:item"
+      ]
     }
   }
 }
