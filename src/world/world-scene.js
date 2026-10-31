@@ -34,6 +34,7 @@ export class WorldScene {
 
   loadMap(id, x, y, dir) {
     this.map = this.parsed(id);
+    this.game.pushables?.reset(this);
     const spawn = this.map.json.spawn || { x: 1, y: 1, dir: 'down' };
     const px = x ?? spawn.x, py = y ?? spawn.y;
     this.player.place(px, py, dir || spawn.dir || 'down');
@@ -231,6 +232,7 @@ export class WorldScene {
         ctx.drawImage(img, o.x * TILE - cx + (TILE - img.width) / 2, o.y * TILE - cy + TILE - img.height);
       } });
     }
+    sprites.push(...(this.game.pushables?.sprites(this, cx, cy, ctx) || []));
     for (const n of this.npcs) sprites.push({ y: n.py / TILE, draw: () => this.drawPerson(ctx, n, cx, cy) });
     if (this.follower) sprites.push({ y: this.follower.py / TILE - 0.01, draw: () => this.drawPerson(ctx, this.follower, cx, cy) });
     sprites.push({ y: this.player.py / TILE, draw: () => this.drawPerson(ctx, this.player, cx, cy) });

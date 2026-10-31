@@ -39,6 +39,7 @@ async function talk(choices = [], max = 120) {
       await key('KeyZ');
       continue;
     }
+    if (top?.debugSolve) { const want = choices.shift(); log.push(`[${name} ${want}]`); top.debugSolve(want !== 'lose'); continue; }
     if (name === 'puzzle') {
       const want = choices.shift();
       log.push(`[puzzle ${want}]`);

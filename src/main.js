@@ -16,6 +16,8 @@ import { TitleScene } from './game/title-scene.js';
 import { pickHint } from './game/hints.js';
 import { setupDebug } from './game/debug.js';
 import { AccusationScene } from './puzzles/accusation-scene.js';
+import { createPushables } from './world/pushables.js';
+import { registerPuzzles } from './puzzles/puzzle-scenes.js';
 
 async function boot() {
   let data;
@@ -110,6 +112,8 @@ async function boot() {
     reset_lab: () => game.pushables?.reset(game.world),
   });
 
+  game.pushables = createPushables(game);
+  registerPuzzles(game);
   game.world = new WorldScene(game);
   scenes.push(game.world);
 

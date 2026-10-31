@@ -114,6 +114,7 @@ export function validate(data) {
         checkDialogueRef(ww, d, n);
       }
     }
+    if (m.platesFlag) flagsSet.add(m.platesFlag);
     if (m.onEnter) { checkDialogueRef(`${where} onEnter`, m.onEnter.dialogue, m.onEnter.node); checkCond(`${where} onEnter`, m.onEnter.if); }
   }
 

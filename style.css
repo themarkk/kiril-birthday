@@ -234,3 +234,31 @@ html, body {
 .debug-panel { position: fixed; top: 8px; left: 8px; z-index: 10; display: flex; flex-wrap: wrap; gap: 4px; max-width: 360px; padding: 8px; background: rgba(0,0,0,.8); border-radius: 6px; }
 .debug-panel[hidden] { display: none; }
 .debug-panel button { font: 12px ui-monospace, monospace; padding: 3px 6px; }
+
+/* ---------- Minigiochi ---------- */
+.puzzle { display: flex; flex-direction: column; gap: calc(var(--s) * 4px); }
+.puzzle-msg { font-weight: 600; min-height: 1.3em; }
+.pedestals { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--s) * 4px); text-align: center; }
+.pedestal { padding: calc(var(--s) * 2px); border-radius: calc(var(--s) * 3px); }
+.pedestal.sel { background: var(--paper-2); outline: calc(var(--s) * 1px) solid var(--ink); }
+.statue-pic { height: calc(var(--s) * 50px); display: grid; place-items: end center; }
+.statue-empty { font-family: var(--font-title); font-size: calc(var(--s) * 10px); opacity: .3; padding-bottom: calc(var(--s) * 10px); }
+.statue-name { font-weight: 700; }
+.pedestal .arrow { height: 1em; color: var(--accent); font-size: .8em; }
+.clue { font-size: .72em; font-style: italic; opacity: .8; line-height: 1.2; }
+.versus { display: flex; align-items: center; justify-content: center; gap: calc(var(--s) * 10px); }
+.versus .portrait { width: calc(var(--s) * 36px); height: calc(var(--s) * 36px); border: calc(var(--s) * 1px) solid var(--ink); border-radius: calc(var(--s) * 2px); background: var(--paper-2); display: grid; place-items: center; overflow: hidden; }
+.versus .portrait canvas { width: 100%; height: 100%; image-rendering: pixelated; }
+.versus .score { font-family: var(--font-title); font-size: calc(var(--s) * 10px); }
+.rps-opts { display: flex; justify-content: center; gap: calc(var(--s) * 6px); }
+.rps-opt { padding: calc(var(--s) * 2px) calc(var(--s) * 6px); border-radius: calc(var(--s) * 3px); border: calc(var(--s) * 1px) solid transparent; }
+.rps-opt.sel { background: var(--ink); color: var(--paper); }
+.rps-history { font-size: .78em; opacity: .75; }
+.combo { text-align: center; }
+.combo-dots { font-weight: 700; }
+.combo-label { font-family: var(--font-title); font-size: calc(var(--s) * 7px); color: var(--accent); min-height: 1.4em; }
+.combo-keys { display: flex; justify-content: center; gap: calc(var(--s) * 4px); }
+.combo-key { width: calc(var(--s) * 20px); height: calc(var(--s) * 20px); display: grid; place-items: center; border: calc(var(--s) * 1.5px) solid var(--ink); border-radius: calc(var(--s) * 3px); font-family: var(--font); font-weight: 700; font-size: calc(var(--s) * 12px); background: var(--paper-2); }
+.combo-key.typed { background: var(--gold); }
+.combo-bar { height: calc(var(--s) * 4px); background: var(--paper-2); border-radius: 99px; overflow: hidden; margin: 0 15%; }
+.combo-fill { height: 100%; background: var(--accent); }

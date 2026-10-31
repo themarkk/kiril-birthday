@@ -2,14 +2,27 @@
   "speaker": "Elisa",
   "portrait": "elisa",
   "entry": [
-    { "if": "got_coraggio", "goto": "after" },
-    { "if": "lab_solved", "goto": "solved" },
-    { "if": "met_elisa", "goto": "menu" },
-    { "goto": "intro" }
+    {
+      "if": "got_coraggio",
+      "goto": "after"
+    },
+    {
+      "if": "lab_solved",
+      "goto": "solved"
+    },
+    {
+      "if": "met_elisa",
+      "goto": "menu"
+    },
+    {
+      "goto": "intro"
+    }
   ],
   "nodes": {
     "intro": {
-      "do": ["set:met_elisa"],
+      "do": [
+        "set:met_elisa"
+      ],
       "lines": [
         "Kiril! FERMO! Non muoverti!",
         "...ok, stavi in una luce bellissima. Controluce, finestra a sinistra. Potevi essere un quadro. Ora sei di nuovo un ragazzo.",
@@ -23,20 +36,37 @@
         "Per liberare la spada devi mettere in scena i carciofi giganti: tre carciofi, tre piastre. A Samassi i bambini lo fanno a cinque anni. Prima della scuola."
       ],
       "choices": [
-        { "text": "Spingo i carciofi.", "goto": "push" },
-        { "text": "Rimetti tutto a posto, mi sono incastrato.", "goto": "reset" },
-        { "text": "Perché proprio i carciofi?", "goto": "why" },
-        { "text": "Hai visto qualcosa stanotte?", "goto": "night" }
+        {
+          "text": "Spingo i carciofi.",
+          "goto": "push"
+        },
+        {
+          "text": "Rimetti tutto a posto, mi sono incastrato.",
+          "goto": "reset"
+        },
+        {
+          "text": "Perché proprio i carciofi?",
+          "goto": "why"
+        },
+        {
+          "text": "Hai visto qualcosa stanotte?",
+          "goto": "night"
+        }
       ]
     },
     "push": {
-      "lines": ["Cammina contro un carciofo per spingerlo. Non tirarli, non sono tende. Ogni piastra deve avere il suo carciofo."],
-      "puzzle": { "id": "lab", "win": "solved_now", "lose": "menu_short" }
+      "lines": [
+        "Cammina contro un carciofo per spingerlo. Non tirarli, non sono tende. Ogni piastra deve avere il suo carciofo.",
+        "Se un carciofo finisce in un angolo, chiedimi di rimettere tutto a posto. O esci e rientra: il teatro perdona."
+      ]
     },
-    "menu_short": { "lines": ["Prenditi il tuo tempo. Anche Michelangelo ci ha messo quattro anni per un soffitto."] },
     "reset": {
-      "lines": ["Cambio scena! Carciofi ai loro posti. Il teatro perdona sempre."],
-      "do": ["reset_lab"]
+      "lines": [
+        "Cambio scena! Carciofi ai loro posti. Il teatro perdona sempre."
+      ],
+      "do": [
+        "reset_lab"
+      ]
     },
     "why": {
       "lines": [
@@ -44,11 +74,25 @@
         "Il carciofo è teatro puro: fuori spine, dentro cuore. Come certe persone permalose che conosco."
       ],
       "choices": [
-        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "why_off" },
-        { "text": "Va bene, va bene.", "goto": "menu" }
+        {
+          "text": "Mi offendo.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "why_off"
+        },
+        {
+          "text": "Va bene, va bene.",
+          "goto": "menu"
+        }
       ]
     },
-    "why_off": { "lines": ["Visto? Spine fuori. Cuore dentro. Avevo ragione io, come sempre in scenografia."], "next": "menu" },
+    "why_off": {
+      "lines": [
+        "Visto? Spine fuori. Cuore dentro. Avevo ragione io, come sempre in scenografia."
+      ],
+      "next": "menu"
+    },
     "night": {
       "lines": [
         "Ho lavorato fino a tardi. Mi mancava una parrucca nera dal baule di scena. Una di quelle lunghe e lisce.",
@@ -57,10 +101,19 @@
       "next": "menu"
     },
     "solved_now": {
-      "do": ["set:lab_solved", "sound:solve"],
-      "lines": ["SÌ! Guarda che composizione! Tre carciofi, tre piastre, simmetria perfetta. Mi viene da piangere.", "La spada ora si può estrarre. Tirala. Con convinzione. Con PATHOS."]
+      "do": [
+        "sound:solve"
+      ],
+      "lines": [
+        "SÌ! Guarda che composizione! Tre carciofi, tre piastre, simmetria perfetta. Mi viene da piangere.",
+        "La spada ora si può estrarre. Tirala. Con convinzione. Con PATHOS."
+      ]
     },
-    "solved": { "lines": ["La spada ti aspetta. Tirala con PATHOS. Il carciofo vuole essere guardato negli occhi."] },
+    "solved": {
+      "lines": [
+        "La spada ti aspetta. Tirala con PATHOS. Il carciofo vuole essere guardato negli occhi."
+      ]
+    },
     "after": {
       "lines": [
         "Il carciofo ti ha scelto. Lo sapevo dal primo controluce.",

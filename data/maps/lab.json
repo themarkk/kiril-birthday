@@ -5,9 +5,9 @@
   "rows": [
     "WWWWWWWWWWWWW",
     "WXXWWwWWWXXWW",
-    ".............",
-    ".............",
-    ".............",
+    ".....X.X.....",
+    "..o.......o..",
+    "....R.o.R....",
     ".............",
     ".............",
     ".............",
@@ -89,5 +89,46 @@
     "o": "plate",
     "D": "table_dnd",
     "s": "stage"
-  }
+  },
+  "pushables": [
+    {
+      "id": "art_c",
+      "x": 5,
+      "y": 8,
+      "img": "artichoke_big"
+    },
+    {
+      "id": "art_l",
+      "x": 3,
+      "y": 6,
+      "img": "artichoke_big"
+    },
+    {
+      "id": "art_r",
+      "x": 9,
+      "y": 6,
+      "img": "artichoke_big"
+    }
+  ],
+  "plates": [
+    {
+      "x": 2,
+      "y": 3
+    },
+    {
+      "x": 10,
+      "y": 3
+    },
+    {
+      "x": 6,
+      "y": 4
+    }
+  ],
+  "platesFlag": "lab_solved",
+  "platesDialogue": "elisa:solved_now",
+  "labStart": {
+    "x": 6,
+    "y": 9
+  },
+  "solution": "LLURDRUUUULLDLDLUUUDRRRRRDRRDRUUU"
 }

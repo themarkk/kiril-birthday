@@ -1,5 +1,12 @@
 {
-  "start": { "map": "house", "x": 7, "y": 3, "dir": "down", "dialogue": "marco", "node": "wake" },
+  "start": {
+    "map": "house",
+    "x": 7,
+    "y": 3,
+    "dir": "down",
+    "dialogue": "marco",
+    "node": "wake"
+  },
   "names": {
     "kiril": "Kiril",
     "marco": "Marco",
@@ -33,106 +40,290 @@
     "davi": "#6b4f2a"
   },
   "items": {
-    "invito_strappato": { "name": "Invito strappato", "kind": "item", "desc": "Un invito alla tua festa, fatto a pezzi. Tra i brandelli c'è impigliato un filo di stoffa rosso scuro, pesante, da costume." },
-    "ciocca_capelli": { "name": "Ciocca di capelli neri", "kind": "evidence", "desc": "Lunghi, neri, lisci. Trovati sugli inviti. Troppo in bella vista, quasi messi lì apposta." },
-    "volantino_complotto": { "name": "Volantino di Bea", "kind": "evidence", "desc": "\"I PICCIONI DI SANTU BRUGARU SONO DRONI DEL GOVERNO\". Bea giura che c'entra con la torta." },
-    "tessuto_rosso": { "name": "Tessuto rosso", "kind": "item", "desc": "Il foulard di scena di Martina. Rosso fuoco, come i suoi capelli." },
-    "filo_verde": { "name": "Filo verde", "kind": "item", "desc": "Un rocchetto di filo verde. Moka ha solo cose verdi." },
-    "stoffa_mantello": { "name": "Stoffa del mantello", "kind": "evidence", "desc": "Erika l'ha riconosciuta al tatto: è il velluto del mantello da master che ha cucito lei. Per Davi." },
-    "d20_glassa": { "name": "D20 glassato", "kind": "evidence", "desc": "Un dado da venti facce coperto di glassa rosa. Trovato sul retro di Su Nuraghe. Chi gioca a dadi qui?" },
-    "testimone_leryn": { "name": "Testimonianza di Leryn", "kind": "evidence", "desc": "Alle 3 di notte Leryn ha visto un tizio con un mantello trascinarsi una scatola da torta. \"Camminava come uno che dorme.\"" },
-    "alibi_masia": { "name": "Alibi di Masia", "kind": "evidence", "desc": "Timbro della palestra: Masia stanotte era lì fino alle 4. A battere un record che non gli interessava a nessuno." },
-    "alibi_bea": { "name": "Alibi di Bea", "kind": "evidence", "desc": "Maki conferma: stanotte Bea era con lei a un rave in spiaggia, a spiegare i piccioni a degli sconosciuti." },
-    "cassa_maki": { "name": "Cassa di Maki", "kind": "item", "desc": "Una cassa bluetooth rosa piena di adesivi. Volume massimo: illegale." }
+    "invito_strappato": {
+      "name": "Invito strappato",
+      "kind": "item",
+      "desc": "Un invito alla tua festa, fatto a pezzi. Tra i brandelli c'è impigliato un filo di stoffa rosso scuro, pesante, da costume."
+    },
+    "ciocca_capelli": {
+      "name": "Ciocca di capelli neri",
+      "kind": "evidence",
+      "desc": "Lunghi, neri, lisci. Trovati sugli inviti. Troppo in bella vista, quasi messi lì apposta."
+    },
+    "volantino_complotto": {
+      "name": "Volantino di Bea",
+      "kind": "evidence",
+      "desc": "\"I PICCIONI DI SANTU BRUGARU SONO DRONI DEL GOVERNO\". Bea giura che c'entra con la torta."
+    },
+    "tessuto_rosso": {
+      "name": "Tessuto rosso",
+      "kind": "item",
+      "desc": "Il foulard di scena di Martina. Rosso fuoco, come i suoi capelli."
+    },
+    "filo_verde": {
+      "name": "Filo verde",
+      "kind": "item",
+      "desc": "Un rocchetto di filo verde. Moka ha solo cose verdi."
+    },
+    "stoffa_mantello": {
+      "name": "Stoffa del mantello",
+      "kind": "evidence",
+      "desc": "Erika l'ha riconosciuta al tatto: è il velluto del mantello da master che ha cucito lei. Per Davi."
+    },
+    "d20_glassa": {
+      "name": "D20 glassato",
+      "kind": "evidence",
+      "desc": "Un dado da venti facce coperto di glassa rosa. Trovato sul retro di Su Nuraghe. Chi gioca a dadi qui?"
+    },
+    "testimone_leryn": {
+      "name": "Testimonianza di Leryn",
+      "kind": "evidence",
+      "desc": "Alle 3 di notte Leryn ha visto un tizio con un mantello trascinarsi una scatola da torta. \"Camminava come uno che dorme.\""
+    },
+    "alibi_masia": {
+      "name": "Alibi di Masia",
+      "kind": "evidence",
+      "desc": "Timbro della palestra: Masia stanotte era lì fino alle 4. A battere un record che non gli interessava a nessuno."
+    },
+    "alibi_bea": {
+      "name": "Alibi di Bea",
+      "kind": "evidence",
+      "desc": "Maki conferma: stanotte Bea era con lei a un rave in spiaggia, a spiegare i piccioni a degli sconosciuti."
+    },
+    "cassa_maki": {
+      "name": "Cassa di Maki",
+      "kind": "item",
+      "desc": "Una cassa bluetooth rosa piena di adesivi. Volume massimo: illegale."
+    }
   },
-  "suspects": ["masia", "bea", "davi"],
+  "suspects": [
+    "masia",
+    "bea",
+    "davi"
+  ],
   "accusation": {
     "culprit": "davi",
-    "validEvidence": ["stoffa_mantello", "d20_glassa", "testimone_leryn"],
+    "validEvidence": [
+      "stoffa_mantello",
+      "d20_glassa",
+      "testimone_leryn"
+    ],
     "need": 2
   },
-  "words": ["nicole", "leryn", "elisa"],
+  "words": [
+    "nicole",
+    "leryn",
+    "elisa"
+  ],
   "ducksTotal": 7,
   "autoEvents": [
-    { "if": "offended>=5 & !permalosometro & got_bullone", "dialogue": "marco", "node": "permaloso" },
-    { "if": "ducks>=7 & !ducks_done", "dialogue": "moka", "node": "all_ducks_found" }
+    {
+      "if": "offended>=5 & !permalosometro & got_bullone",
+      "dialogue": "marco",
+      "node": "permaloso"
+    },
+    {
+      "if": "ducks>=7 & !ducks_done",
+      "dialogue": "moka",
+      "node": "all_ducks_found"
+    }
   ],
   "hints": [
-    { "if": "!got_bullone", "who": "kiril", "lines": [
-      "Marco mi ha lasciato un biglietto. Dove dormo quando mi offendo...?",
-      "Quando litighiamo non dormo nel letto. Dormo da un'altra parte, qui in casa.",
-      "Il divano. Vado al divano e premo Z."
-    ] },
-    { "if": "!sabotage_seen", "lines": [
-      "Il piano di Marco parte da Su Nuraghe. Il locale in cima alla via principale, a nord della piazza.",
-      "Esci di casa, prendi la via grande verso nord, passa la fontana e sali.",
-      "Su Nuraghe è l'edificio di pietra in alto al centro. Avvicinati alla porta."
-    ] },
-    { "if": "!got_risata", "lines": [
-      "Tre parole aprono Su Nuraghe. Una la custodisce chi parla latino meglio dell'italiano.",
-      "Nicole è in biblioteca, l'edificio bianco con il libro, a nord-ovest. Le statue sono la chiave.",
-      "Ogni piedistallo ha un indovinello in latino: chiedi a Nicole di tradurli. Il fabbro zoppo, la madre del sasso, il cantore degli inferi, il bambino con le frecce."
-    ] },
-    { "if": "!got_broncio", "lines": [
-      "Una parola la custodisce uno che parla a sbuffi e vive davanti a un cabinato.",
-      "Leryn è nella sala giochi Game Over, a est della piazza. Ti sfiderà.",
-      "Guarda bene la combo mentre è sullo schermo, poi rifalla con le frecce e Z. Se perdi due volte, chiedigli pietà."
-    ] },
-    { "if": "!got_coraggio", "lines": [
-      "Una parola è in un laboratorio che sa di carciofi.",
-      "Elisa è nel laboratorio a nord-est. Spingi i carciofi giganti sulle piastre.",
-      "I carciofi si spingono camminandoci contro. Se ti incastri, chiedi a Elisa di rimettere tutto a posto."
-    ] },
-    { "if": "!has.tessuto_rosso & !has.stoffa_mantello & !costume", "lines": [
-      "Erika sta cucendo qualcosa per te, ma le mancano dei materiali. Uno è rosso come certi capelli.",
-      "Martina canta in piazza. Ha un foulard rosso. Trattala bene: qui la odiano tutti perché è di Sassari.",
-      "Parla con Martina e stai dalla sua parte. Ti darà il tessuto rosso."
-    ] },
-    { "if": "!has.filo_verde & !has.stoffa_mantello & !costume", "lines": [
-      "All'atelier serve anche qualcosa di verde. Chi si veste solo di verde?",
-      "Moka è all'atelier, a ovest della piazza, accanto alle paperelle.",
-      "Parla con Moka: ti darà il filo verde. E chiedile delle paperelle."
-    ] },
-    { "if": "!costume & !has.stoffa_mantello", "lines": [
-      "Hai tessuto e filo. Erika aspetta solo quelli.",
-      "Torna all'atelier e parla con Erika.",
-      "Erika, atelier, Z. Vestito nuovo."
-    ] },
-    { "if": "!has.stoffa_mantello", "lines": [
-      "Quell'invito strappato aveva un filo di stoffa impigliato. Chi sa riconoscere una stoffa al tatto?",
-      "Una sarta. Mostra l'invito a Erika.",
-      "Parla con Erika e chiedile della stoffa sull'invito."
-    ] },
-    { "if": "!has.d20_glassa", "lines": [
-      "Chi ha rubato la torta è passato dal retro del locale. Hai guardato dietro Su Nuraghe?",
-      "Gira intorno a Su Nuraghe, sul lato est, sull'erba.",
-      "C'è qualcosa per terra a destra del locale di pietra. Avvicinati e premi Z."
-    ] },
-    { "if": "!has.cassa_maki", "lines": [
-      "Qualcuno in paese dorme troppo profondamente. Serve qualcosa di molto, molto rumoroso.",
-      "Maki è in spiaggia sotto gli ombrelloni, con una cassa enorme. Ma ha l'umore che gira.",
-      "Con Maki rispondi seguendo il suo umore del momento: se è euforica, festeggia; se è drammatica, dalle ragione; se è arrabbiata, stai con lei; se è tenera, coccolala."
-    ] },
-    { "if": "!davi_awake", "lines": [
-      "Davi dorme alla taverna. Con la cassa di Maki forse si sveglia.",
-      "Taverna Il Drago Ubriaco, sud-est. Parla con Davi.",
-      "Vai da Davi con la cassa e premi Z. Poi ascolta bene la sua storia."
-    ] },
-    { "if": "!(got_risata & got_broncio & got_coraggio)", "lines": [
-      "Ti mancano ancora delle parole di Marco. Controlla il taccuino (I).",
-      "Le parole le custodiscono Nicole, Leryn ed Elisa.",
-      "Biblioteca a nord-ovest, sala giochi a est, laboratorio a nord-est."
-    ] },
-    { "if": "!accused_right", "lines": [
-      "Hai le tre parole. Su Nuraghe ti aspetta. Chi aveva un mantello? Chi gioca a dadi? Chi era sveglio alle 3?",
-      "Gli alibi di Masia e Bea reggono. Le prove buone sono quelle che portano a una persona sola.",
-      "Il colpevole è Davi. Presenta la stoffa del mantello, il D20 glassato o la testimonianza di Leryn."
-    ] },
-    { "if": "", "lines": ["Hai risolto tutto, Kiril. Goditi la festa."] }
+    {
+      "if": "!got_bullone",
+      "who": "kiril",
+      "lines": [
+        "Marco mi ha lasciato un biglietto. Dove dormo quando mi offendo...?",
+        "Quando litighiamo non dormo nel letto. Dormo da un'altra parte, qui in casa.",
+        "Il divano. Vado al divano e premo Z."
+      ]
+    },
+    {
+      "if": "!sabotage_seen",
+      "lines": [
+        "Il piano di Marco parte da Su Nuraghe. Il locale in cima alla via principale, a nord della piazza.",
+        "Esci di casa, prendi la via grande verso nord, passa la fontana e sali.",
+        "Su Nuraghe è l'edificio di pietra in alto al centro. Avvicinati alla porta."
+      ]
+    },
+    {
+      "if": "!got_risata",
+      "lines": [
+        "Tre parole aprono Su Nuraghe. Una la custodisce chi parla latino meglio dell'italiano.",
+        "Nicole è in biblioteca, l'edificio bianco con il libro, a nord-ovest. Le statue sono la chiave.",
+        "Ogni piedistallo ha un indovinello in latino: chiedi a Nicole di tradurli. Il fabbro zoppo, la madre del sasso, il cantore degli inferi, il bambino con le frecce."
+      ]
+    },
+    {
+      "if": "!got_broncio",
+      "lines": [
+        "Una parola la custodisce uno che parla a sbuffi e vive davanti a un cabinato.",
+        "Leryn è nella sala giochi Game Over, a est della piazza. Ti sfiderà.",
+        "Guarda bene la combo mentre è sullo schermo, poi rifalla con le frecce e Z. Se perdi due volte, chiedigli pietà."
+      ]
+    },
+    {
+      "if": "!got_coraggio",
+      "lines": [
+        "Una parola è in un laboratorio che sa di carciofi.",
+        "Elisa è nel laboratorio a nord-est. Spingi i carciofi giganti sulle piastre.",
+        "I carciofi si spingono camminandoci contro. Se ti incastri, chiedi a Elisa di rimettere tutto a posto."
+      ]
+    },
+    {
+      "if": "!has.tessuto_rosso & !has.stoffa_mantello & !costume",
+      "lines": [
+        "Erika sta cucendo qualcosa per te, ma le mancano dei materiali. Uno è rosso come certi capelli.",
+        "Martina canta in piazza. Ha un foulard rosso. Trattala bene: qui la odiano tutti perché è di Sassari.",
+        "Parla con Martina e stai dalla sua parte. Ti darà il tessuto rosso."
+      ]
+    },
+    {
+      "if": "!has.filo_verde & !has.stoffa_mantello & !costume",
+      "lines": [
+        "All'atelier serve anche qualcosa di verde. Chi si veste solo di verde?",
+        "Moka è all'atelier, a ovest della piazza, accanto alle paperelle.",
+        "Parla con Moka: ti darà il filo verde. E chiedile delle paperelle."
+      ]
+    },
+    {
+      "if": "!costume & !has.stoffa_mantello",
+      "lines": [
+        "Hai tessuto e filo. Erika aspetta solo quelli.",
+        "Torna all'atelier e parla con Erika.",
+        "Erika, atelier, Z. Vestito nuovo."
+      ]
+    },
+    {
+      "if": "!has.stoffa_mantello",
+      "lines": [
+        "Quell'invito strappato aveva un filo di stoffa impigliato. Chi sa riconoscere una stoffa al tatto?",
+        "Una sarta. Mostra l'invito a Erika.",
+        "Parla con Erika e chiedile della stoffa sull'invito."
+      ]
+    },
+    {
+      "if": "!has.d20_glassa",
+      "lines": [
+        "Chi ha rubato la torta è passato dal retro del locale. Hai guardato dietro Su Nuraghe?",
+        "Gira intorno a Su Nuraghe, sul lato est, sull'erba.",
+        "C'è qualcosa per terra a destra del locale di pietra. Avvicinati e premi Z."
+      ]
+    },
+    {
+      "if": "!has.cassa_maki",
+      "lines": [
+        "Qualcuno in paese dorme troppo profondamente. Serve qualcosa di molto, molto rumoroso.",
+        "Maki è in spiaggia sotto gli ombrelloni, con una cassa enorme. Ma ha l'umore che gira.",
+        "Con Maki rispondi seguendo il suo umore del momento: se è euforica, festeggia; se è drammatica, dalle ragione; se è arrabbiata, stai con lei; se è tenera, coccolala."
+      ]
+    },
+    {
+      "if": "!davi_awake",
+      "lines": [
+        "Davi dorme alla taverna. Con la cassa di Maki forse si sveglia.",
+        "Taverna Il Drago Ubriaco, sud-est. Parla con Davi.",
+        "Vai da Davi con la cassa e premi Z. Poi ascolta bene la sua storia."
+      ]
+    },
+    {
+      "if": "!(got_risata & got_broncio & got_coraggio)",
+      "lines": [
+        "Ti mancano ancora delle parole di Marco. Controlla il taccuino (I).",
+        "Le parole le custodiscono Nicole, Leryn ed Elisa.",
+        "Biblioteca a nord-ovest, sala giochi a est, laboratorio a nord-est."
+      ]
+    },
+    {
+      "if": "!accused_right",
+      "lines": [
+        "Hai le tre parole. Su Nuraghe ti aspetta. Chi aveva un mantello? Chi gioca a dadi? Chi era sveglio alle 3?",
+        "Gli alibi di Masia e Bea reggono. Le prove buone sono quelle che portano a una persona sola.",
+        "Il colpevole è Davi. Presenta la stoffa del mantello, il D20 glassato o la testimonianza di Leryn."
+      ]
+    },
+    {
+      "if": "",
+      "lines": [
+        "Hai risolto tutto, Kiril. Goditi la festa."
+      ]
+    }
   ],
   "endings": [
-    { "id": "perfect", "if": "wrong_accusations==0 & ducks>=7 & costume" },
-    { "id": "good", "if": "wrong_accusations<=1" },
-    { "id": "messy", "if": "" }
-  ]
+    {
+      "id": "perfect",
+      "if": "wrong_accusations==0 & ducks>=7 & costume"
+    },
+    {
+      "id": "good",
+      "if": "wrong_accusations<=1"
+    },
+    {
+      "id": "messy",
+      "if": ""
+    }
+  ],
+  "puzzles": {
+    "cipher": {
+      "solution": [
+        "efesto",
+        "rea",
+        "orfeo",
+        "eros"
+      ],
+      "pool": [
+        "efesto",
+        "rea",
+        "orfeo",
+        "eros",
+        "atena",
+        "ermes",
+        "ade",
+        "ercole"
+      ],
+      "clues": [
+        "Faber claudus, ferrum in igne domat",
+        "Mater deorum, lapidem pro filio dedit",
+        "Cantor qui ad inferos descendit",
+        "Puer alatus, sagittis corda ferit"
+      ],
+      "names": {
+        "efesto": "Efesto",
+        "rea": "Rea",
+        "orfeo": "Orfeo",
+        "eros": "Eros",
+        "atena": "Atena",
+        "ermes": "Ermes",
+        "ade": "Ade",
+        "ercole": "Ercole"
+      }
+    },
+    "rps": {
+      "target": 3
+    },
+    "combo": {
+      "showMs": 2200,
+      "inputMs": 3500,
+      "rounds": [
+        [
+          "down",
+          "right",
+          "ok"
+        ],
+        [
+          "left",
+          "down",
+          "right",
+          "ok"
+        ],
+        [
+          "down",
+          "down",
+          "up",
+          "back",
+          "ok"
+        ]
+      ]
+    }
+  }
 }
