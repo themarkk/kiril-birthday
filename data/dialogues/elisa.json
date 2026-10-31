@@ -25,7 +25,11 @@
       ],
       "lines": [
         "Kiril! FERMO! Non muoverti!",
-        "...ok, stavi in una luce bellissima. Controluce, finestra a sinistra. Potevi essere un quadro. Ora sei di nuovo un ragazzo.",
+        "...ok, stavi in una luce bellissima. Controluce, finestra a sinistra. Eri un Caravaggio. Ora sei di nuovo un ragazzo spettinato.",
+        {
+          "cond": "costume & !costume_off",
+          "text": "E quel costume! Rosso su fondale grigio. Ti vedono dall'ultima fila. Ti vedono da Samassi."
+        },
         "Benvenuto nel mio laboratorio. Qui nascono le scenografie per la tua festa. Che non esiste. Non so di che festa parli.",
         "Marco mi ha chiesto di nascondere una busta. L'ho nascosta nella mia opera migliore: la Spada nel Carciofo."
       ],
@@ -33,7 +37,7 @@
     },
     "menu": {
       "lines": [
-        "Per liberare la spada devi mettere in scena i carciofi giganti: tre carciofi, tre piastre. A Samassi i bambini lo fanno a cinque anni. Prima della scuola."
+        "Per liberare la spada metti in scena i carciofi giganti: tre carciofi, tre piastre. A Samassi lo sa fare un bambino di cinque anni."
       ],
       "choices": [
         {
@@ -51,18 +55,27 @@
         {
           "text": "Hai visto qualcosa stanotte?",
           "goto": "night"
+        },
+        {
+          "text": "Che stai preparando per stasera?",
+          "goto": "secret"
+        },
+        {
+          "text": "Torno dopo.",
+          "goto": "bye"
         }
       ]
     },
     "push": {
       "lines": [
         "Cammina contro un carciofo per spingerlo. Non tirarli, non sono tende. Ogni piastra deve avere il suo carciofo.",
-        "Se un carciofo finisce in un angolo, chiedimi di rimettere tutto a posto. O esci e rientra: il teatro perdona."
+        "Se un carciofo finisce in un angolo, chiedimi di rimettere tutto a posto. O esci e rientra: il teatro perdona.",
+        "E muoviti con intenzione. Il pubblico non vede la fatica, vede la camminata."
       ]
     },
     "reset": {
       "lines": [
-        "Cambio scena! Carciofi ai loro posti. Il teatro perdona sempre."
+        "Cambio scena! Buio in sala, carciofi ai loro posti. Il teatro perdona sempre. Il regista no, ma oggi il regista sono io."
       ],
       "do": [
         "reset_lab"
@@ -71,7 +84,7 @@
     "why": {
       "lines": [
         "Perché sono di SAMASSI, Kiril. Il regno dei carciofi. Capitale mondiale. C'è la sagra, c'è il museo, c'è l'orgoglio.",
-        "Il carciofo è teatro puro: fuori spine, dentro cuore. Come certe persone permalose che conosco."
+        "Il carciofo è teatro puro: fuori spine, dentro cuore. Come certi bulgari permalosi che conosco. Nomi non ne faccio. Uno."
       ],
       "choices": [
         {
@@ -89,16 +102,40 @@
     },
     "why_off": {
       "lines": [
-        "Visto? Spine fuori. Cuore dentro. Avevo ragione io, come sempre in scenografia."
+        "Visto? Spine fuori. Cuore dentro. Avevo ragione io, come sempre in scenografia.",
+        {
+          "cond": "offended>=3",
+          "text": "E non è la prima oggi, si vede dal mento. Ancora una e ti metto in scena come carciofo protagonista. Senza battute."
+        }
       ],
       "next": "menu"
     },
     "night": {
       "lines": [
         "Ho lavorato fino a tardi. Mi mancava una parrucca nera dal baule di scena. Una di quelle lunghe e lisce.",
-        "Qualcuno me l'ha presa. Non è grave, ma chi ruba una parrucca alle tre di notte? Un attore. O un criminale. Che poi è uguale."
+        "Qualcuno me l'ha presa. Non è grave, ma chi ruba una parrucca alle tre di notte? Un attore. O un criminale. Che poi è uguale.",
+        {
+          "cond": "has.ciocca_capelli",
+          "text": "Aspetta. Quella ciocca che hai in tasca. Fammi vedere... è la MIA parrucca! L'hanno tagliata! Con le forbici da cucina! Barbari!"
+        },
+        {
+          "cond": "has.ciocca_capelli",
+          "text": "Chi l'ha messa lì voleva che pensassi a qualcuno coi capelli lunghi. Messa in scena. E pure fatta male: luce sbagliata."
+        }
       ],
       "next": "menu"
+    },
+    "secret": {
+      "lines": [
+        "Una cosa enorme. Tre metri di cartapesta, un faro da duemila watt e il permesso del comune. Il permesso no.",
+        "Non chiedere. Se te lo dico non è più una sorpresa, è un sopralluogo."
+      ],
+      "next": "menu"
+    },
+    "bye": {
+      "lines": [
+        "Esci di scena a sinistra. Sempre a sinistra, è più elegante. Da quella parte c'è il muro. Vabbè, esci come vuoi."
+      ]
     },
     "solved_now": {
       "do": [
@@ -106,19 +143,103 @@
       ],
       "lines": [
         "SÌ! Guarda che composizione! Tre carciofi, tre piastre, simmetria perfetta. Mi viene da piangere.",
+        "Sto piangendo. Non guardarmi. Guardami. No. Sì.",
         "La spada ora si può estrarre. Tirala. Con convinzione. Con PATHOS."
       ]
     },
     "solved": {
       "lines": [
-        "La spada ti aspetta. Tirala con PATHOS. Il carciofo vuole essere guardato negli occhi."
+        "La spada ti aspetta. Tirala con PATHOS. Il carciofo vuole essere guardato negli occhi.",
+        {
+          "cond": "costume & !costume_off",
+          "text": "Col costume rosso, sotto quel faro, è un'inquadratura da manifesto. Non rovinarla tirando male."
+        }
       ]
     },
     "after": {
       "lines": [
+        {
+          "cond": "costume & !costume_off",
+          "text": "Il costume ti sta bene, ma la luce di piazza ti appiattisce. Stasera ti faccio un controluce. Fidati."
+        },
+        {
+          "cond": "got_risata & got_broncio",
+          "text": "Tre parole! Stasera Su Nuraghe è il tuo teatro. Ti ho preparato... no. Niente. Vai."
+        },
         "Il carciofo ti ha scelto. Lo sapevo dal primo controluce.",
         "Ora vai. Io devo finire una cosa. Una cosa enorme. Per stasera. Non chiedere."
+      ],
+      "next": "after_menu"
+    },
+    "after_menu": {
+      "lines": [
+        "...stai ancora qui? Ok. Ma mettiti un passo a destra, mi copri il faro."
+      ],
+      "choices": [
+        {
+          "text": "Cos'è la cosa enorme?",
+          "goto": "secret_after"
+        },
+        {
+          "text": "Raccontami di Samassi.",
+          "goto": "samassi"
+        },
+        {
+          "text": "Hai visto la ciocca? È tua?",
+          "if": "has.ciocca_capelli",
+          "goto": "wig_after"
+        },
+        {
+          "text": "Mi offendo.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "after_off"
+        },
+        {
+          "text": "Ciao Elisa.",
+          "goto": "bye"
+        }
       ]
+    },
+    "secret_after": {
+      "lines": [
+        "Ti ho detto non chiedere. Ok, un indizio: è alta, è illuminata, e a Samassi ne andrebbero fieri.",
+        "...non è un carciofo.",
+        "È un carciofo. Basta, ho detto troppo."
+      ],
+      "next": "after_menu"
+    },
+    "samassi": {
+      "lines": [
+        "Samassi. Carciofi, sagra, e mio nonno che misura l'amore in quintali. Quest'anno mi ama trentadue quintali.",
+        "Da noi i bambini imparano a pulire un carciofo prima di leggere. Io leggo benissimo, eh. Ho cominciato tardi.",
+        "E voi in Bulgaria? Avete la Valle delle Rose. Bella. Ma la rosa ha le spine e basta. Il carciofo ha anche il cuore. Vince il carciofo.",
+        {
+          "who": "kiril",
+          "text": "Abbiamo anche lo yogurt."
+        },
+        "Lo yogurt non ha spine. Non ha conflitto. Non ha drammaturgia. Mi dispiace, Kiril. È un attore senza battute."
+      ],
+      "next": "after_menu"
+    },
+    "wig_after": {
+      "lines": [
+        "La mia parrucca! Tagliata male, buttata sugli inviti. Chi l'ha fatto conosce la scenografia ma non il rispetto.",
+        "E chi si muove di notte in mantello, tutto in scena, ama troppo le storie. Io queste cose le sento. Sono del mestiere."
+      ],
+      "next": "after_menu"
+    },
+    "after_off": {
+      "lines": [
+        "FERMO. Così. Mento basso, sguardo di lato, luce radente. Questo broncio è un fondale intero.",
+        {
+          "cond": "offended>=5",
+          "text": "Con tutte le offese di oggi ci monto un'opera in tre atti. Il terzo atto ti scusi. Forse."
+        },
+        "Ecco. Fotografato. Puoi tornare a essere felice. Ma lentamente, che la luce cambia."
+      ],
+      "next": "after_menu"
     }
   }
 }

@@ -88,7 +88,7 @@
     "alibi_bea": {
       "name": "Alibi di Bea",
       "kind": "evidence",
-      "desc": "Maki conferma: stanotte Bea era con lei a un rave in spiaggia, a spiegare i piccioni a degli sconosciuti."
+      "desc": "Maki conferma: stanotte Bea era al rave in spiaggia con Maki, a spiegare i piccioni a degli sconosciuti."
     },
     "cassa_maki": {
       "name": "Cassa di Maki",
@@ -215,7 +215,7 @@
       "lines": [
         "Qualcuno in paese dorme troppo profondamente. Serve qualcosa di molto, molto rumoroso.",
         "Maki è in spiaggia sotto gli ombrelloni, con una cassa enorme. Ma ha l'umore che gira.",
-        "Con Maki rispondi seguendo il suo umore del momento: se è euforica, festeggia; se è drammatica, dalle ragione; se è arrabbiata, stai con lei; se è tenera, coccolala."
+        "Con Maki segui l'umore del momento: euforia → festeggia; dramma → dai ragione; rabbia → stai dalla sua parte; tenerezza → abbraccio."
       ]
     },
     {

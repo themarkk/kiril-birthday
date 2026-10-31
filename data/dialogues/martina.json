@@ -17,13 +17,30 @@
       "choices": [
         { "text": "Anche io sono straniero qui. Siamo in due.", "goto": "friend" },
         { "text": "Mi offendo io per te, per solidarietà.", "do": ["inc:offended"], "goto": "friend" },
+        { "text": "Perché ce l'hanno con Sassari?", "goto": "why" },
+        { "text": "Eh, un po' ve lo meritate.", "do": ["set:martina_hurt"], "goto": "hurt" }
+      ]
+    },
+    "why": {
+      "lines": [
+        "Dicono che a Sassari parliamo strano. Noi parliamo benissimo. Siete voi che ascoltate strano.",
+        "Una volta al bar ho chiesto la fainè. Il barista mi ha guardato come se avessi bestemmiato in chiesa. Di Pasqua.",
+        "♪ Cagliari mi odiiia e non sa perchéee, io lo so: canto meglio di teee ♪"
+      ],
+      "next": "intro_again"
+    },
+    "intro_again": {
+      "lines": ["Allora? Stai con me o con loro?"],
+      "choices": [
+        { "text": "Anche io sono straniero qui. Siamo in due.", "goto": "friend" },
+        { "text": "Mi offendo io per te, per solidarietà.", "do": ["inc:offended"], "goto": "friend" },
         { "text": "Eh, un po' ve lo meritate.", "do": ["set:martina_hurt"], "goto": "hurt" }
       ]
     },
     "friend": {
       "lines": [
         "♪ Due straniiieri in un paese che non ci capisceee ♪",
-        "Ecco! Uno che capisce! Un bulgaro e una sassarese contro tutta la Sardegna del sud. Sembra un film. Lo canterei.",
+        "Ecco! Uno che capisce! Un bulgaro e una sassarese contro tutto il sud. Sembra un film. Lo canterei.",
         "Erika mi ha chiesto il mio foulard di scena per un lavoro segreto. Non so cosa. ♪ Non so cosaaa ♪ Portaglielo tu, va'."
       ],
       "do": ["give:tessuto_rosso"]
@@ -31,22 +48,84 @@
     "hurt": {
       "lines": [
         "♪ Vaffa... ♪",
-        "...fammi pensare. No. Niente foulard per i traditori. Torna quando sei più simpatico."
+        "...fammi pensare. No. Niente foulard per i traditori. Torna quando sei più simpatico.",
+        "E per la cronaca: noi abbiamo i Candelieri. Voi avete il traffico."
       ]
     },
     "hurt_again": {
       "lines": ["♪ Il traditore ritornaaa ♪ Che vuoi?"],
       "choices": [
         { "text": "Scusa, ero nervoso. Anche io sono straniero qui.", "do": ["unset:martina_hurt"], "goto": "friend" },
+        { "text": "Mi offendo io, adesso.", "do": ["inc:offended"], "goto": "hurt_offended" },
         { "text": "Niente.", "goto": "bye" }
       ]
+    },
+    "hurt_offended": {
+      "lines": [
+        "TU ti offendi? Mi hai detto che me lo merito! ♪ Che faccia toostaaa ♪",
+        "...vabbè. Almeno sei coerente. È già più di quanto faccia un cagliaritano."
+      ],
+      "next": "hurt_again"
     },
     "bye": { "lines": ["♪ Niente di niente, niente di nienteee ♪"] },
     "after": {
       "lines": [
         "♪ Stanotte dalla taverna qualcuno russava fortissimooo, così forte che tremavano i vetriii ♪",
-        "Davvero eh. Non è una metafora. Tremavano."
+        "Davvero eh. Non è una metafora. Tremavano.",
+        { "cond": "costume", "text": "♪ Il mio foulard è diventato un supereroeee ♪ Mì, ti sta meglio che a me. Non dirlo in giro." },
+        { "cond": "davi_awake", "text": "Da quando hai svegliato quello della taverna c'è un silenzio che mi mette ansia. Canto per riempirlo." }
+      ],
+      "next": "after_menu"
+    },
+    "after_menu": {
+      "lines": ["♪ Che altro vuoi sapereee ♪"],
+      "choices": [
+        { "text": "Cantami qualcosa per il compleanno.", "goto": "song" },
+        { "text": "Com'è vivere qui da sassarese?", "goto": "life" },
+        { "text": "Ho delle prove sul colpevole.", "if": "has.stoffa_mantello | has.d20_glassa | has.testimone_leryn", "goto": "clues" },
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "offended" },
+        { "text": "Ciao Martina.", "goto": "after_bye" }
       ]
+    },
+    "song": {
+      "do": ["inc:martina_songs"],
+      "lines": [
+        { "cond": "martina_songs==0", "text": "♪ Kiril è venuto dal Mar Nerooo, con lo yogurt vero e il cuore sincerooo ♪" },
+        { "cond": "martina_songs==0", "text": "Era la demo. La versione finale ha l'assolo di launeddas. Le odio, ma fanno scena." },
+        { "cond": "martina_songs==1", "text": "♪ Nessuno sa dov'è la Bulgariaaa, ma tutti sanno dov'è Kiriiil ♪" },
+        { "cond": "martina_songs==1", "text": "Questa va in radio. Non a Cagliari. A Cagliari mi oscurano il segnale." },
+        { "cond": "martina_songs>=2", "text": "♪ Banitsa e rakija, che compleanno da sbronziii, alle sei del mattino balliamo sui bronziii ♪" },
+        { "cond": "martina_songs>=2", "text": "I bronzetti nuragici, sì. Quelli del museo. Era una rima obbligata. Ho le corde vocali in fiamme come i capelli." }
+      ],
+      "next": "after_menu"
+    },
+    "life": {
+      "lines": [
+        "Tziu Efisio mi chiama «quella del nord». Sassari è a due ore di macchina. Per lui è la Norvegia.",
+        "Al mercato i pomodori a me costano un euro in più. Lo chiamano «il dazio».",
+        "A te invece ti chiamano Cirillo. È affetto, fidati. Io sono «quella». Senza nome. Come un temporale.",
+        "Ma resto. Una sassarese non scappa. Al massimo canta più forte."
+      ],
+      "next": "after_menu"
+    },
+    "clues": {
+      "lines": [
+        "♪ Qualcuno russava, qualcuno rubavaaa, e forse era la stessa personaaa ♪",
+        { "cond": "has.stoffa_mantello", "text": "Un mantello di velluto? Alla taverna c'è uno che dorme sui tavoli col mantello. Sembra un tappeto con la barba." },
+        { "cond": "has.d20_glassa", "text": "Un dado? Quello della taverna ne ha un sacchetto. Li conta quando è nervoso. Cioè quando è sveglio. Cioè quasi mai." },
+        "Io non accuso nessuno. Io canto. Se poi la canzone ha un nome dentro, non è colpa mia."
+      ],
+      "next": "after_menu"
+    },
+    "offended": {
+      "lines": [
+        "Ti offendi? Benvenuto nel club. Io sono offesa dal 1998. Ho la tessera premium.",
+        { "cond": "offended>=3", "text": "♪ Kiril s'offende, Kiril s'offendeee, la Sardegna lo guarda e non capisceee ♪" }
+      ],
+      "next": "after_menu"
+    },
+    "after_bye": {
+      "lines": ["♪ Vai vaiii, ma torna prestooo, che qui da sola mi tirano i sassiii ♪"]
     }
   }
 }

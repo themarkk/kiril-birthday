@@ -2,54 +2,224 @@
   "speaker": "Moka",
   "portrait": "moka",
   "entry": [
-    { "if": "met_moka", "goto": "menu" },
-    { "goto": "intro" }
+    {
+      "if": "costume & !costume_off & !moka_costume",
+      "goto": "costume_wow"
+    },
+    {
+      "if": "met_moka",
+      "goto": "menu"
+    },
+    {
+      "goto": "intro"
+    }
   ],
   "nodes": {
     "intro": {
-      "do": ["set:met_moka"],
+      "do": [
+        "set:met_moka"
+      ],
       "lines": [
         "Quack! Kiril! Auguri! Quack.",
-        "Scusa, quando sono emozionata faccio quack. Sono emozionata sempre.",
-        "Sto cercando le mie paperelle verdi. Ne ho perse sette in giro per il paese. Le paperelle scappano, è nella loro natura. Come i gatti. Ma gialle. Cioè verdi."
+        "Scusa, quando sono emozionata faccio quack. Sono emozionata sempre. Al ricevimento in Accademia il prof mi ha chiesto di smettere. Quack.",
+        "Sto cercando le mie paperelle verdi. Ne ho perse sette in giro per il paese.",
+    "Le paperelle scappano, è nella loro natura. Come i gatti. Ma gialle. Cioè verdi. Quack, mi confondo."
       ],
       "next": "menu"
     },
+    "costume_wow": {
+      "do": [
+        "set:moka_costume"
+      ],
+      "lines": [
+        "QUACK! Il costume! Erika ci ha messo il mio filo verde, si vede sulle cuciture! Da vicino. Molto vicino. Fermo.",
+        "Sei un ragno con un cuore di paperella. Che è la cosa più bella che ho detto quest'anno. Me lo segno."
+      ],
+      "next": "menu",
+      "branch": [
+        {
+          "if": "!met_moka",
+          "goto": "intro"
+        }
+      ]
+    },
     "menu": {
       "lines": [
-        { "cond": "ducks==0", "text": "Se trovi una paperella verde, raccoglila! Sono sette in tutto." },
-        { "cond": "ducks>0 & ducks<7", "text": "Paperelle ritrovate: un po'! Ne mancano ancora. Quack di incoraggiamento." },
-        { "cond": "ducks>=7", "text": "Tutte e sette le mie bambine sono a casa. Quack di gratitudine eterna." }
+        {
+          "cond": "ducks==0",
+          "text": "Se trovi una paperella verde, raccoglila! Sono sette in tutto. Rispondono al nome. Non rispondono."
+        },
+        {
+          "cond": "ducks==1",
+          "text": "Una a casa! Quack. È Gertrude. Ha freddo. Le altre sei sono là fuori, senza sciarpa."
+        },
+        {
+          "cond": "ducks==2",
+          "text": "Due! Gertrude e Ottavio. Si stanno già ignorando. Come una coppia vera. Quack."
+        },
+        {
+          "cond": "ducks==3",
+          "text": "Tre! Ho fatto un quack così forte che Erika ha sbagliato un orlo. Mi ha guardata. Malissimo."
+        },
+        {
+          "cond": "ducks==4",
+          "text": "Quattro! Più di metà, quack! Le conto ogni dieci secondi. Quattro. Quattro. Sì, ancora quattro."
+        },
+        {
+          "cond": "ducks==5",
+          "text": "Cinque! Ne mancano due. Ho preparato due cuscinetti verdi. Sono lì, vuoti. Mi guardano."
+        },
+        {
+          "cond": "ducks==6",
+          "text": "Sei! Ne manca UNA. Quack. Non dormirò finché non torna. Non dormo comunque, ma per altri motivi."
+        },
+        {
+          "cond": "ducks>=7",
+          "text": "Tutte e sette le mie bambine sono a casa. Quack di gratitudine eterna."
+        }
       ],
       "choices": [
-        { "text": "Erika mi ha chiesto un filo verde.", "if": "met_erika & !has.filo_verde & !costume", "goto": "thread" },
-        { "text": "Hai visto qualcosa stanotte?", "goto": "night" },
-        { "text": "Perché tutto verde?", "goto": "green" },
-        { "text": "Ciao Moka.", "goto": "bye" }
+        {
+          "text": "Erika mi ha chiesto un filo verde.",
+          "if": "met_erika & !has.filo_verde & !costume",
+          "goto": "thread"
+        },
+        {
+          "text": "Dove cerco le paperelle?",
+          "if": "ducks<7",
+          "goto": "where"
+        },
+        {
+          "text": "Hai visto qualcosa stanotte?",
+          "goto": "night"
+        },
+        {
+          "text": "Perché tutto verde?",
+          "goto": "green"
+        },
+        {
+          "text": "Mi offendo.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "offended"
+        },
+        {
+          "text": "Ciao Moka.",
+          "goto": "bye"
+        }
       ]
     },
     "thread": {
-      "lines": ["Filo verde? Ho SOLO cose verdi. Anche lo spazzolino. Anche i pensieri, a volte.", "Tieni! Per Erika e per te. Quack solenne."],
-      "do": ["give:filo_verde"],
+      "lines": [
+        "Filo verde? Ho SOLO cose verdi. Anche lo spazzolino. Anche i pensieri, a volte.",
+        "È il filo con cui cucio le sciarpine alle paperelle. Per te faccio un'eccezione. Gertrude capirà.",
+        "Tieni! Per Erika e per te. Quack solenne."
+      ],
+      "do": [
+        "give:filo_verde"
+      ],
+      "next": "menu"
+    },
+    "where": {
+      "lines": [
+        "Quack. Mappa mentale delle mie bambine. Ne ho una per ognuna. Pesa tanto, la testa.",
+        {
+          "cond": "!duck_1",
+          "text": "Una sta in piazza, vicino alla fontana. Fa compagnia a Tziu Efisio. Lui le parla. Lei ascolta, è educata."
+        },
+        {
+          "cond": "!duck_7",
+          "text": "Una fa la guardia accanto a Su Nuraghe, sul lato sinistro. Fa la guardia male, ma con convinzione."
+        },
+        {
+          "cond": "!duck_2",
+          "text": "Una è scappata in fondo al pontile, vicino alla barca. Voleva emigrare. Come te, ma al contrario."
+        },
+        {
+          "cond": "!duck_3",
+          "text": "Una prende il sole in spiaggia, verso est. Senza crema. Diventerà verde scuro."
+        },
+        {
+          "cond": "!duck_4",
+          "text": "Una si è chiusa in biblioteca. Vuole studiare. Nicole le starà facendo declinare «anas, anatis»."
+        },
+        {
+          "cond": "!duck_5",
+          "text": "Una è in sala giochi. Leryn dice che non c'è. Leryn mente, si vede dalle orecchie."
+        },
+        {
+          "cond": "!duck_6",
+          "text": "E una è in taverna, sul tavolo di Davi. Lui dice che è il suo famiglio. Non è il suo famiglio. È mia."
+        }
+      ],
       "next": "menu"
     },
     "night": {
       "lines": [
         "Stanotte ho visto una delle mie paperelle in taverna, sul tavolo di Davi.",
-        "Gliel'ho chiesta indietro, ma lui dormiva in piedi e ha detto «è un famiglio, ha tirato salvezza». Poi ha russato. In piedi."
+        "Gliel'ho chiesta indietro, ma lui dormiva in piedi e ha detto «è un famiglio, ha tirato salvezza». Poi ha russato. In piedi.",
+        {
+          "cond": "has.d20_glassa",
+          "text": "Un dado con la glassa? Davi ne aveva una ciotola piena sul tavolo. Di dadi. Non di glassa. Credo. Quack sospettoso."
+        },
+        {
+          "cond": "has.stoffa_mantello",
+          "text": "E aveva il mantello rosso. Quello che gli ha fatto Erika. Lo usava come coperta. Mi ha fatto un po' tenerezza."
+        }
       ],
       "next": "menu"
     },
     "green": {
-      "lines": ["Il verde è il colore delle paperelle giuste, delle foglie e della speranza. E delle mie unghie.", "Il giallo è per le paperelle che non si impegnano."],
+      "lines": [
+        "Il verde è il colore delle paperelle giuste, delle foglie e della speranza. E delle mie unghie.",
+        "Il giallo è per le paperelle che non si impegnano.",
+        "In Accademia il prof mi ha detto di esplorare altri colori. Ho fatto un verde più scuro. Trenta e lode. Quack."
+      ],
       "next": "menu"
     },
-    "bye": { "lines": ["Quack quack! Significa ciao. In paperese."] },
-    "all_ducks_found": {
-      "do": ["set:ducks_done", "sound:solve"],
+    "offended": {
       "lines": [
-        { "who": "bullone", "text": "BZZT. Messaggio da Moka, inoltrato a tutto volume." },
-        "TUTTE E SETTE! Kiril, sei ufficialmente Paperello d'Onore di Santu Brugaru. Quack di gala!"
+        {
+          "cond": "!costume | costume_off",
+          "text": "Quack?! Ti ho offeso? Scusa! No, aspetta. Ti sei offeso da solo. Quack di sollievo."
+        },
+        {
+          "cond": "costume & !costume_off",
+          "text": "Ti offendi vestito da ragno? I ragni mangiano le paperelle? Dimmi di no. Quack tremante."
+        },
+        {
+          "cond": "offended>=4",
+          "text": "Ti offendi più spesso di quanto Gertrude scappi. E Gertrude scappa tantissimo."
+        },
+        "Tieni, stringi una paperella. Di gomma, quella di riserva. Fa squeak. Aiuta. Lo dice la scienza. La mia."
+      ],
+      "next": "menu"
+    },
+    "bye": {
+      "lines": [
+        {
+          "cond": "ducks<7",
+          "text": "Quack quack! Significa ciao. In paperese."
+        },
+        {
+          "cond": "ducks>=7",
+          "text": "Quack quack quack! Significa ciao, grazie e ti voglio bene. Il paperese è una lingua efficiente."
+        }
+      ]
+    },
+    "all_ducks_found": {
+      "do": [
+        "set:ducks_done",
+        "sound:solve"
+      ],
+      "lines": [
+        {
+          "who": "bullone",
+          "text": "BZZT. Messaggio da Moka, inoltrato a tutto volume."
+        },
+        "TUTTE E SETTE! Kiril, sei ufficialmente Paperello d'Onore di Santu Brugaru. Quack di gala!",
+        "Le ho messe in fila sul davanzale. Gertrude è in prima fila, ha preteso. Ti mando una foto. Sono verdi. Lo sai."
       ]
     }
   }

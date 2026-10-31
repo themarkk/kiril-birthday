@@ -9,12 +9,19 @@
     { "if": "efisio_talks==4", "goto": "t4" },
     { "if": "efisio_talks==5", "goto": "t5" },
     { "if": "efisio_talks==6", "goto": "t6" },
+    { "if": "efisio_talks==8", "goto": "t8" },
+    { "if": "efisio_talks==9", "goto": "t9" },
+    { "if": "efisio_talks==10", "goto": "t10" },
+    { "if": "efisio_talks==11", "goto": "t11" },
+    { "if": "efisio_talks==12", "goto": "t12" },
+    { "if": "efisio_talks==13", "goto": "t13" },
+    { "if": "efisio_talks>=14", "goto": "tloop" },
     { "goto": "t7" }
   ],
   "nodes": {
     "t0": {
       "do": ["inc:efisio_talks"],
-      "lines": ["Oh, Cirillo! Augurius! Sei quello della Romania, no?"],
+      "lines": ["Oh, Cirillo! Augurius! Sei quello della Romania, no? Ti riconosco dalla faccia. Avete tutti la faccia di quelli di fuori."],
       "choices": [
         { "text": "Bulgaria, tziu. Kiril.", "goto": "ok" },
         { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "off" }
@@ -32,7 +39,8 @@
       "do": ["inc:efisio_talks"],
       "lines": [
         "Ciao, Chirichetto. Stanotte ho visto un fantasma passare in piazza. Col mantello lungo.",
-        "O era Davi. Uguale: tutti e due non pagano il caffè."
+        "O era Davi. Uguale: tutti e due non pagano il caffè.",
+        "Il fantasma almeno saluta. Davi passa e russa. Russa camminando, mi'. Non l'avevo mai visto fare."
       ]
     },
     "t3": {
@@ -45,27 +53,173 @@
     },
     "t4": {
       "do": ["inc:efisio_talks"],
-      "lines": ["Kiwi! Quella di Sassari canta ancora? Mi fa venire il mal di testa. E mi fa venire voglia di Sassari. Il che è peggio."]
+      "lines": ["Kiwi! Quella di Sassari canta ancora? Mi fa venire il mal di testa. E mi fa venire voglia di Sassari. Il che è peggio."],
+      "choices": [
+        { "text": "Martina è simpatica, tziu.", "goto": "martina_def" },
+        { "text": "Mi offendo per lei.", "do": ["inc:offended"], "goto": "off_martina" },
+        { "text": "Ciao, tziu.", "goto": "bye" }
+      ]
     },
     "t5": {
       "do": ["inc:efisio_talks"],
-      "lines": ["Cìrilu! Ti ho dato il nome sardo, sei contento? Ora sei uno di noi. Quasi. Al cinquanta per cento. Il resto è... Bulgaria."]
+      "lines": ["Cìrilu! Ti ho dato il nome sardo, sei contento? Ora sei uno di noi. Quasi. Al cinquanta per cento. Il resto è... Bulgaria."],
+      "choices": [
+        { "text": "Solo cinquanta?!", "goto": "half" },
+        { "text": "Ciao, tziu.", "goto": "bye" }
+      ]
     },
     "t6": {
       "do": ["inc:efisio_talks"],
-      "lines": ["Bulgarellu mio! Oggi è il tuo compleanno? E non mi dici niente? Augurius, a chent'annos! Cento anni, eh. Anche se da voi non ci arriva nessuno."],
+      "lines": ["Bulgarellu mio! Oggi è il tuo compleanno? E non mi dici niente? Augurius, a chent'annos! Cent'anni. Da voi non ci arriva nessuno, eh?"],
       "choices": [
         { "text": "Grazie tziu. Anche a te.", "goto": "warm" },
         { "text": "Mi offendo. Ma un pochino.", "do": ["inc:offended"], "goto": "off" }
       ]
     },
     "t7": {
+      "do": ["inc:efisio_talks"],
       "lines": ["Kiril! ...visto? Lo so dire. Lo sapevo dire dal primo giorno. Era per vedere se ti offendevi. E ti offendevi."]
     },
+    "t8": {
+      "do": ["inc:efisio_talks"],
+      "lines": ["Kirghizistan! ...no, scusa, mi è passata. Prima era un momento di lucidità. A quest'età vanno e vengono, ajò."],
+      "choices": [
+        { "text": "Tziu, eri arrivato a Kiril!", "goto": "relapse" },
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "off8" }
+      ]
+    },
+    "t9": {
+      "do": ["inc:efisio_talks"],
+      "lines": ["Kiribibì! Mio nipote è tornato dalla Bulgaria con la grappa vostra. Come si chiama... la racchia."],
+      "choices": [
+        { "text": "Rakija, tziu. Наздраве!", "goto": "nazdrave" },
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "off9" }
+      ]
+    },
+    "t10": {
+      "do": ["inc:efisio_talks"],
+      "lines": ["Kirillone! Mia moglie ha provato a fare la torta salata vostra, la banitsa. È venuta una pardula. Siamo sardi, ci viene solo quella."],
+      "choices": [
+        { "text": "Te la insegno io, tziu.", "goto": "banitsa" },
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "off10" }
+      ]
+    },
+    "t11": {
+      "do": ["inc:efisio_talks"],
+      "lines": [
+        "Kiritzu! Ora mi ricordo una cosa. Quello col mantello, stanotte, teneva dei capelli neri lunghi. In MANO.",
+        "I capelli si portano in testa, mi'. Chi se li porta in mano vuole farli trovare a qualcuno."
+      ]
+    },
+    "t12": {
+      "do": ["inc:efisio_talks"],
+      "lines": ["Cirillino mio! Tu e Marco quando vi sposate? Voglio ballare su ballu tundu con un bulgaro, prima di morire."],
+      "choices": [
+        { "text": "Ajò, tziu! Balliamo stasera.", "goto": "dance" },
+        { "text": "Mi offendo. Ma solo un pochino.", "do": ["inc:offended"], "goto": "off12" }
+      ]
+    },
+    "t13": {
+      "do": ["inc:efisio_talks"],
+      "lines": [
+        "Kirill, Cirillo, Kiril... ma da voi come si scrive? Fammi vedere.",
+        { "who": "kiril", "text": "Кирил. In cirillico. L'alfabeto porta il nome di un santo che si chiamava come me." },
+        "Mi'! Tu hai un alfabeto col nome tuo e io non ho manco una piazzetta.",
+        "Però questa è una N al contrario. Ve l'hanno stampato storto, ajò.",
+        { "who": "kiril", "text": "È una I, tziu." },
+        "Una I che sembra una N girata. Ecco perché nessuno vi trova sulla cartina."
+      ],
+      "choices": [
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "off13" },
+        { "text": "Ciao, tziu.", "goto": "bye" }
+      ]
+    },
+    "tloop": {
+      "lines": [
+        { "cond": "!sabotage_seen", "text": "Kirì, non stare in piazza come un turista. Su Nuraghe, in cima al paese. Marco ha detto... niente. Non ha detto niente." },
+        { "cond": "sabotage_seen & !(got_risata & got_broncio & got_coraggio)", "text": "Bulgarè, le parole non vengono a cercarti a casa. Biblioteca, sala giochi, carciofi. Cammina, che sei giovane." },
+        { "cond": "got_risata & got_broncio & got_coraggio & !accused_right", "text": "Hai tutto? Ajò, a Su Nuraghe. E porta le prove, che qui senza prove si condanna solo il vicino." },
+        { "cond": "costume & !costume_off", "text": "E vestito da ragno, pure. Non arrampicarti sul campanile, che il prete è vecchio come me e non ti viene a prendere." },
+        { "cond": "offended>=5", "text": "Ho saputo che oggi ti sei offeso un sacco di volte. In paese se ne parla. Con rispetto. Sei dei nostri." },
+        "A chent'annos, Kiril. Visto? Kiril. Quando mi concentro ci riesco. Mi concentro poco."
+      ],
+      "choices": [
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "offloop" },
+        { "text": "Ciao, tziu.", "goto": "bye" }
+      ]
+    },
     "ok": { "lines": ["Bulgaria, Romania... sono vicine, no? Come Cagliari e Sassari. Cioè no, quelle sono lontanissime."] },
-    "black": { "lines": ["Nero? E com'è un mare nero? Ma ci fate il bagno? Madonna santa."] },
-    "yogurt": { "lines": ["Eh, va bene. Ma il porceddu è il porceddu. Lo yogurt non ha le cotiche."] },
+    "black": {
+      "lines": [
+        "Nero? E com'è un mare nero? Ma ci fate il bagno? Madonna santa.",
+        "E i pesci? Neri pure loro? Mi', che tristezza. Qui almeno il mare è azzurro e i pesci costano cari."
+      ]
+    },
+    "yogurt": {
+      "lines": [
+        "Eh, va bene. Ma il porceddu è il porceddu. Lo yogurt non ha le cotiche.",
+        "Mia nuora però lo compra. Quello «greco». Non dirglielo, che poi vi offendete anche coi greci."
+      ]
+    },
     "warm": { "lines": ["A chent'annos, Cirillo. Cioè, Kiril. Vai, vai, che ti aspettano."] },
-    "off": { "lines": ["Ajò, che permaloso! Come il mio gatto. Anche lui è straniero. Viene da Quartu."] }
+    "off": {
+      "lines": [
+        { "cond": "efisio_talks!=2 & efisio_talks!=4 & efisio_talks!=7", "text": "Ajò, che permaloso! Come il mio gatto. Anche lui è straniero. Viene da Quartu." },
+        { "cond": "efisio_talks==2", "text": "Offeso per il mare? Il mare è di tutti, Kirì. Il vostro è nero, ma è di tutti." },
+        { "cond": "efisio_talks==4", "text": "Ajò, per uno yogurt! Che popolo sensibile. Da voi pure il latte si offende e diventa acido." },
+        { "cond": "efisio_talks==7", "text": "Un pochino, dice. Come mio fratello: un pochino offeso dal 1974. Con me. Per una capra." }
+      ]
+    },
+    "martina_def": {
+      "lines": [
+        "Simpatica... eja. Canta bene. Ma è di Sassari. Lo dico con affetto. Poco, ma con affetto.",
+        "Voi stranieri vi difendete tra voi. Bravi. Anche noi facciamo così. Contro Sassari."
+      ]
+    },
+    "off_martina": {
+      "lines": [
+        "Ti offendi per lei? Mi', un bulgaro che difende una sassarese. Ora ho visto tutto. Posso morire tranquillo. Domani, però."
+      ]
+    },
+    "half": {
+      "lines": ["Eh. L'altro cinquanta lo guadagni col porceddu, col mirto e una sagra intera senza lamentarti del caldo."]
+    },
+    "relapse": {
+      "lines": ["Eja, ma poi ho fatto il pisolino. Il pisolino resetta tutto. Come i computer di quel Marco tuo."]
+    },
+    "off8": {
+      "lines": ["Offeso per il Kirghizistan? È un bel posto. Credo. Non ci sono mai stato. Neanche in Bulgaria. Neanche a Sassari, grazie a Dio."]
+    },
+    "nazdrave": {
+      "lines": [
+        "Naz... nas... na-zdrà... ajò, salute! Sembra uno che starnutisce in cantina.",
+        "Comunque quella racchia l'ho bevuta. Ho visto mia suocera. È morta nel '98. Mi ha salutato."
+      ]
+    },
+    "off9": {
+      "lines": ["Offeso? Ho detto racchia con rispetto. Dal primo bicchiere in poi, rispetto assoluto. Dal secondo, amore."]
+    },
+    "banitsa": {
+      "lines": [
+        "Eja! Ma senza quel formaggio vostro, mettiamo il pecorino. E la pasta la facciamo come la pardula. E la forma pure.",
+        "...vabbè, è una pardula. Ma te la intitoliamo. Pardula Kiril. Con la K. Ajò."
+      ]
+    },
+    "off10": {
+      "lines": ["Per la pardula? La pardula non offende nessuno, Kirì. È un dolce di Pasqua. È benedetta."]
+    },
+    "dance": {
+      "lines": ["Stasera? Eja! Mi metto le scarpe buone. Quelle del matrimonio di mio fratello. Nel 1971. Vanno ancora, le scarpe. Il fratello meno."]
+    },
+    "off12": {
+      "lines": ["Un pochino, eh. Lo vedo dal sorriso. Ti offendi come mia moglie: con la bocca, mai con gli occhi."]
+    },
+    "off13": {
+      "lines": ["Per una lettera? Io per una lettera dell'INPS ho pianto tre giorni. Tu almeno la lettera ce l'hai col nome tuo."]
+    },
+    "offloop": {
+      "lines": ["Ajò, sempre offeso! Come il mio gatto. Quello di Quartu. Ve lo presento, andreste d'accordo. Vi offendete a turno."]
+    },
+    "bye": { "lines": ["Ajò, vai. A chent'annos, eh. E mangia, che sei sciupato."] }
   }
 }

@@ -23,7 +23,12 @@
         "...",
         "Mh.",
         "Ah. Sei tu. Auguri. Credo. Boh.",
-        "Marco mi ha dato una busta per te. Te la do se mi batti a Pugni di Ferro Sardi 3. Sono le regole. Le ha fatte lui, non io. Io non faccio regole. Io gioco."
+        {
+          "cond": "costume & !costume_off",
+          "text": "...bel costume. Hitbox enorme, però. Ti prendono anche i pugni sbagliati."
+        },
+        "Marco mi ha dato una busta per te. Te la do se mi batti a Pugni di Ferro Sardi 3. Regole sue. Io non faccio regole. Io gioco.",
+        "E se vinci ti dico una cosa che ho visto stanotte. Forse. *sbuffo* Se mi va."
       ],
       "next": "menu"
     },
@@ -35,7 +40,7 @@
         },
         {
           "cond": "leryn_losses>=2",
-          "text": "Ancora tu. Hai preso qualche lezione nel frattempo? No. Si vede."
+          "text": "*sbuffo* Ancora tu. Hai preso qualche lezione nel frattempo? No. Si vede."
         }
       ],
       "choices": [
@@ -53,6 +58,10 @@
           "goto": "pity"
         },
         {
+          "text": "Perché proprio i picchiaduro?",
+          "goto": "why_fg"
+        },
+        {
           "text": "Mi offendo.",
           "do": [
             "inc:offended"
@@ -67,7 +76,11 @@
     },
     "challenge": {
       "lines": [
-        "Guarda la combo finché è sullo schermo. Poi rifalla. Frecce e Z. Se sbagli, perdi il round. Facile. Per me."
+        "Guarda la combo finché è sullo schermo. Poi rifalla. Frecce e Z. Se sbagli, perdi il round. Facile. Per me.",
+        {
+          "cond": "costume & !costume_off",
+          "text": "E non attaccare ragnatele al joystick. L'ultimo che l'ha fatto gioca ancora a dama."
+        }
       ],
       "puzzle": {
         "id": "combo",
@@ -82,9 +95,21 @@
       ],
       "next": "menu"
     },
+    "why_fg": {
+      "lines": [
+        "Perché se perdi a un picchiaduro è colpa tua. Nella vita è colpa di tutti. Più comodo il picchiaduro.",
+        "Personaggio preferito: il pastore. Combo da quattordici colpi. La finale lancia una forma di pecorino. Danno: alto.",
+        "Mossa base: giù, avanti, pugno. Si chiama «Ajò». Fa poco danno. Ma umilia. *sbuffo* Non te l'ho detto io."
+      ],
+      "next": "menu"
+    },
     "offended": {
       "lines": [
-        "Offenditi pure. Tanto non cambia la frame data."
+        "Offenditi pure. Tanto non cambia la frame data.",
+        {
+          "cond": "offended>=3",
+          "text": "Sei a quota tre offese. Io a zero uscite di casa questo mese. Ognuno ha i suoi record."
+        }
       ],
       "next": "menu"
     },
@@ -95,8 +120,16 @@
       "lines": [
         "Scarso.",
         {
+          "cond": "leryn_losses==0",
+          "text": "Hai premuto Z come se fosse un campanello. È un pulsante. Lo devi sentire. Qui. *si tocca il petto*"
+        },
+        {
           "cond": "leryn_losses>=1",
           "text": "...porc* miseria, mi fai quasi tenerezza. Quasi."
+        },
+        {
+          "cond": "leryn_losses>=1",
+          "text": "Se proprio non ce la fai... chiedi. Non ho detto niente. *sbuffo*"
         }
       ],
       "next": "menu"
@@ -114,7 +147,11 @@
     },
     "win": {
       "lines": [
-        "...porc*. Ok. Hai vinto. Non dirlo a nessuno. Lag. Era lag."
+        "...porc*. Ok. Hai vinto. Non dirlo a nessuno. Lag. Era lag.",
+        {
+          "cond": "leryn_losses==0",
+          "text": "Al primo tentativo. *sbuffo* Mi serve un minuto. E un'altra vita. Con più pratica."
+        }
       ],
       "next": "reward"
     },
@@ -123,7 +160,7 @@
         "Tieni la busta. Pesa più del previsto. Marco scrive tanto.",
         "Ah. Un'altra cosa.",
         "Stanotte alle tre ero qui a grindare. Fuori dalla vetrina è passato uno col mantello. Si trascinava una scatola da torta.",
-        "Camminava come uno che dorme. Tipo zombie, ma più lento. Non ho fatto domande. Non faccio mai domande."
+        "Camminava come uno che dorme. Tipo zombie, ma più lento. Non ho fatto domande. Non faccio mai domande. Non faccio mai niente."
       ],
       "do": [
         "give:testimone_leryn"
@@ -132,9 +169,88 @@
     },
     "after": {
       "lines": [
+        {
+          "cond": "costume & !costume_off",
+          "text": "Costume da ragno. Se ti arrampichi sul cabinato ti banno. A vita. Dal locale e da me."
+        },
+        {
+          "cond": "has.d20_glassa",
+          "text": "Un D20 glassato? Uno che gioca coi dadi alle tre di notte. In paese ce n'è uno solo così sfigato. A parte me."
+        },
+        {
+          "cond": "got_risata & got_coraggio",
+          "text": "Tre parole su tre. GG. Ora vai. Boss finale. Niente spam di mosse, ragiona."
+        },
         "Ho detto tutto. Uno col mantello, una scatola, le tre di notte.",
         "Ora lasciami alla mia combo. È la mia unica relazione stabile."
+      ],
+      "next": "after_menu"
+    },
+    "after_menu": {
+      "lines": [
+        "...mh?"
+      ],
+      "choices": [
+        {
+          "text": "Rivincita?",
+          "goto": "rematch"
+        },
+        {
+          "text": "Grazie, Leryn.",
+          "goto": "thanks"
+        },
+        {
+          "text": "Mi offendo.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "after_off"
+        },
+        {
+          "text": "Ciao.",
+          "goto": "menu_bye"
+        }
       ]
+    },
+    "rematch": {
+      "lines": [
+        "*sbuffo* Ok. Stavolta niente pietà. Niente lag. Niente scuse. Le scuse le tengo io, per dopo."
+      ],
+      "puzzle": {
+        "id": "combo",
+        "win": "rematch_win",
+        "lose": "rematch_lose"
+      }
+    },
+    "rematch_win": {
+      "lines": [
+        "...di nuovo. Porc*.",
+        "Ok. Sei forte. Te lo dico solo perché è il tuo compleanno. Domani lo nego."
+      ]
+    },
+    "rematch_lose": {
+      "lines": [
+        "AH. Visto? Era lag anche prima. Ora siamo pari. Anzi, io sono avanti di stile.",
+        "...è stato bello. Non dirlo. *sbuffo*"
+      ]
+    },
+    "thanks": {
+      "lines": [
+        "...mh.",
+        "Prego. Auguri. Davvero, eh. Non «boh». Auguri.",
+        "Ora vai, che mi sto commuovendo e il cabinato mi vede."
+      ]
+    },
+    "after_off": {
+      "lines": [
+        "Dopo che ti ho dato la busta? Porc*...",
+        {
+          "cond": "offended>=4",
+          "text": "Quante sono, quattro? Hai più broncio tu che io ore di gioco. Quasi."
+        },
+        "Vabbè. Abbraccio? No. Pugno sulla spalla. Piano. Ecco. Passato?"
+      ],
+      "next": "after_menu"
     },
     "menu_bye": {
       "lines": [

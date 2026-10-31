@@ -37,8 +37,21 @@
           "text": "ZZZZZZZZZZ."
         },
         {
+          "cond": "has.d20_glassa",
+          "text": "Zzz... il mio venti... chi ha preso il mio venti... sa di fragola... zzz..."
+        },
+        {
+          "cond": "has.stoffa_mantello",
+          "text": "Zzz... non toccate il mantello... dà più due al carisma... zzz..."
+        },
+        {
           "who": "kiril",
           "text": "Dorme come un sasso. Un sasso con la barba. Servirebbe qualcosa di MOLTO rumoroso."
+        },
+        {
+          "cond": "costume & davi_snores>=2",
+          "who": "kiril",
+          "text": "Un supereroe vestito da ragno davanti a lui, e niente. Mi serve un'arma più potente. Tipo una cassa."
         }
       ]
     },
@@ -54,8 +67,14 @@
           "text": "♫ BOOM BOOM BOOM BOOM ♫"
         },
         "AAAAAAH! I DRAGHI! LE ROCCE! IL MASTER SONO IO!",
+        "Ho tirato salvezza su Costituzione. Ho fatto uno. Sono morto. Sono risorto. Sono confuso.",
         "...Kiril? Che ore sono? Che giorno è? Chi è il presidente?",
-        "Ah. Il tuo compleanno. Auguri! Grande giorno. Grandissimo. La torta? Che torta? Non so niente di torte. Non ho mai visto una torta in vita mia."
+        {
+          "cond": "costume",
+          "text": "E perché sei vestito da ragno? È una classe nuova? Ranger aracnide? Ti do vantaggio sulle prove di arrampicata."
+        },
+        "Ah. Il tuo compleanno. Auguri! Grande giorno. Grandissimo.",
+        "La torta? Che torta? Non so niente di torte. Non ho mai visto una torta in vita mia. Cos'è una torta?"
       ],
       "do": [
         "set:davi_awake"
@@ -64,16 +83,39 @@
     },
     "campaign": {
       "lines": [
-        "Però, siccome sono un master generoso, ti narro la campagna. Siediti. Prendi i dadi. Ah, no, non hai dadi. Nemmeno io. Cioè, li ho. Ovviamente.",
+        "Però, siccome sono un master generoso, ti narro la campagna. Siediti. Prendi i dadi.",
+        "Ah, no, non hai dadi. Nemmeno io. Cioè, li ho. Tutti. Ovviamente. Non mi manca niente.",
         "«Nella notte oscura, un guerriero dai lunghi capelli neri si aggirava presso Su Nuraghe...»",
-        "«...accompagnato da un oscuro profeta che parlava ai piccioni.»",
+        "«...e con lui un'ombra che parlava ai piccioni.»",
+        {
+          "cond": "has.alibi_masia",
+          "who": "kiril",
+          "text": "Masia era in palestra fino alle quattro. Ho il timbro."
+        },
+        {
+          "cond": "has.alibi_masia",
+          "text": "...il guerriero aveva un gemello. Malvagio. Anche lui con l'abbonamento. Retcon. Si chiama retcon. È legale."
+        },
+        {
+          "cond": "has.alibi_bea",
+          "who": "kiril",
+          "text": "Bea era al rave con Maki. Quaranta testimoni."
+        },
+        {
+          "cond": "has.alibi_bea",
+          "text": "L'ombra dei piccioni ha il dono dell'ubiquità. Incantesimo di nono livello. Non lo sapevi? Ora lo sai."
+        },
         "Masia e Bea. È evidente. Tira per intuizione. Hai fatto venti? Bravo, venti."
       ],
       "next": "awake"
     },
     "awake": {
       "lines": [
-        "Allora, avventuriero? Domande per il master?"
+        "Allora, avventuriero? Domande per il master?",
+        {
+          "cond": "davi_panic>=3",
+          "text": "Io sono calmissimo. Sudo per il clima. Sardegna, umidità, sai com'è. Non è senso di colpa. È meteo."
+        }
       ],
       "choices": [
         {
@@ -88,6 +130,15 @@
           "text": "Hai un mantello, Davi?",
           "if": "has.stoffa_mantello | has.testimone_leryn",
           "goto": "cape"
+        },
+        {
+          "text": "Ho delle prove da mostrarti, master.",
+          "if": "has.stoffa_mantello | has.d20_glassa | has.testimone_leryn | has.ciocca_capelli | has.volantino_complotto | has.alibi_masia | has.alibi_bea",
+          "goto": "evidence"
+        },
+        {
+          "text": "Che campagna stai preparando?",
+          "goto": "lore"
         },
         {
           "text": "Mi offendo: la festa era MIA.",
@@ -107,6 +158,10 @@
         "set:davi_lied"
       ],
       "lines": [
+        {
+          "cond": "davi_lied",
+          "text": "Te l'ho già detto. Stesse parole, stesso ordine. È la versione canonica. Il canone non si tocca."
+        },
         "Io? A casa. A dormire. Tutta la notte. Senza mantello. Cioè, col pigiama. Non ho un mantello. Che mantello? Cos'è un mantello?",
         "Hai fatto un tiro per intuizione? Non farlo. Tira per fiducia."
       ],
@@ -114,20 +169,253 @@
     },
     "nice": {
       "lines": [
-        "Grazie. L'ho preparata... cioè, improvvisata. Sul momento. Adesso. Totalmente."
+        "Grazie. L'ho preparata... cioè, improvvisata. Sul momento. Adesso. Totalmente.",
+        "Ti do un consiglio da vecchio in fondo alla grotta: non andare da solo. Però io non vengo. Ho sonno."
       ],
       "next": "awake"
     },
     "cape": {
       "lines": [
         "Il mantello? Ah, QUEL mantello. È in lavanderia. Da stanotte. Per motivi. Motivi di trama.",
-        "Che c'è? Perché mi guardi così? Questo è metagaming, Kiril. È contro il regolamento."
+        "Che c'è? Perché mi guardi così? Questo è metagaming, Kiril. È contro il regolamento.",
+        {
+          "cond": "has.stoffa_mantello & has.testimone_leryn",
+          "text": "E mettiamo pure che avessi un mantello. Ipoteticamente. In un'altra campagna. Non è canone."
+        }
+      ],
+      "next": "awake"
+    },
+    "evidence": {
+      "lines": [
+        {
+          "cond": "davi_panic==0",
+          "text": "Prove? Al mio tavolo? Ok. Sono prontissimo. Ho tirato per la calma: venti naturale."
+        },
+        {
+          "cond": "davi_panic>=1",
+          "text": "Altro? Ancora? Hai un inventario infinito? C'è un limite di peso trasportabile, sai!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "La stoffa del mantello.",
+          "if": "has.stoffa_mantello",
+          "do": [
+            "inc:davi_panic"
+          ],
+          "goto": "ev_stoffa"
+        },
+        {
+          "text": "Il D20 glassato.",
+          "if": "has.d20_glassa",
+          "do": [
+            "inc:davi_panic"
+          ],
+          "goto": "ev_d20"
+        },
+        {
+          "text": "La testimonianza di Leryn.",
+          "if": "has.testimone_leryn",
+          "do": [
+            "inc:davi_panic"
+          ],
+          "goto": "ev_leryn"
+        },
+        {
+          "text": "Gli alibi.",
+          "if": "has.alibi_masia | has.alibi_bea",
+          "do": [
+            "inc:davi_panic"
+          ],
+          "goto": "ev_alibi"
+        },
+        {
+          "text": "La ciocca di capelli neri.",
+          "if": "has.ciocca_capelli",
+          "goto": "ev_ciocca"
+        },
+        {
+          "text": "Il volantino di Bea.",
+          "if": "has.volantino_complotto",
+          "goto": "ev_volantino"
+        },
+        {
+          "text": "Basta così.",
+          "goto": "ev_done"
+        }
+      ]
+    },
+    "ev_stoffa": {
+      "do": [
+        "set:shown_stoffa"
+      ],
+      "lines": [
+        {
+          "cond": "!shown_stoffa",
+          "text": "Velluto rosso vinaccia? Mai visto. Il velluto è un materiale leggendario. Come gli unicorni. O le mie consegne puntuali."
+        },
+        {
+          "cond": "!shown_stoffa",
+          "text": "Erika l'ha riconosciuto al tatto? Erika ha Percezione troppo alta. È un PNG rotto. Va nerfata."
+        },
+        {
+          "cond": "shown_stoffa",
+          "text": "Di nuovo la stoffa? L'ho già vista. Cioè, l'hai già mostrata. Io non l'avevo mai vista prima. Né durante."
+        }
+      ],
+      "next": "panic"
+    },
+    "ev_d20": {
+      "do": [
+        "set:shown_d20"
+      ],
+      "lines": [
+        {
+          "cond": "!shown_d20",
+          "text": "Un D20! Glassato! Che carino! Sarà di un altro master. Ce ne sono tanti. Siamo una setta. Cioè, un club."
+        },
+        {
+          "cond": "!shown_d20",
+          "text": "Il mio è blu con le venature. Questo è rosa. Per la glassa. Sotto è blu. Con le venature. Ma non è il mio."
+        },
+        {
+          "cond": "shown_d20",
+          "text": "Puoi smettere di farlo rotolare? Ogni volta che esce venti mi sento giudicato."
+        }
+      ],
+      "next": "panic"
+    },
+    "ev_leryn": {
+      "do": [
+        "set:shown_leryn"
+      ],
+      "lines": [
+        {
+          "cond": "!shown_leryn",
+          "text": "Leryn? Leryn parla a sbuffi. «Mh. Mantello. Mh.» Quella non è una testimonianza, è un respiro."
+        },
+        {
+          "cond": "!shown_leryn",
+          "text": "E alle tre io dormivo. Lo sanno tutti, dormo sempre. È il mio alibi. Ed è fortissimo."
+        },
+        {
+          "cond": "!shown_leryn",
+          "who": "kiril",
+          "text": "Leryn ha detto che il tizio camminava come uno che dorme."
+        },
+        {
+          "cond": "!shown_leryn",
+          "text": "...appunto. Dormivo. Camminando. Cioè no. Cancella. Tiro per cancellare."
+        },
+        {
+          "cond": "shown_leryn",
+          "text": "Basta con Leryn. Ti ha detto «mh»? Lo dice a tutti. Lo dice ai muri. I muri non lo denunciano."
+        }
+      ],
+      "next": "panic"
+    },
+    "ev_alibi": {
+      "lines": [
+        {
+          "cond": "has.alibi_masia",
+          "text": "Masia in palestra fino alle quattro? Col timbro? Ok. Allora il guerriero si è allenato prima. Per la notte."
+        },
+        {
+          "cond": "has.alibi_bea",
+          "text": "Bea al rave? Quaranta testimoni? Possono essere quaranta illusioni. Succede. A me succede ogni giovedì."
+        },
+        {
+          "cond": "has.alibi_masia & has.alibi_bea",
+          "text": "Quindi i miei due sospettati erano altrove. Tutti e due. Ok. La campagna ha un buco di trama. Lo tappo. Dammi un minuto."
+        }
+      ],
+      "next": "panic"
+    },
+    "ev_ciocca": {
+      "lines": [
+        {
+          "cond": "!has.alibi_masia",
+          "text": "Capelli lunghi e neri! Il guerriero oscuro! Te l'avevo detto. Il master non mente. Il master narra."
+        },
+        {
+          "cond": "has.alibi_masia",
+          "text": "Masia ha l'alibi? Allora è di un altro guerriero coi capelli neri. Ce ne sono tanti. In un baule. Cioè, in giro."
+        }
+      ],
+      "next": "evidence"
+    },
+    "ev_volantino": {
+      "lines": [
+        "I piccioni! Ma certo! Bea ha ragione! Bea ha SEMPRE ragione! Da oggi Bea siede a capotavola!",
+        "Droni del governo. Glassa. Frequenze. Torna tutto. Non ricontrollare, torna tutto."
+      ],
+      "next": "evidence"
+    },
+    "panic": {
+      "lines": [
+        {
+          "cond": "davi_panic==1",
+          "text": "Comunque sono rilassatissimo. Guarda che mano ferma. Non guardare la mano."
+        },
+        {
+          "cond": "davi_panic==2",
+          "text": "Fa caldo qui? Fa caldo. È il mantello. Che non ho. È il pigiama di velluto. Che non ho."
+        },
+        {
+          "cond": "davi_panic==3",
+          "text": "Pausa. Il master chiama pausa. Cinque minuti. Devo controllare una regola sul manuale. Il manuale non c'è."
+        },
+        {
+          "cond": "davi_panic==4",
+          "text": "Facciamo un accordo: tu dimentichi tutto e io ti do diecimila punti esperienza. Sali di livello. Diventi semidio."
+        },
+        {
+          "cond": "davi_panic>=5",
+          "text": "Non confesso. Un buon cattivo confessa solo nella scena finale, davanti a tutti. Lo dice il manuale. ...non sono il cattivo."
+        }
+      ],
+      "next": "evidence"
+    },
+    "ev_done": {
+      "lines": [
+        "Fiuu. Fine sessione. Il master va in pausa bagno. Per sempre. Ciao."
+      ]
+    },
+    "lore": {
+      "do": [
+        "inc:davi_lore"
+      ],
+      "lines": [
+        {
+          "cond": "davi_lore==0",
+          "text": "«Le Cronache di Santu Brugaru». Sessione zero da tre anni. I giocatori stanno ancora facendo la scheda."
+        },
+        {
+          "cond": "davi_lore==1",
+          "text": "C'è un drago che vive in un nuraghe e chiede il pizzo in pecorino. Grado di sfida diciassette. Realismo: alto."
+        },
+        {
+          "cond": "davi_lore==2",
+          "text": "Ho pure un PNG bulgaro. Mercante di yogurt. Quello vero, che cammina da solo. Lo usa come arma."
+        },
+        {
+          "cond": "davi_lore==3",
+          "text": "Prossima missione: scortare una torta. No. Niente torte. Ho cambiato idea. Scortare un pane carasau."
+        },
+        {
+          "cond": "davi_lore>=4",
+          "text": "Di più non dico, è metagaming. Vieni al tavolo giovedì. Porta i dadi. E gli snack. Soprattutto gli snack."
+        }
       ],
       "next": "awake"
     },
     "offended": {
       "lines": [
-        "E lo sarà! Cioè, lo sarebbe. Se qualcuno la ritrovasse. Io dormo. Notte."
+        "E lo sarà! Cioè, lo sarebbe. Se qualcuno la ritrovasse. Io dormo. Notte.",
+        {
+          "cond": "offended>=3",
+          "text": "Ti offendi spesso, eh? Sulla tua scheda c'è scritto: «Permaloso. Più tre al broncio.»"
+        }
       ],
       "next": "awake"
     },
@@ -137,6 +425,10 @@
         "Dentro, tra il palco e i tavoli mezzi apparecchiati, ci sono Masia, Bea e Davi. Nessuno sembra tranquillo.",
         "Oh! Kiril! Che coincidenza. Siamo tutti qui per... caso. Totale. Una congiunzione astrale.",
         {
+          "cond": "davi_panic>=3",
+          "text": "Non ho niente da nascondere! Ho detto niente? Volevo dire ciao! Ciao!"
+        },
+        {
           "who": "masia",
           "text": "Io sono qui perché mi hanno detto che c'era da vincere qualcosa."
         },
@@ -144,6 +436,12 @@
           "who": "bea",
           "text": "Io sono qui perché me l'hanno detto i piccioni."
         },
+        {
+          "cond": "costume",
+          "who": "masia",
+          "text": "Vieni in tribunale vestito da ragno? Rispetto zero. Coraggio, quello sì."
+        },
+        "Proposta: facciamo che è una sessione. Io sono il giudice. No? Ok. Ok.",
         {
           "who": "bullone",
           "text": "BZZT. Kiril, è il momento. Indica chi ha sabotato la festa e presenta due prove."
@@ -195,8 +493,18 @@
         "...",
         "Ok. Ok ok ok. Ero io.",
         "Marco mi aveva dato la torta da custodire. Una torta enorme. Bellissima. Con sopra la tua faccia in pasta di zucchero.",
-        "Mi sono seduto un attimo vicino alla scatola. Solo un attimo. Mi sono svegliato alle tre con la tua faccia di zucchero appiccicata alla guancia. E il culo nella glassa.",
-        "Ho perso il dado nella torta, ho strappato gli inviti col mantello mentre scappavo e, per coprirmi... ho improvvisato una campagna. Con indizi falsi. La ciocca era una parrucca di Elisa.",
+        "Mi sono seduto un attimo vicino alla scatola. Solo un attimo. Ho chiuso gli occhi per un turno.",
+        "Mi sono svegliato alle tre con la tua faccia di zucchero appiccicata alla guancia. E il culo nella glassa.",
+        "Ho perso il dado nella torta. Scappando, il mantello si è impigliato negli inviti. Li ho fatti a pezzi.",
+        "Per coprirmi ho improvvisato una campagna. Con indizi falsi. La ciocca era una parrucca di Elisa.",
+        {
+          "who": "masia",
+          "text": "Mi hai incastrato con una PARRUCCA? Io ti ammazzo. Con rispetto. Dopo la torta."
+        },
+        {
+          "who": "bea",
+          "text": "Lo sapevo. Lo sapevano anche i piccioni. Non me l'hanno detto, ma lo sapevano."
+        },
         "Scusa, Kiril. Tiro per perdono?"
       ],
       "choices": [

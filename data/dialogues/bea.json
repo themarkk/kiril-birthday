@@ -17,14 +17,24 @@
       ],
       "lines": [
         "Kiril. Shh. Abbassa la voce. Ci ascoltano.",
-        "Chi? I piccioni. I piccioni di Santu Brugaru sono droni del governo. Si ricaricano sui fili della luce. L'hai mai visto un piccione bambino? Esatto.",
+        "Chi? I piccioni. Quelli di Santu Brugaru sono droni del governo. Si ricaricano sui fili della luce.",
+        "Hai mai visto un piccione bambino? Esatto. Escono dalla fabbrica già adulti.",
+        "Le borchie della giacca sono schermate. Il piercing al sopracciglio fa da antenna. Ricevo solo radio libere.",
+        {
+          "cond": "costume",
+          "text": "Bel costume. I piccioni temono i ragni. Non è vero. Ma da adesso sì, l'ho deciso io."
+        },
         "Buon compleanno, comunque. Se è davvero il tuo compleanno. Se il tempo esiste."
       ],
       "next": "menu"
     },
     "menu": {
       "lines": [
-        "Parla. Ma copri la bocca, leggono le labbra."
+        "Parla. Ma copri la bocca, leggono le labbra.",
+        {
+          "cond": "accused_bea",
+          "text": "Ti ho perdonato, per l'accusa. Il mio io del futuro ancora no. Porta rancore."
+        }
       ],
       "choices": [
         {
@@ -34,6 +44,15 @@
         {
           "text": "Dove eri stanotte?",
           "goto": "night"
+        },
+        {
+          "text": "Il tuo nome è nella lista dei sospetti.",
+          "goto": "suspect"
+        },
+        {
+          "text": "Che ne pensi delle mie prove?",
+          "if": "has.stoffa_mantello | has.d20_glassa | has.testimone_leryn",
+          "goto": "evidence"
         },
         {
           "text": "Fammi vedere una mossa speciale.",
@@ -54,6 +73,10 @@
     },
     "cake": {
       "lines": [
+        {
+          "cond": "has.volantino_complotto",
+          "text": "Un altro volantino? Tieni. Distribuiscilo. Il movimento ha bisogno di te. Adesso siamo in tre."
+        },
         "Ovvio: i piccioni. Per studiare la glassa. La glassa contiene frequenze.",
         "Ho le prove. Tieni questo volantino. L'ho stampato io. È vero perché è stampato."
       ],
@@ -64,29 +87,133 @@
     },
     "night": {
       "lines": [
-        "Stanotte ero al rave in spiaggia con Maki. Ho spiegato i piccioni a quaranta sconosciuti. Due ci hanno creduto. Due su quaranta è un movimento.",
-        "Chiedi a Maki. Se Maki si ricorda. Se Maki esiste."
+        "Stanotte ero al rave in spiaggia con Maki. Ho spiegato i piccioni a quaranta sconosciuti.",
+        "Due ci hanno creduto. Due su quaranta è un movimento.",
+        "Chiedi a Maki. Se Maki si ricorda. Se Maki esiste.",
+        {
+          "cond": "has.alibi_bea",
+          "text": "Maki ha confermato? Allora ho un alibi. Ufficiale. Mi fa sentire nel mirino. Mi piace."
+        }
+      ],
+      "next": "menu"
+    },
+    "suspect": {
+      "lines": [
+        "Sospetti? Su di me? Bene. Vuol dire che mi vedi. Quasi nessuno mi vede, ho tre strati di rete metallica addosso.",
+        "Ma la torta io non la tocco. Lo zucchero mi fa sentire i colori. Il rosa ha un suono orribile. Tipo fax.",
+        {
+          "cond": "has.ciocca_capelli",
+          "text": "La ciocca nera? Io ho i capelli viola e una rasatura a forma di antenna. Se fossi io, lascerei un capello viola. Come firma."
+        },
+        {
+          "cond": "has.alibi_bea",
+          "text": "E hai il mio alibi. Quaranta testimoni. Trentotto non mi hanno capito, ma c'erano."
+        }
+      ],
+      "next": "menu"
+    },
+    "evidence": {
+      "lines": [
+        "Fammi vedere. Lentamente. Le prove spaventate scappano.",
+        {
+          "cond": "has.stoffa_mantello",
+          "text": "Velluto rosso vinaccia. Tessuto da rituale. Chi lo indossa crede di decidere il destino degli altri. O di sei amici a un tavolo."
+        },
+        {
+          "cond": "has.d20_glassa",
+          "text": "Un dado da venti. Venti facce, una verità. E la glassa rosa. Il rosa è il colore preferito dei piccioni. Coincidenza? Sì."
+        },
+        {
+          "cond": "has.testimone_leryn",
+          "text": "Uno che cammina dormendo alle tre. Sonnambulo. O un piccione travestito da sonnambulo. Per ora escludo il piccione. Per ora."
+        },
+        {
+          "cond": "has.volantino_complotto",
+          "text": "E hai il mio volantino. È la prova più importante. Non ti servirà a niente, ma è la più importante."
+        },
+        {
+          "cond": "has.stoffa_mantello & has.d20_glassa",
+          "text": "Mantello, dadi, sonno. Conosco una persona sola così. E non è un piccione. Purtroppo."
+        }
       ],
       "next": "menu"
     },
     "move": {
+      "do": [
+        "inc:bea_moves"
+      ],
       "lines": [
-        "Va bene. Ma non è colpa mia se poi ti cambia la vita.",
-        "ESPANSIONE DEL DOMINIO: UFFICIO POSTALE INFINITO!",
-        "...",
-        "Ecco. Ora sei in fila per sempre. Spiritualmente."
+        {
+          "cond": "bea_moves==0",
+          "text": "Va bene. Ma non è colpa mia se poi ti cambia la vita."
+        },
+        {
+          "cond": "bea_moves==0",
+          "text": "ESPANSIONE DEL DOMINIO: UFFICIO POSTALE INFINITO!"
+        },
+        {
+          "cond": "bea_moves==0",
+          "text": "..."
+        },
+        {
+          "cond": "bea_moves==0",
+          "text": "Ecco. Ora sei in fila per sempre. Spiritualmente."
+        },
+        {
+          "cond": "bea_moves==1",
+          "text": "ESPANSIONE DEL DOMINIO: DOMENICA POMERIGGIO ETERNA!"
+        },
+        {
+          "cond": "bea_moves==1",
+          "text": "Senti? Il tg regionale. Le campane. Una zia che chiede quando ti sposi. Non si esce."
+        },
+        {
+          "cond": "bea_moves==2",
+          "text": "ESPANSIONE DEL DOMINIO: GRUPPO DEL CONDOMINIO!"
+        },
+        {
+          "cond": "bea_moves==2",
+          "text": "Trecento messaggi non letti. Tutti vocali. Tutti di un certo Tonino che chiede chi ha spostato lo zerbino."
+        },
+        {
+          "cond": "bea_moves==3",
+          "text": "ESPANSIONE DEL DOMINIO: CONFINE BULGARO INVISIBILE!"
+        },
+        {
+          "cond": "bea_moves==3",
+          "text": "Adesso nessuno sa dove sei. Come nessuno sa dov'è la Bulgaria. Ti senti a casa?"
+        },
+        {
+          "cond": "bea_moves>=4",
+          "text": "ESPANSIONE DEL DOMIN... no. Batteria dell'aura al due per cento. Devo ricaricarmi sui fili della luce. Come loro."
+        }
       ],
       "next": "menu"
     },
     "offended": {
       "lines": [
-        "Offenderti è esattamente quello che vogliono loro. I piccioni. Respira. Guardano."
+        "Offenderti è esattamente quello che vogliono loro. I piccioni. Respira. Guardano.",
+        {
+          "cond": "offended>=3",
+          "text": "Ogni volta che ti offendi, un piccione riceve una notifica. Ne hai appena aggiornati una dozzina."
+        }
       ],
       "next": "menu"
     },
     "accused": {
+      "do": [
+        "set:accused_bea"
+      ],
       "lines": [
         "Mi accusi? Interessante. È proprio quello che direbbe un piccione.",
+        {
+          "cond": "has.alibi_bea",
+          "text": "Ho un alibi con quaranta testimoni e un falò. Ma va bene. Accusami. Mi fa sentire importante."
+        },
+        {
+          "cond": "accused_bea",
+          "text": "Di nuovo io? Allora è un segno. Lo metto sul prossimo volantino. In grassetto."
+        },
         "ESPANSIONE DEL DOMINIO: TRIBUNALE INFINITO DEI PICCIONI!",
         "...non è successo niente. Di nuovo. Ma dentro di me è successo tutto.",
         {

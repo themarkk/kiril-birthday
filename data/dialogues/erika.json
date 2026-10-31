@@ -18,6 +18,7 @@
       "lines": [
         "Ferma tutto. Che hai addosso?",
         "Una maglietta bianca. Il giorno del tuo compleanno. Kiril. Kiril. Kiril.",
+        "All'Accademia di Sassari con una maglietta così non ti bocciano all'esame. Ti bocciano all'ingresso. Il portiere.",
         "Va bene, non è colpa tua. Sto cucendo una cosa per te. Segreto. Ma mi mancano due materiali: un tessuto ROSSO e un filo VERDE.",
         "Non chiedere perché. L'arte non si spiega, si cuce."
       ],
@@ -30,8 +31,12 @@
           "text": "Allora? Tessuto rosso, filo verde. Non ho tutto il giorno. Ho tutto il giorno, ma non per te."
         },
         {
-          "cond": "costume",
+          "cond": "costume & !costume_off",
           "text": "Il mio capolavoro cammina. Che emozione. Che altro c'è?"
+        },
+        {
+          "cond": "costume & costume_off",
+          "text": "Di nuovo la maglietta bianca. La sopporto perché ti voglio bene. Poco, in questo momento."
         }
       ],
       "choices": [
@@ -69,6 +74,17 @@
           "goto": "on"
         },
         {
+          "text": "Come si veste il paese, secondo te?",
+          "goto": "fashion"
+        },
+        {
+          "text": "Mi offendo.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "offended"
+        },
+        {
           "text": "Niente, passavo.",
           "goto": "bye"
         }
@@ -86,6 +102,12 @@
         "PERFETTO. Taglia, imbastisci, cuci, ricuci, bestemmia sottovoce, cuci...",
         "FATTO.",
         "Un costume da supereroe. Ragno, sì. Ma NOSTRO: il ragno l'ho disegnato io, a otto zampe e mezzo. Gli avvocati possono dormire tranquilli.",
+        "Il rosso è il foulard di Martina. Il verde è il filo di Moka: le cuciture si vedono solo da vicino. Come le cose fatte bene.",
+        {
+          "who": "kiril",
+          "text": "Mi sento come se potessi arrampicarmi sui muri."
+        },
+        "Sui muri no. È foulard, non ventose. Se lo strappi su un davanzale ti cucio dentro.",
         "Ora sì che sei vestito per un compleanno. Vai e combatti il crimine. O almeno il cattivo gusto."
       ]
     },
@@ -94,7 +116,11 @@
         "Fammi toccare.",
         "...",
         "Questo velluto lo conosco. È il MIO velluto. Rosso vinaccia, trama pesante, l'ho pagato un rene.",
-        "L'ho cucito io, per un mantello. Il mantello da master di Davi. Quello che non si toglie neanche per dormire. E Davi dorme sempre."
+        "L'ho cucito io, per un mantello. Il mantello da master di Davi. Quello che non si toglie neanche per dormire. E Davi dorme sempre.",
+        {
+          "cond": "davi_lied",
+          "text": "Davi ti ha detto che non ha un mantello? Gli ho preso le misure DUE volte. Ha le spalle di un comodino. Lo so io."
+        }
       ],
       "do": [
         "give:stoffa_mantello"
@@ -107,23 +133,75 @@
       ],
       "lines": [
         "Lunghi, neri, lisci... troppo lisci. Troppo perfetti. Questi non sono capelli veri, sono sintetici.",
-        "È una parrucca di scena. Tipo quelle che Elisa tiene nel baule. Chi la lascia in giro vuole farti pensare a qualcuno coi capelli lunghi e neri."
+        "È una parrucca di scena. Tipo quelle che Elisa tiene nel baule. Chi la lascia in giro vuole farti pensare a uno coi capelli lunghi e neri.",
+        {
+          "cond": "!met_elisa",
+          "text": "Elisa sta nel laboratorio a nord-est. Chiedile se le manca qualcosa dal baule. E dille che le sue tende sono storte."
+        },
+        "E il taglio è da macellaio. Chi ha tagliato questa non ha mai tenuto in mano un paio di forbici serie in vita sua."
+      ],
+      "next": "menu"
+    },
+    "fashion": {
+      "lines": [
+        "Ti faccio il giro. Ma sappi che ho le forbici in mano.",
+        {
+          "cond": "met_masia",
+          "text": "Masia: canotta a febbraio, calzoncini ad agosto, stessa canotta. Non è uno stile, è una dichiarazione di guerra."
+        },
+        {
+          "cond": "met_bea",
+          "text": "Bea si veste come una che ha perso una scommessa con l'universo. Mi piace. Non dirle che l'ho detto, lo dice ai piccioni."
+        },
+        {
+          "cond": "met_leryn",
+          "text": "Leryn ha la stessa felpa dal 2019. L'ho lavata io una volta, di nascosto. Ha giocato peggio per una settimana."
+        },
+        {
+          "cond": "davi_awake",
+          "text": "Davi. Gli ho cucito un mantello stupendo e lui ci dorme, ci mangia, ci si siede sopra. Il velluto mi chiama di notte."
+        },
+        "Moka? Tutta verde, sempre. Da lontano sembra una siepe che cammina. Da vicino pure. Ma una siepe curata.",
+        "Marco si veste come un genio miliardario. Cioè da uno che non si guarda allo specchio da anni. Glielo dirò alla festa."
+      ],
+      "next": "menu"
+    },
+    "offended": {
+      "lines": [
+        {
+          "cond": "!costume | costume_off",
+          "text": "Ti offendi? Con quella maglietta? Guarda che è lei che dovrebbe offendersi. Lei e il cotone tutto."
+        },
+        {
+          "cond": "costume & !costume_off",
+          "text": "Ti offendi dentro un mio costume? Così lo sgualcisci. Le pieghe del broncio non si stirano."
+        },
+        "Vieni qui. Ti sistemo il colletto. Ecco. Ora offenditi pure, ma composto."
       ],
       "next": "menu"
     },
     "off": {
       "lines": [
-        "Va bene. Ma sappi che la maglietta bianca mi ferisce."
+        "Va bene. Ma sappi che la maglietta bianca mi ferisce.",
+        "Dammelo, lo piego io. Tu con quelle mani sporche di banitsa non toccare niente qui dentro."
       ]
     },
     "on": {
       "lines": [
-        "Ecco. Così ti riconosco."
+        "Ecco. Così ti riconosco.",
+        "Spalle dritte. Un supereroe non cammina come uno che ha perso il pullman per Cagliari."
       ]
     },
     "bye": {
       "lines": [
-        "Passa pure. Ma passa vestito meglio."
+        {
+          "cond": "!costume | costume_off",
+          "text": "Passa pure. Ma passa vestito meglio."
+        },
+        {
+          "cond": "costume & !costume_off",
+          "text": "Vai, vai. E non sederti sui gradini, che poi la stoffa fa le ginocchia. E io lo vengo a sapere."
+        }
       ]
     }
   }

@@ -9,7 +9,9 @@
     "m1": {
       "do": ["set:met_maki"],
       "lines": [
-        "KIRIL! Oggi è la giornata più bella di tutta la mia vita! Il sole! Il mare! La CASSA! Tutto è perfetto e niente fa male!"
+        "KIRIL! Oggi è la giornata più bella di tutta la mia vita! Il sole! Il mare! La CASSA! Tutto è perfetto e niente fa male!",
+        "Ho la regina in cuffia dalle sei di stamattina! Il telefono dice «volume non consigliato». Io dico CONSIGLIATISSIMO!",
+        { "cond": "costume", "text": "E sei vestito da RAGNO! Ti adoro! Ne voglio uno anch'io! Da medusa! Che punge chi mi sta antipatico!" }
       ],
       "choices": [
         { "text": "SÌÌÌ! FESTA! VOLUME!", "goto": "m2" },
@@ -20,7 +22,9 @@
     "m2": {
       "lines": [
         "...aspetta.",
-        "Ho appena realizzato che le estati finiscono. Che tutto finisce. Che anche questa cassa un giorno morirà. E io con lei. Siamo polvere, Kiril. Polvere con il bluetooth."
+        "Ho appena realizzato che le estati finiscono. Che tutto finisce. Che anche questa cassa un giorno morirà.",
+        "E io con lei. Siamo polvere, Kiril. Polvere con il bluetooth.",
+        "Anche la regina un giorno smetterà di fare dischi. E io dovrò ascoltare la radio. LA RADIO, Kiril."
       ],
       "choices": [
         { "text": "Dai, non esagerare.", "goto": "wrong" },
@@ -30,7 +34,8 @@
     },
     "m3": {
       "lines": [
-        "E SAI COSA? Il barista mi ha dato il latte di mandorla quando io avevo chiesto QUELLO D'AVENA. Lo odio. Voglio vederlo fallire. Voglio che il suo bar diventi una banca."
+        "E SAI COSA? Il barista mi ha dato il latte di mandorla. Io avevo chiesto QUELLO D'AVENA. A voce alta. Scandendo.",
+        "Lo odio. Voglio vederlo fallire. Voglio che il suo bar diventi una banca. Chiusa. Di domenica. Che bastardo."
       ],
       "choices": [
         { "text": "Magari si è solo sbagliato.", "goto": "wrong" },
@@ -39,32 +44,88 @@
       ]
     },
     "m4": {
-      "lines": ["...grazie Kiril. Sei l'unico che mi capisce. Ho bisogno di un abbraccio. Subito. È un'emergenza."],
+      "lines": [
+        "...",
+        "...grazie Kiril. Sei l'unico che mi capisce. Ho bisogno di un abbraccio. Subito. È un'emergenza."
+      ],
       "choices": [
         { "text": "Vieni qui. Abbraccio.", "goto": "win" },
         { "text": "Ho le mani sporche di glassa.", "goto": "wrong" }
       ]
     },
     "wrong": {
+      "do": ["inc:maki_fails"],
       "lines": [
         "...",
         "Non mi capisci. Nessuno mi capisce. Neanche la regina capirebbe questo tradimento.",
-        "Riparliamone quando sei più sintonizzato sulla mia frequenza."
+        "Riparliamone quando sei più sintonizzato sulla mia frequenza.",
+        { "cond": "maki_fails>=1", "text": "E ascoltami davvero, la prossima volta. Rispondi a come sto ADESSO. Non a come stavo un secondo fa." },
+        { "cond": "maki_fails>=2", "text": "Guarda che capirmi non è difficile. Sono solo quattro umori in fila. Come una playlist. Ma col cuore." }
       ]
     },
     "win": {
       "lines": [
         "Ti voglio bene. Tantissimo. Per sempre. O almeno fino a stasera.",
         "Cosa ti serve? La cassa? Per svegliare uno che dorme come un morto? È fatta apposta. Volume massimo: illegale in tre comuni.",
-        "Ah! E se cerchi Bea: stanotte era con me al rave in spiaggia. Ha fatto un discorso sui piccioni che ancora ci penso. Male."
+        "Ah! E se cerchi Bea: stanotte era con me al rave in spiaggia. Ha fatto un discorso sui piccioni che ancora ci penso. Male.",
+        "Me la ridai dopo la festa. Se la perdi ti scrivo una canzone contro. Di quelle cattive, con l'autotune."
       ],
       "do": ["give:cassa_maki", "give:alibi_bea", "sound:solve"]
     },
     "after": {
       "lines": [
         "La mia cassa è in buone mani. Trattala bene. Accarezzala ogni tanto. Lei sente.",
+        { "cond": "davi_awake", "text": "Hai svegliato quello della taverna? Ho sentito il BOOM da qui. Ho pianto. Di gioia. Poi di fame." },
+        { "cond": "costume", "text": "Quel costume ti sta da Dio. Mi fa venire voglia di salvare qualcuno. O di picchiarlo. Vediamo l'umore." },
+        { "cond": "got_risata & got_broncio & got_coraggio", "text": "Hai tutte le parole? Corri a Su Nuraghe! No, aspetta, abbracciami. No, vai. VAI." },
         "Ora scusami, devo avere un crollo emotivo in pace sotto l'ombrellone. Poi torno brillante. Promesso."
+      ],
+      "next": "after_menu"
+    },
+    "after_menu": {
+      "lines": ["Altro? Sbrigati, sento l'umore che gira."],
+      "choices": [
+        { "text": "Come stai adesso?", "goto": "mood" },
+        { "text": "Parlami della regina.", "goto": "queen" },
+        { "text": "Verresti in Bulgaria con me?", "goto": "bulgaria" },
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "after_offended" },
+        { "text": "Ciao Maki.", "goto": "after_bye" }
       ]
+    },
+    "mood": {
+      "do": ["inc:maki_mood"],
+      "lines": [
+        { "cond": "maki_mood==0", "text": "Adesso? Adesso amo tutti. Pure il barista. No. Il barista no. Quasi tutti." },
+        { "cond": "maki_mood==1", "text": "Adesso mi sento una sirena sulla sabbia. Ma glamour. Con le unghie fatte e zero voglia di nuotare." },
+        { "cond": "maki_mood==2", "text": "Adesso ho fame e ce l'ho con te perché non hai cibo. Hai cibo? No. Lo sapevo. Vergogna." },
+        { "cond": "maki_mood>=3", "text": "Adesso ho tutti gli umori insieme. Si chiama «sabato». Te lo consiglio." }
+      ],
+      "next": "after_menu"
+    },
+    "queen": {
+      "lines": [
+        "La regina è la regina. Non si discute. Se la nomini male, cambio umore in uno che non hai mai visto.",
+        "Ho tutti i dischi, tre magliette e un poster dove ci guardiamo negli occhi. Lei non lo sa. Ancora.",
+        "Quando viene a cantare in Sardegna io sono in prima fila. Porto la tenda dal martedì."
+      ],
+      "next": "after_menu"
+    },
+    "bulgaria": {
+      "lines": [
+        "SÌ! Dov'è? No, non dirmelo, voglio la sorpresa. Prendo un aereo a caso e vedo dove atterro.",
+        "C'è il mare? Il Mar NERO? Nero come i vestiti di Masia? Ci sto. Porto la cassa. Li sveglio tutti."
+      ],
+      "next": "after_menu"
+    },
+    "after_offended": {
+      "lines": [
+        "Ti offendi? Con ME? OGGI?!",
+        "...ok. Hai ragione. Offendiamoci insieme. Contro chi? Scegli tu. Io propongo il barista."
+      ],
+      "next": "after_menu"
+    },
+    "after_bye": {
+      "lines": ["Ciao! Ti amo! Vai! Non voltarti, se no piango! ...ti sei voltato. Piango."]
     }
   }
 }

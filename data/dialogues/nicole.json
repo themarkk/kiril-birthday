@@ -20,15 +20,27 @@
         "set:met_nicole"
       ],
       "lines": [
-        "Kiril! Salve! Ave! Χαῖρε! Buon dies natalis!",
-        "Cioè. Non sapevo fosse il tuo compleanno. Non so niente. Sono solo una ragazza in una biblioteca, circondata da dèi di marmo.",
-        "...ok, Marco mi ha dato una busta per te. Ma c'è una prova. Come le dodici fatiche, solo che è una. Sei tu, mica Ercole."
+        "Kiril! Salve! Ave! Χαῖρε! Felix dies natalis! Ho sbagliato l'ordine dei saluti. Non importa. Sì che importa.",
+        {
+          "cond": "costume & !costume_off",
+          "text": "E quel costume? Un ragno! Aracne sfidò Atena al telaio e finì appesa al soffitto. Tu almeno ci vai volontario."
+        },
+        "Cioè. Non sapevo fosse il tuo compleanno. Non so niente. Sono solo una ragazza in biblioteca, circondata da dèi di marmo.",
+        "...ok, Marco mi ha dato una busta per te. Ma c'è una prova. Come le dodici fatiche, solo che è una. Sei tu, mica Ercole.",
+        "Per fortuna. Ercole era insopportabile. Strozzava serpenti nella culla e poi se ne vantava a cena."
       ],
       "next": "menu"
     },
     "menu": {
       "lines": [
-        "Marco ha scritto quattro indovinelli in latino. Metti in ordine le quattro statue giuste sui piedistalli e la busta è tua."
+        {
+          "cond": "!nicole_translated",
+          "text": "Marco ha scritto quattro indovinelli in latino. Metti in ordine le quattro statue giuste sui piedistalli e la busta è tua."
+        },
+        {
+          "cond": "nicole_translated",
+          "text": "Fabbro, madre col sasso, cantore, bambino con le frecce. In quest'ordine. Gli dèi aspettano. Io pure, ma con meno pazienza."
+        }
       ],
       "choices": [
         {
@@ -42,6 +54,11 @@
         {
           "text": "Hai visto qualcosa stanotte?",
           "goto": "night"
+        },
+        {
+          "text": "Guarda questa ciocca di capelli.",
+          "if": "has.ciocca_capelli & !nicole_hair",
+          "goto": "hair"
         },
         {
           "text": "Mi offendo: perché in latino?",
@@ -58,7 +75,11 @@
     },
     "challenge": {
       "lines": [
-        "Quattro piedistalli, otto statue. Scegli bene. Gli dèi non perdonano. Io sì, ma loro no."
+        "Quattro piedistalli, otto statue. Scegli bene. Gli dèi non perdonano. Io sì, ma loro no.",
+        {
+          "cond": "!nicole_translated",
+          "text": "Senza traduzione? Audace. Anche Icaro era audace. Poi è diventato un problema di gravità."
+        }
       ],
       "puzzle": {
         "id": "cipher",
@@ -67,45 +88,192 @@
       }
     },
     "translate": {
+      "do": [
+        "set:nicole_translated"
+      ],
       "lines": [
-        "Con piacere! Il latino tradotto è come il gelato sciolto, ma va bene.",
-        "Primo: «Faber claudus, ferrum in igne domat». Un fabbro zoppo doma il ferro nel fuoco. Il fabbro degli dèi. Quello che costruisce cose. Ti ricorda qualcuno?",
-        "Secondo: «Mater deorum, lapidem pro filio dedit». La madre degli dèi diede un sasso al posto del figlio. E quel boccalone di Crono se l'è mangiato.",
-        "Terzo: «Cantor qui ad inferos descendit». Il cantore che scese agli inferi. Per AMORE, Kiril. Con la lira. Io piango ogni volta.",
-        "Quarto: «Puer alatus, sagittis corda ferit». Un bambino alato che colpisce i cuori con le frecce. Questo lo sai anche tu."
+        "Con piacere! Il latino tradotto è come il gelato sciolto: lo mangi lo stesso, ma soffri.",
+        "Primo: «Faber claudus, ferrum in igne domat». Un fabbro zoppo doma il ferro nel fuoco. Il fabbro degli dèi. Ti ricorda qualcuno?",
+        {
+          "who": "kiril",
+          "text": "Uno che costruisce robot alle tre di notte e poi zoppica perché ci ha inciampato sopra."
+        },
+        "Secondo: «Mater deorum, lapidem pro filio dedit». La madre degli dèi diede un sasso al posto del figlio. E Crono, boccalone, l'ha ingoiato.",
+        "Fasciato, Kiril. Il sasso era fasciato come un neonato. E lui niente. Gli uomini, eh.",
+        "Terzo: «Cantor qui ad inferos descendit». Il cantore che scese agli inferi. Per AMORE. Con la lira. Io piango ogni volta. Anche adesso.",
+        "Quarto: «Puer alatus, sagittis corda ferit». Un bimbo alato che colpisce i cuori con le frecce. Questo lo sai anche tu. Ce l'hai in faccia.",
+        "Attento alle statue che non c'entrano. Non farti distrarre dai bicipiti di Ercole. Vale per le statue e per la vita."
       ],
       "next": "menu"
     },
     "night": {
       "lines": [
         "Stanotte? Ero a letto con l'Eneide. Libro sesto, la discesa agli inferi. Rilassantissimo.",
-        "Però verso le tre ho sentito qualcuno trascinarsi per la strada. Passi pesanti. E un fruscio, tipo... un mantello? Vabbè, magari sognavo Enea."
+        "Però verso le tre ho sentito qualcuno trascinarsi per la strada. Passi pesanti. E un fruscio, tipo... un mantello? Magari sognavo Enea.",
+        {
+          "cond": "has.testimone_leryn",
+          "text": "Anche Leryn l'ha visto? Allora non sognavo! Testis unus, testis nullus. Ma due testimoni fanno un processo."
+        },
+        {
+          "cond": "!has.testimone_leryn",
+          "text": "Chiedi a chi era sveglio alle tre. Gente senza vita sociale. Hai presente la sala giochi? Ecco."
+        }
+      ],
+      "next": "menu"
+    },
+    "hair": {
+      "do": [
+        "set:nicole_hair"
+      ],
+      "lines": [
+        "Capelli! Medusa? No, niente serpenti. Sansone? Biblico, non è il mio reparto. Vado al secondo piano per quello.",
+        "Comunque sono troppo lisci. Nessuno ha capelli così, nemmeno le ninfe col balsamo. Sembrano usciti da un baule di scena.",
+        "Euripide lo chiamerebbe deus ex machina. Io lo chiamo «qualcuno che vuole fregarti». Meno elegante, più preciso."
       ],
       "next": "menu"
     },
     "offended": {
       "lines": [
         "Ah! Il broncio! Come Achille sotto la tenda. Identico. Anche lui si offendeva per tutto e poi distruggeva Troia.",
+        {
+          "cond": "offended>=3",
+          "text": "Quante sono oggi, tre? Ira funesta, Kiril. Omero ci ha scritto ventiquattro libri. Tu ci stai arrivando."
+        },
         "Tranquillo, ti traduco tutto io. Sono qui per questo. E per i genitivi."
       ],
       "next": "menu"
     },
     "lose": {
+      "do": [
+        "inc:nicole_fails"
+      ],
       "lines": [
-        "No no no. Errore tragico, proprio nel senso greco. Ma la tragedia insegna! Riprova."
+        "No no no. Errore tragico, proprio nel senso greco. Ma la tragedia insegna! Riprova.",
+        {
+          "cond": "nicole_fails>=1",
+          "text": "Di nuovo? Sisifo almeno aveva un sasso solo. Chiedimi la traduzione, dai. Non mi offendo. Un po' sì."
+        }
       ],
       "next": "menu"
     },
     "win": {
       "lines": [
         "OPTIME! Efesto, Rea, Orfeo, Eros. Lo sapevo! Hai la testa di Atena e il fascino di... vabbè, non esageriamo.",
-        "Ecco la busta. Marco l'ha sigillata con la ceralacca. CON LA CERALACCA. Quell'uomo è un poema epico."
+        "Ecco la busta. Marco l'ha sigillata con la ceralacca. CON LA CERALACCA. Quell'uomo è un poema epico con la saldatrice."
       ],
       "next": "marco:word_risata"
     },
     "after": {
       "lines": [
-        "Lo sai che i Romani festeggiavano il compleanno con il Genius, uno spirito protettore personale? Il tuo oggi ha il bullone in testa.",
+        {
+          "cond": "costume & !costume_off",
+          "text": "Il costume! Mercurio aveva i sandali alati, tu hai le zampe in più. Ognuno ha l'attributo che si merita."
+        },
+        {
+          "cond": "got_broncio & got_coraggio",
+          "text": "Tre parole su tre! Come le Moire: una fila, una misura, una taglia. Tu invece apri. Su Nuraghe ti aspetta."
+        },
+        {
+          "cond": "!(got_broncio & got_coraggio)",
+          "text": "Audentes fortuna iuvat. La fortuna aiuta gli audaci. Le altre parole sono in sala giochi e nel laboratorio."
+        },
+        "Lo sai che i Romani festeggiavano il compleanno col Genius, uno spirito protettore personale? Il tuo ha un bullone in testa."
+      ],
+      "next": "after_menu"
+    },
+    "after_menu": {
+      "lines": [
+        {
+          "cond": "!nicole_chat",
+          "text": "Resta un attimo! Ho miti per ogni occasione. Anche per i furti di torte. Soprattutto."
+        },
+        {
+          "cond": "nicole_chat",
+          "text": "Altro? Ho tempo. Ho sempre tempo. Vivo in una biblioteca, il tempo qui è un concetto ornamentale."
+        }
+      ],
+      "do": [
+        "set:nicole_chat"
+      ],
+      "choices": [
+        {
+          "text": "Raccontami un mito.",
+          "goto": "myth"
+        },
+        {
+          "text": "Chi è stato, secondo te?",
+          "goto": "theory"
+        },
+        {
+          "text": "Mi offendo.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "after_off"
+        },
+        {
+          "text": "Vale, Nicole.",
+          "goto": "after_bye"
+        }
+      ]
+    },
+    "myth": {
+      "lines": [
+        "Lo sai che Orfeo era trace? La Tracia è mezza Bulgaria! Kiril, tu sei praticamente un conterraneo di Orfeo!",
+        {
+          "who": "kiril",
+          "text": "Quindi canto bene?"
+        },
+        "No. Ma ti giri sempre a guardare Marco quando esce da una stanza. Quello è molto orfico. E molto pericoloso.",
+        "E i Greci portavano ad Artemide focacce rotonde con le candele sopra. La prima torta di compleanno. A lei non l'hanno rubata."
+      ],
+      "next": "after_menu"
+    },
+    "theory": {
+      "lines": [
+        {
+          "cond": "!has.stoffa_mantello & !has.d20_glassa & !has.testimone_leryn",
+          "text": "Poche prove. Tacito diceva... niente, Tacito taceva, appunto. Raccogli indizi e poi torna a farmi emozionare."
+        },
+        {
+          "cond": "has.ciocca_capelli & has.alibi_masia",
+          "text": "La ciocca accusa Masia, ma Masia era in palestra. Quindi la ciocca mente. Una ciocca bugiarda. Che dramma."
+        },
+        {
+          "cond": "has.alibi_bea",
+          "text": "Bea a un rave a spiegare i piccioni. Cassandra moderna: profetizza, nessuno le crede, e di solito ha torto."
+        },
+        {
+          "cond": "has.d20_glassa",
+          "text": "Un D20 nella glassa! Icosaedro, venti facce. Platone lo associava all'acqua. Qui alla glassa. Platone piangerebbe."
+        },
+        {
+          "cond": "has.stoffa_mantello",
+          "text": "Velluto da mantello. A Roma il mantello rosso lo portava il generale in trionfo. Qui uno che russa."
+        },
+        "La mia teoria è filologica: il colpevole è sempre quello che si crede il narratore. Nelle tragedie è il coro. Qui vedi tu."
+      ],
+      "next": "after_menu"
+    },
+    "after_off": {
+      "lines": [
+        {
+          "cond": "got_broncio",
+          "text": "Ah, ora che Marco ti ha messo il BRONCIO per iscritto ti senti autorizzato. Licentia poetica. Concessa."
+        },
+        {
+          "cond": "!got_broncio",
+          "text": "Di nuovo Achille! Guarda che io la tenda non te la monto. Al massimo ti presto un plaid e un'Iliade."
+        },
+        {
+          "cond": "offended>=5",
+          "text": "Ho perso il conto delle tue offese. Marco no, scommetto. Quell'uomo è un oracolo di Delfi col cacciavite."
+        }
+      ],
+      "next": "after_menu"
+    },
+    "after_bye": {
+      "lines": [
         "Vai, Kiril. Carpe diem. E carpe anche il colpevole."
       ]
     },
