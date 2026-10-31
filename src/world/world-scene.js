@@ -46,6 +46,8 @@ export class WorldScene {
       this.follower.place(this.blocked(fx, fy, true) ? px : fx, this.blocked(fx, fy, true) ? py : fy, this.player.dir);
     }
     this.game.hooks.music?.([this.map.json.music || 'interior']);
+    const on = this.map.json.onEnter;
+    this.pendingEnter = on && evaluate(on.if, this.state) ? on : null;
   }
 
   // Rilegge condizioni di PNG e oggetti (dopo ogni dialogo): chi deve sparire sparisce.
@@ -105,6 +107,12 @@ export class WorldScene {
       if (this.onArrive()) return;
     }
     if (p.moving) return;
+    if (this.pendingEnter) {
+      const on = this.pendingEnter;
+      this.pendingEnter = null;
+      this.game.openDialogue?.(on.dialogue, { node: on.node });
+      return;
+    }
 
     if (input.pressed('ok')) { this.interact(); return; }
     if (input.pressed('notebook')) { this.game.openNotebook?.(); return; }

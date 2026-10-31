@@ -1,0 +1,36 @@
+{
+  "_nota": "Marco: ritocca questi testi prima delle 8. 'people' sono gli sprite che compaiono nella scena; 'text' è quello che si legge.",
+  "common_start": [
+    { "people": ["marco_armor"], "text": "Le luci si riaccendono. Davanti a te c'è Marco. In un'armatura di cartone e nastro adesivo. Con un cerchio disegnato col pennarello sul petto. Luminoso. Più o meno." },
+    { "people": ["marco_armor", "kiril"], "speaker": "marco", "text": "«Lo so. Sono bellissimo. Elisa ci ha lavorato tutta la notte. Io ho fatto il cerchio.»" }
+  ],
+  "endings": {
+    "perfect": [
+      { "people": ["marco_armor", "kiril_costume"], "speaker": "marco", "text": "«Hai trovato le parole, il colpevole e pure tutte le paperelle di Moka. E indossi il costume di Erika. Sei il detective perfetto. Lo sapevo. L'avevo calcolato.»" },
+      { "people": ["moka", "erika", "elisa", "nicole"], "text": "Moka lancia sette paperelle verdi in aria. Erika piange perché il costume ti sta da dio. Elisa accende le luci di scena. Nicole urla qualcosa in greco antico." },
+      { "people": ["davi", "masia", "bea", "leryn"], "text": "Davi arriva con una torta di ripiego, comprata alle sei al bar. «Chiedo umilmente perdono, master.» Masia vuole vincere la gara a chi la mangia più veloce. Bea controlla che non ci siano piccioni. Leryn dice «mh». È felice." }
+    ],
+    "good": [
+      { "people": ["marco_armor", "kiril"], "speaker": "marco", "text": "«Caso risolto, detective. Qualche paperella è ancora in fuga, ma il genio sei tu. Io sono solo quello con l'armatura.»" },
+      { "people": ["elisa", "nicole", "erika", "moka"], "text": "Elisa accende le luci di scena. Nicole urla «Habemus festam!». Erika ti sistema il colletto. Moka fa quack." },
+      { "people": ["davi", "masia", "bea", "leryn"], "text": "Davi arriva con una torta di ripiego comprata al bar. «Chiedo umilmente perdono, master.» Masia vuole vincere la gara a chi la mangia più veloce. Leryn dice «mh». È felice." }
+    ],
+    "messy": [
+      { "people": ["marco_armor", "masia"], "speaker": "marco", "text": "«Hai accusato un po' di gente a caso, eh. Masia ti odierà fino al 2040. Ma alla fine ce l'hai fatta. Questo conta. Più o meno.»" },
+      { "people": ["masia", "bea"], "text": "Masia ti fissa dall'angolo con le braccia incrociate. Bea sta facendo un'Espansione del Dominio per perdonarti. Spiritualmente." },
+      { "people": ["davi", "leryn", "elisa", "nicole"], "text": "Davi arriva con una torta di ripiego. «Chiedo umilmente perdono, master.» Nicole recita un'ode alla riconciliazione. Leryn dice «mh». È felice lo stesso." }
+    ]
+  },
+  "common_end": [
+    { "people": ["martina"], "text": "Poi Martina sale sul palco, prende il microfono e attacca a cantare. Per una volta, nessuno a Santu Brugaru si ricorda che è di Sassari." },
+    { "people": ["martina", "maki", "efisio", "bullone"], "text": "♪ Tanti auguri a teee ♪ Maki alza la cassa a volume illegale. Tziu Efisio canta «Tanti auguri, Cirillo». Bullone prende fuoco. Un pochino. Per la gioia." },
+    { "people": ["marco", "kiril"], "speaker": "marco", "text": "«E adesso il regalo vero.»" }
+  ],
+  "auguri": {
+    "title": "Buon compleanno, Kiril",
+    "text": "Lo sai che ti amo per la tua risata, per il tuo broncio e per il tuo coraggio. Per come ti offendi in un secondo e mi perdoni in due. Per come hai fatto di un'isola che non sa pronunciare il tuo nome casa tua. E un po' anche casa mia.\n\nOggi tutto il paese si è messo in moto per te. Domani si ricomincia a litigare per chi lava i piatti. Ma oggi no: oggi sei il protagonista.\n\nAuguri, amore mio.",
+    "signature": "— Marco",
+    "button": "Apri il tuo regalo",
+    "locked": "Il regalo è ancora chiuso: qualcosa non torna. Le tre parole e il colpevole devono essere quelli giusti."
+  }
+}

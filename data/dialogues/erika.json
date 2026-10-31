@@ -1,0 +1,130 @@
+{
+  "speaker": "Erika",
+  "portrait": "erika",
+  "entry": [
+    {
+      "if": "met_erika",
+      "goto": "menu"
+    },
+    {
+      "goto": "intro"
+    }
+  ],
+  "nodes": {
+    "intro": {
+      "do": [
+        "set:met_erika"
+      ],
+      "lines": [
+        "Ferma tutto. Che hai addosso?",
+        "Una maglietta bianca. Il giorno del tuo compleanno. Kiril. Kiril. Kiril.",
+        "Va bene, non è colpa tua. Sto cucendo una cosa per te. Segreto. Ma mi mancano due materiali: un tessuto ROSSO e un filo VERDE.",
+        "Non chiedere perché. L'arte non si spiega, si cuce."
+      ],
+      "next": "menu"
+    },
+    "menu": {
+      "lines": [
+        {
+          "cond": "!costume",
+          "text": "Allora? Tessuto rosso, filo verde. Non ho tutto il giorno. Ho tutto il giorno, ma non per te."
+        },
+        {
+          "cond": "costume",
+          "text": "Il mio capolavoro cammina. Che emozione. Che altro c'è?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ho tutto: tessuto e filo.",
+          "if": "has.tessuto_rosso & has.filo_verde & !costume",
+          "goto": "sew"
+        },
+        {
+          "text": "Guarda questo invito strappato.",
+          "if": "has.invito_strappato & !has.stoffa_mantello",
+          "goto": "invite"
+        },
+        {
+          "text": "E questa ciocca di capelli?",
+          "if": "has.ciocca_capelli & !asked_hair",
+          "goto": "hair"
+        },
+        {
+          "text": "Togliti il costume? No: toglimi il costume.",
+          "if": "costume & !costume_off",
+          "do": [
+            "set:costume_off",
+            "costume:off"
+          ],
+          "goto": "off"
+        },
+        {
+          "text": "Rimettimi il costume.",
+          "if": "costume & costume_off",
+          "do": [
+            "unset:costume_off",
+            "costume:on"
+          ],
+          "goto": "on"
+        },
+        {
+          "text": "Niente, passavo.",
+          "goto": "bye"
+        }
+      ]
+    },
+    "sew": {
+      "do": [
+        "take:tessuto_rosso",
+        "take:filo_verde",
+        "set:costume",
+        "sound:solve",
+        "costume:on"
+      ],
+      "lines": [
+        "PERFETTO. Taglia, imbastisci, cuci, ricuci, bestemmia sottovoce, cuci...",
+        "FATTO.",
+        "Un costume da supereroe. Ragno, sì. Ma NOSTRO: il ragno l'ho disegnato io, a otto zampe e mezzo. Gli avvocati possono dormire tranquilli.",
+        "Ora sì che sei vestito per un compleanno. Vai e combatti il crimine. O almeno il cattivo gusto."
+      ]
+    },
+    "invite": {
+      "lines": [
+        "Fammi toccare.",
+        "...",
+        "Questo velluto lo conosco. È il MIO velluto. Rosso vinaccia, trama pesante, l'ho pagato un rene.",
+        "L'ho cucito io, per un mantello. Il mantello da master di Davi. Quello che non si toglie neanche per dormire. E Davi dorme sempre."
+      ],
+      "do": [
+        "give:stoffa_mantello"
+      ],
+      "next": "menu"
+    },
+    "hair": {
+      "do": [
+        "set:asked_hair"
+      ],
+      "lines": [
+        "Lunghi, neri, lisci... troppo lisci. Troppo perfetti. Questi non sono capelli veri, sono sintetici.",
+        "È una parrucca di scena. Tipo quelle che Elisa tiene nel baule. Chi la lascia in giro vuole farti pensare a qualcuno coi capelli lunghi e neri."
+      ],
+      "next": "menu"
+    },
+    "off": {
+      "lines": [
+        "Va bene. Ma sappi che la maglietta bianca mi ferisce."
+      ]
+    },
+    "on": {
+      "lines": [
+        "Ecco. Così ti riconosco."
+      ]
+    },
+    "bye": {
+      "lines": [
+        "Passa pure. Ma passa vestito meglio."
+      ]
+    }
+  }
+}

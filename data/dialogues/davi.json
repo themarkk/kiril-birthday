@@ -1,0 +1,241 @@
+{
+  "speaker": "Davi",
+  "portrait": "davi",
+  "entry": [
+    {
+      "if": "davi_awake",
+      "goto": "awake"
+    },
+    {
+      "if": "has.cassa_maki",
+      "goto": "wake"
+    },
+    {
+      "goto": "asleep"
+    }
+  ],
+  "nodes": {
+    "asleep": {
+      "do": [
+        "inc:davi_snores"
+      ],
+      "lines": [
+        {
+          "cond": "davi_snores==0",
+          "text": "Zzz... tiro per iniziativa... zzz... diciannove... zzz..."
+        },
+        {
+          "cond": "davi_snores==1",
+          "text": "Zzz... il goblin... attacca la torta... cioè la torre... zzz..."
+        },
+        {
+          "cond": "davi_snores==2",
+          "text": "Zzz... non ero io... era il mio PNG... zzz..."
+        },
+        {
+          "cond": "davi_snores>=3",
+          "text": "ZZZZZZZZZZ."
+        },
+        {
+          "who": "kiril",
+          "text": "Dorme come un sasso. Un sasso con la barba. Servirebbe qualcosa di MOLTO rumoroso."
+        }
+      ]
+    },
+    "wake": {
+      "lines": [
+        "Zzz...",
+        {
+          "who": "kiril",
+          "text": "Appoggio la cassa di Maki vicino al suo orecchio. Volume: illegale."
+        },
+        {
+          "who": "maki",
+          "text": "♫ BOOM BOOM BOOM BOOM ♫"
+        },
+        "AAAAAAH! I DRAGHI! LE ROCCE! IL MASTER SONO IO!",
+        "...Kiril? Che ore sono? Che giorno è? Chi è il presidente?",
+        "Ah. Il tuo compleanno. Auguri! Grande giorno. Grandissimo. La torta? Che torta? Non so niente di torte. Non ho mai visto una torta in vita mia."
+      ],
+      "do": [
+        "set:davi_awake"
+      ],
+      "next": "campaign"
+    },
+    "campaign": {
+      "lines": [
+        "Però, siccome sono un master generoso, ti narro la campagna. Siediti. Prendi i dadi. Ah, no, non hai dadi. Nemmeno io. Cioè, li ho. Ovviamente.",
+        "«Nella notte oscura, un guerriero dai lunghi capelli neri si aggirava presso Su Nuraghe...»",
+        "«...accompagnato da un oscuro profeta che parlava ai piccioni.»",
+        "Masia e Bea. È evidente. Tira per intuizione. Hai fatto venti? Bravo, venti."
+      ],
+      "next": "awake"
+    },
+    "awake": {
+      "lines": [
+        "Allora, avventuriero? Domande per il master?"
+      ],
+      "choices": [
+        {
+          "text": "E tu dov'eri stanotte?",
+          "goto": "where"
+        },
+        {
+          "text": "Bella storia, master.",
+          "goto": "nice"
+        },
+        {
+          "text": "Hai un mantello, Davi?",
+          "if": "has.stoffa_mantello | has.testimone_leryn",
+          "goto": "cape"
+        },
+        {
+          "text": "Mi offendo: la festa era MIA.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "offended"
+        },
+        {
+          "text": "Ci vediamo, master.",
+          "goto": "awake_bye"
+        }
+      ]
+    },
+    "where": {
+      "do": [
+        "set:davi_lied"
+      ],
+      "lines": [
+        "Io? A casa. A dormire. Tutta la notte. Senza mantello. Cioè, col pigiama. Non ho un mantello. Che mantello? Cos'è un mantello?",
+        "Hai fatto un tiro per intuizione? Non farlo. Tira per fiducia."
+      ],
+      "next": "awake"
+    },
+    "nice": {
+      "lines": [
+        "Grazie. L'ho preparata... cioè, improvvisata. Sul momento. Adesso. Totalmente."
+      ],
+      "next": "awake"
+    },
+    "cape": {
+      "lines": [
+        "Il mantello? Ah, QUEL mantello. È in lavanderia. Da stanotte. Per motivi. Motivi di trama.",
+        "Che c'è? Perché mi guardi così? Questo è metagaming, Kiril. È contro il regolamento."
+      ],
+      "next": "awake"
+    },
+    "offended": {
+      "lines": [
+        "E lo sarà! Cioè, lo sarebbe. Se qualcuno la ritrovasse. Io dormo. Notte."
+      ],
+      "next": "awake"
+    },
+    "tribunal_intro": {
+      "lines": [
+        "Le tre parole girano nelle serrature. RISATA. BRONCIO. CORAGGIO. La porta di Su Nuraghe si apre.",
+        "Dentro, tra il palco e i tavoli mezzi apparecchiati, ci sono Masia, Bea e Davi. Nessuno sembra tranquillo.",
+        "Oh! Kiril! Che coincidenza. Siamo tutti qui per... caso. Totale. Una congiunzione astrale.",
+        {
+          "who": "masia",
+          "text": "Io sono qui perché mi hanno detto che c'era da vincere qualcosa."
+        },
+        {
+          "who": "bea",
+          "text": "Io sono qui perché me l'hanno detto i piccioni."
+        },
+        {
+          "who": "bullone",
+          "text": "BZZT. Kiril, è il momento. Indica chi ha sabotato la festa e presenta due prove."
+        }
+      ],
+      "do": [
+        "accuse"
+      ]
+    },
+    "retry": {
+      "lines": [
+        {
+          "who": "bullone",
+          "text": "Vuoi riprovare l'accusa o uscire a cercare altre prove?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Riprovo l'accusa.",
+          "do": [
+            "accuse"
+          ],
+          "goto": "retry_go"
+        },
+        {
+          "text": "Esco a cercare prove.",
+          "do": [
+            "warp:town:23:7:down"
+          ],
+          "goto": "retry_go"
+        }
+      ]
+    },
+    "retry_go": {
+      "lines": []
+    },
+    "weak": {
+      "lines": [
+        "AH-AH! Prove circostanziali, detective! Nessun giudice mi condannerebbe. Nessun DM, almeno.",
+        "Tira di nuovo. Con dati migliori. O con meno dati. Facciamo con meno."
+      ],
+      "next": "retry"
+    },
+    "confess": {
+      "do": [
+        "set:accused_right"
+      ],
+      "lines": [
+        "...",
+        "Ok. Ok ok ok. Ero io.",
+        "Marco mi aveva dato la torta da custodire. Una torta enorme. Bellissima. Con sopra la tua faccia in pasta di zucchero.",
+        "Mi sono seduto un attimo vicino alla scatola. Solo un attimo. Mi sono svegliato alle tre con la tua faccia di zucchero appiccicata alla guancia. E il culo nella glassa.",
+        "Ho perso il dado nella torta, ho strappato gli inviti col mantello mentre scappavo e, per coprirmi... ho improvvisato una campagna. Con indizi falsi. La ciocca era una parrucca di Elisa.",
+        "Scusa, Kiril. Tiro per perdono?"
+      ],
+      "choices": [
+        {
+          "text": "Ti perdono. Ma la prossima torta la tieni lontana dal tuo culo.",
+          "goto": "reveal"
+        },
+        {
+          "text": "Mi offendo. Tantissimo. Per sempre.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "reveal_off"
+        }
+      ]
+    },
+    "reveal_off": {
+      "lines": [
+        "Lo merito. Ma... guarda la porta."
+      ],
+      "next": "reveal"
+    },
+    "reveal": {
+      "lines": [
+        "In quel momento, le luci di Su Nuraghe si spengono.",
+        "Un rumore di cartone. Di nastro adesivo. Di qualcuno che inciampa su un cavo e bestemmia con eleganza.",
+        {
+          "who": "marco",
+          "text": "Nessuno si muova. Il genio è arrivato."
+        }
+      ],
+      "do": [
+        "ending"
+      ]
+    },
+    "awake_bye": {
+      "lines": [
+        "Fine della sessione. Ricordati di segnare i punti esperienza."
+      ]
+    }
+  }
+}

@@ -41,10 +41,12 @@ export class DialogueScene {
     for (const [verb, fn] of Object.entries(game.hooks)) {
       hooks[verb] = DEFERRED.has(verb) ? args => this.after.push(() => fn(args)) : fn;
     }
-    this.runner = createRunner(game.data.dialogues[dialogueId], game.state, {
+    const source = typeof dialogueId === 'object' ? dialogueId : game.data.dialogues[dialogueId];
+    this.runner = createRunner(source, game.state, {
       startNode: node,
       hooks,
       names: story.names || {},
+      dialogues: game.data.dialogues,
     });
     this.colors = story.colors || {};
     this.box = el('div', 'box dialogue');
@@ -117,6 +119,7 @@ export class DialogueScene {
       const n = this.step.choices.length;
       if (input.pressed('up')) { this.sel = (this.sel + n - 1) % n; this.renderChoices(); this.game.hooks.sound?.(['cursor']); }
       if (input.pressed('down')) { this.sel = (this.sel + 1) % n; this.renderChoices(); this.game.hooks.sound?.(['cursor']); }
+      if (input.pressed('back') && this.sel !== n - 1) { this.sel = n - 1; this.renderChoices(); return; }
       if (input.pressed('ok')) {
         this.game.hooks.sound?.(['select']);
         this.runner.choose(this.sel);

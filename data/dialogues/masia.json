@@ -1,0 +1,152 @@
+{
+  "speaker": "Masia",
+  "portrait": "masia",
+  "entry": [
+    {
+      "if": "has.alibi_masia",
+      "goto": "after"
+    },
+    {
+      "if": "met_masia",
+      "goto": "menu"
+    },
+    {
+      "goto": "intro"
+    }
+  ],
+  "nodes": {
+    "intro": {
+      "do": [
+        "set:met_masia"
+      ],
+      "lines": [
+        "Che cazzo vuoi.",
+        "Ah. Il festeggiato. Auguri. Ora levati, mi copri il sole e sto facendo il mio record di flessioni sul campetto."
+      ],
+      "next": "menu"
+    },
+    "menu": {
+      "lines": [
+        "Ancora qui? Parla. Veloce. Sto vincendo contro me stesso."
+      ],
+      "choices": [
+        {
+          "text": "Hai sabotato tu la mia festa?",
+          "goto": "accuse_soft"
+        },
+        {
+          "text": "Dove eri stanotte?",
+          "goto": "where"
+        },
+        {
+          "text": "Questa ciocca di capelli neri è tua?",
+          "if": "has.ciocca_capelli",
+          "goto": "hair"
+        },
+        {
+          "text": "Mi offendo.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "offended"
+        },
+        {
+          "text": "Ciao Masia.",
+          "goto": "menu_bye"
+        }
+      ]
+    },
+    "accuse_soft": {
+      "lines": [
+        "IO? Se sabotavo una festa la sabotavo MEGLIO. Con metodo. Con un piano. Con stile.",
+        "Questa roba è da dilettanti. Inviti strappati? Ma per favore. Io li avrei bruciati in ordine alfabetico."
+      ],
+      "next": "menu"
+    },
+    "where": {
+      "lines": [
+        "Vuoi il mio alibi? Guadagnatelo. Battimi a morra cinese.",
+        "Nessuno mi batte a morra cinese. Nessuno. Ho battuto mio padre a sei anni, e da lì non mi ha più guardato in faccia."
+      ],
+      "choices": [
+        {
+          "text": "Giochiamo.",
+          "goto": "challenge"
+        },
+        {
+          "text": "Lascia perdere.",
+          "goto": "menu_bye"
+        }
+      ]
+    },
+    "challenge": {
+      "lines": [
+        "Al meglio dei cinque. Primo che arriva a tre. Pronto a piangere?"
+      ],
+      "puzzle": {
+        "id": "rps",
+        "win": "win",
+        "lose": "lose"
+      }
+    },
+    "lose": {
+      "do": [
+        "inc:masia_losses"
+      ],
+      "lines": [
+        "AHAHAHAH. Sei scarso. Scarsissimo. Torna quando hai fatto pace con la tua mediocrità.",
+        {
+          "cond": "masia_losses>=1",
+          "text": "Comunque gioco sempre in modo PERFETTO. Ogni mossa è una risposta. Studiami, se ci riesci."
+        }
+      ],
+      "next": "menu"
+    },
+    "win": {
+      "lines": [
+        "...impossibile.",
+        "Hai barato. No. Ho barato io e tu mi hai letto. Che schifo. Che rispetto.",
+        "Va bene. Stanotte ero in palestra fino alle quattro. Ecco il timbro. Record personale di trazioni. Lo so, a nessuno frega un cazzo."
+      ],
+      "do": [
+        "give:alibi_masia"
+      ]
+    },
+    "hair": {
+      "lines": [
+        "Questi? Sintetici. Io uso solo balsamo all'argan, questa roba è plastica.",
+        "Chi ti ha messo in mano questa merda vuole incastrare me. E io non mi faccio incastrare. Io incastro."
+      ],
+      "next": "menu"
+    },
+    "offended": {
+      "lines": [
+        "Offenditi. Io intanto vinco. Novantotto. Novantanove."
+      ],
+      "next": "menu"
+    },
+    "after": {
+      "lines": [
+        "Hai il mio alibi. Ora sparisci prima che ti sfidi a qualcos'altro.",
+        "Tipo... chi resta più a lungo in silenzio. Inizio io. ...vinto."
+      ]
+    },
+    "accused": {
+      "lines": [
+        "IO?!",
+        "Mi accusi davanti a tutti?! Ma vaffan... no. No. Ho troppa classe.",
+        "Hai sbagliato, detective. E io non dimentico. Mai. Ricordo ancora chi mi ha battuto a briscola nel 2014.",
+        {
+          "who": "bullone",
+          "text": "BZZT. Accusa respinta. Suggerisco di ricontrollare le prove. E di non guardare Masia negli occhi."
+        }
+      ],
+      "next": "davi:retry"
+    },
+    "menu_bye": {
+      "lines": [
+        "Finalmente. Novantanove. CENTO. Visto? Mi porti sfortuna."
+      ]
+    }
+  }
+}

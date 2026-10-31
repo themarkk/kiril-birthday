@@ -1,4 +1,4 @@
-// Avvio: carica i dati, prepara schermo/input/scene e fa girare il loop.
+// Avvio: carica i dati, prepara schermo/input/scene, collega gli effetti dei JSON e fa girare il loop.
 
 import { loadAll, showBootError } from './engine/loader.js';
 import { setupScreen } from './engine/screen.js';
@@ -7,8 +7,15 @@ import { SceneManager } from './engine/scenes.js';
 import { ArtCache } from './engine/art.js';
 import { FALLBACK_TILES } from './engine/fallback-tiles.js';
 import { WorldScene } from './world/world-scene.js';
-import { createState, save, load } from './game/state.js';
+import { createState, save, load, clearSave } from './game/state.js';
+import { evaluate, applyEffects } from './game/conditions.js';
 import { DialogueScene, debugPuzzle } from './game/dialogue-scene.js';
+import { NotebookScene } from './game/notebook-scene.js';
+import { EndingScene } from './game/ending-scene.js';
+import { TitleScene } from './game/title-scene.js';
+import { pickHint } from './game/hints.js';
+import { setupDebug } from './game/debug.js';
+import { AccusationScene } from './puzzles/accusation-scene.js';
 
 async function boot() {
   let data;
@@ -27,14 +34,16 @@ async function boot() {
   const art = new ArtCache(data.art, FALLBACK_TILES);
   const fadeEl = Object.assign(document.createElement('div'), { className: 'fade' });
   ui.append(fadeEl);
+  const story = data.story;
 
+  const saved = load();
   const game = {
     data, art, input, scenes, ui, screen,
-    state: load() || createState(),
+    state: saved || createState(),
     hooks: {},
-    puzzles: {},
+    puzzles: { debug: debugPuzzle },
     busy: false,
-    save() { return save(game.state); },
+    save() { return game.state.flags.has('started') ? save(game.state) : false; },
     transition(fn) {
       if (game.busy) return;
       game.busy = true;
@@ -55,39 +64,94 @@ async function boot() {
   };
   window.__game = game;
 
-  const items = () => data.story?.items || {};
+  const onWorld = () => scenes.top === game.world && !game.busy;
+
+  // Dopo ogni dialogo: eventi automatici (Permalosometro, paperelle...).
+  function afterDialogue() {
+    if (scenes.top !== game.world) return;
+    const ev = (story.autoEvents || []).find(e => evaluate(e.if, game.state));
+    if (ev) setTimeout(() => onWorld() && game.openDialogue(ev.dialogue, { node: ev.node }), 150);
+  }
+
   game.openDialogue = (id, opts = {}) => {
-    if (!data.dialogues[id]) { console.warn(`[dialogo] "${id}" non esiste`); return; }
-    scenes.push(new DialogueScene(game, id, opts));
+    if (typeof id === 'string' && !data.dialogues[id]) { console.warn(`[dialogo] "${id}" non esiste`); return; }
+    scenes.push(new DialogueScene(game, id, { ...opts, onClose: () => { opts.onClose?.(); afterDialogue(); } }));
   };
-  game.puzzles.debug = debugPuzzle;
+
+  game.openNotebook = () => scenes.push(new NotebookScene(game));
+
+  game.openHint = () => {
+    const h = pickHint(story.hints, game.state);
+    if (!h) return;
+    const key = `hint_${h.phaseIndex}`;
+    const who = story.hints[h.phaseIndex].who || 'bullone';
+    const prefix = who === 'bullone' ? ['BZZT. Analisi in corso...', 'BZZT. Ricalcolo...', 'BZZT. Modalità "spiegone" attivata.'][h.level] : '';
+    const lines = [prefix, h.line].filter(Boolean).map(text => ({ who, text }));
+    game.state.counters[key] = (game.state.counters[key] || 0) + 1;
+    game.openDialogue({ speaker: 'Bullone', portrait: who, entry: [{ goto: 'h' }], nodes: { h: { lines } } });
+  };
+
   Object.assign(game.hooks, {
-    gave: ([id]) => { game.toast(`Ottenuto: ${items()[id]?.name || id}`); game.hooks.sound?.(['item']); },
+    gave: ([id]) => { game.toast(`Ottenuto: ${story.items[id]?.name || id}`); game.hooks.sound?.(['item']); },
     warp: ([map, x, y, dir]) => game.transition(() => { game.world.loadMap(map, Number(x), Number(y), dir); game.save(); }),
     face: ([npcId, dir]) => { const n = game.world.npcs.find(e => e.id === npcId); if (n) n.dir = dir; },
     costume: ([mode]) => { game.state.person = mode === 'off' ? 'kiril' : 'kiril_costume'; game.world.refresh(); },
     save: () => game.save(),
     fade: () => game.transition(() => {}),
+    accuse: () => scenes.push(new AccusationScene(game, (verdict, suspect) => {
+      if (verdict === 'correct') game.openDialogue('davi', { node: 'confess' });
+      else if (verdict === 'weak_evidence') game.openDialogue('davi', { node: 'weak' });
+      else {
+        applyEffects(['inc:wrong_accusations'], game.state);
+        game.openDialogue(suspect, { node: 'accused' });
+      }
+    })),
+    ending: () => game.transition(() => scenes.replace(new EndingScene(game))),
+    reset_lab: () => game.pushables?.reset(game.world),
   });
 
   game.world = new WorldScene(game);
-  const s = game.state;
-  const start = data.story?.start || { map: 'town' };
-  if (s.x || s.y) game.world.loadMap(s.map, s.x, s.y, s.dir);
-  else game.world.loadMap(start.map, start.x, start.y, start.dir);
   scenes.push(game.world);
 
+  const start = story.start;
+  function newGame() {
+    clearSave();
+    game.state = createState();
+    game.state.flags.add('started');
+    game.world.loadMap(start.map, start.x, start.y, start.dir);
+    game.save();
+    setTimeout(() => game.openDialogue(start.dialogue, { node: start.node }), 400);
+  }
+  function continueGame() {
+    const s = game.state;
+    if (s.flags.has('game_over')) { scenes.replace(new EndingScene(game)); return; }
+    game.world.loadMap(s.map, s.x, s.y, s.dir);
+  }
+
+  if (saved) game.world.loadMap(saved.map, saved.x, saved.y, saved.dir);
+  else game.world.loadMap('town', 23, 15, 'down');
+  scenes.push(new TitleScene(game, { hasSave: Boolean(saved?.flags.has('started')), onContinue: continueGame, onNew: newGame }));
+  setupDebug(game);
+
   let last = performance.now();
-  function frame(now) {
+  function step(now) {
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
     if (!game.busy) scenes.update(dt);
-    else game.world.background?.(dt);
     scenes.draw(screen.ctx);
     input.endFrame();
+  }
+  let lastRaf = 0;
+  function frame(now) {
+    lastRaf = performance.now();
+    step(now);
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+  // In debug il gioco avanza anche a scheda nascosta (per i playtest automatici).
+  if (new URLSearchParams(location.search).has('debug')) {
+    setInterval(() => { if (performance.now() - lastRaf > 100) step(performance.now()); }, 16);
+  }
 }
 
 boot();

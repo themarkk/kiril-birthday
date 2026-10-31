@@ -1,0 +1,56 @@
+{
+  "speaker": "Moka",
+  "portrait": "moka",
+  "entry": [
+    { "if": "met_moka", "goto": "menu" },
+    { "goto": "intro" }
+  ],
+  "nodes": {
+    "intro": {
+      "do": ["set:met_moka"],
+      "lines": [
+        "Quack! Kiril! Auguri! Quack.",
+        "Scusa, quando sono emozionata faccio quack. Sono emozionata sempre.",
+        "Sto cercando le mie paperelle verdi. Ne ho perse sette in giro per il paese. Le paperelle scappano, è nella loro natura. Come i gatti. Ma gialle. Cioè verdi."
+      ],
+      "next": "menu"
+    },
+    "menu": {
+      "lines": [
+        { "cond": "ducks==0", "text": "Se trovi una paperella verde, raccoglila! Sono sette in tutto." },
+        { "cond": "ducks>0 & ducks<7", "text": "Paperelle ritrovate: un po'! Ne mancano ancora. Quack di incoraggiamento." },
+        { "cond": "ducks>=7", "text": "Tutte e sette le mie bambine sono a casa. Quack di gratitudine eterna." }
+      ],
+      "choices": [
+        { "text": "Erika mi ha chiesto un filo verde.", "if": "met_erika & !has.filo_verde & !costume", "goto": "thread" },
+        { "text": "Hai visto qualcosa stanotte?", "goto": "night" },
+        { "text": "Perché tutto verde?", "goto": "green" },
+        { "text": "Ciao Moka.", "goto": "bye" }
+      ]
+    },
+    "thread": {
+      "lines": ["Filo verde? Ho SOLO cose verdi. Anche lo spazzolino. Anche i pensieri, a volte.", "Tieni! Per Erika e per te. Quack solenne."],
+      "do": ["give:filo_verde"],
+      "next": "menu"
+    },
+    "night": {
+      "lines": [
+        "Stanotte ho visto una delle mie paperelle in taverna, sul tavolo di Davi.",
+        "Gliel'ho chiesta indietro, ma lui dormiva in piedi e ha detto «è un famiglio, ha tirato salvezza». Poi ha russato. In piedi."
+      ],
+      "next": "menu"
+    },
+    "green": {
+      "lines": ["Il verde è il colore delle paperelle giuste, delle foglie e della speranza. E delle mie unghie.", "Il giallo è per le paperelle che non si impegnano."],
+      "next": "menu"
+    },
+    "bye": { "lines": ["Quack quack! Significa ciao. In paperese."] },
+    "all_ducks_found": {
+      "do": ["set:ducks_done", "sound:solve"],
+      "lines": [
+        { "who": "bullone", "text": "BZZT. Messaggio da Moka, inoltrato a tutto volume." },
+        "TUTTE E SETTE! Kiril, sei ufficialmente Paperello d'Onore di Santu Brugaru. Quack di gala!"
+      ]
+    }
+  }
+}

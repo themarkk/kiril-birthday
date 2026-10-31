@@ -32,7 +32,35 @@
     }
   ],
   "objects": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": "masia_n",
+      "x": 5,
+      "y": 5,
+      "dir": "down",
+      "person": "masia",
+      "dialogue": "masia",
+      "node": "after"
+    },
+    {
+      "id": "bea_n",
+      "x": 9,
+      "y": 5,
+      "dir": "down",
+      "person": "bea",
+      "dialogue": "bea",
+      "node": "menu"
+    },
+    {
+      "id": "davi_n",
+      "x": 7,
+      "y": 4,
+      "dir": "down",
+      "person": "davi",
+      "dialogue": "davi",
+      "node": "awake"
+    }
+  ],
   "triggers": [],
   "legend": {
     "W": "wall_in",
@@ -62,5 +90,10 @@
     "o": "plate",
     "D": "table_dnd",
     "s": "stage"
+  },
+  "onEnter": {
+    "dialogue": "davi",
+    "node": "tribunal_intro",
+    "if": "!accused_right"
   }
 }

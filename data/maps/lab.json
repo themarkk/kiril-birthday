@@ -30,7 +30,26 @@
       "dir": "down"
     }
   ],
-  "objects": [],
+  "objects": [
+    {
+      "id": "sword",
+      "x": 6,
+      "y": 2,
+      "img": "artichoke_sword",
+      "dialogue": "objects",
+      "node": "sword",
+      "if": "lab_solved & !got_coraggio"
+    },
+    {
+      "id": "sword_done",
+      "x": 6,
+      "y": 2,
+      "img": "artichoke_big",
+      "dialogue": "objects",
+      "node": "sword_after",
+      "if": "got_coraggio"
+    }
+  ],
   "npcs": [
     {
       "id": "elisa",

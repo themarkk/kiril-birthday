@@ -1,11 +1,227 @@
 {
   "speaker": "",
   "nodes": {
-    "door_locked": { "lines": [{ "who": "kiril", "text": "Prima devo capire dov'è finito Marco." }] },
-    "nuraghe_locked": { "lines": ["La porta di Su Nuraghe è chiusa. Ci sono tre serrature."] },
-    "bed": { "lines": ["Il letto. Il lato di Marco è vuoto e freddo."] },
-    "fridge": { "lines": ["Yogurt, yogurt, yogurt. Quello vero, quello bulgaro."] },
-    "tv": { "lines": ["Spenta. Strano: Marco la lascia sempre accesa."] },
-    "sofa": { "lines": ["Il divano."] }
+    "door_locked": {
+      "lines": [
+        {
+          "who": "kiril",
+          "text": "Non esco senza prima aver capito il biglietto di Marco. Dove dormo quando mi offendo...?"
+        }
+      ]
+    },
+    "nuraghe_locked": {
+      "lines": [
+        "La porta di Su Nuraghe è chiusa. Ci sono tre serrature, ognuna con una piccola tastiera di lettere.",
+        {
+          "cond": "!got_risata",
+          "text": "Prima serratura: vuota."
+        },
+        {
+          "cond": "got_risata",
+          "text": "Prima serratura: RISATA. Click."
+        },
+        {
+          "cond": "!got_broncio",
+          "text": "Seconda serratura: vuota."
+        },
+        {
+          "cond": "got_broncio",
+          "text": "Seconda serratura: BRONCIO. Click."
+        },
+        {
+          "cond": "!got_coraggio",
+          "text": "Terza serratura: vuota."
+        },
+        {
+          "cond": "got_coraggio",
+          "text": "Terza serratura: CORAGGIO. Click."
+        }
+      ]
+    },
+    "bed": {
+      "lines": [
+        {
+          "cond": "!got_bullone",
+          "text": "Il letto. Il lato di Marco è vuoto. Il biglietto parlava di un altro posto dove dormi..."
+        },
+        {
+          "cond": "got_bullone",
+          "text": "Il letto. Più tardi ci torni, possibilmente in due."
+        }
+      ]
+    },
+    "fridge": {
+      "lines": [
+        "Yogurt. Yogurt. Yogurt. Quello vero, bulgaro, che qui chiamano \"quello acido\".",
+        {
+          "who": "kiril",
+          "text": "Ignoranti."
+        }
+      ]
+    },
+    "tv": {
+      "lines": [
+        "La TV è spenta. Strano: Marco la lascia sempre accesa sui documentari di ingegneria."
+      ]
+    },
+    "sofa": {
+      "lines": [
+        {
+          "cond": "got_bullone",
+          "text": "Il divano. Il tuo esilio preferito dopo ogni litigio."
+        }
+      ],
+      "branch": [
+        {
+          "if": "!got_bullone",
+          "goto": "marco:bullone_found"
+        }
+      ]
+    },
+    "sign": {
+      "lines": [
+        "SANTU BRUGARU — BENVENUTI!",
+        "Attrazioni: il nuraghe. I carciofi (sono di Samassi, ma li abbiamo adottati). Un bulgaro autentico, chiedere in piazza.",
+        {
+          "who": "kiril",
+          "text": "Sono un'attrazione turistica. Fantastico."
+        }
+      ]
+    },
+    "statue_efesto": {
+      "lines": [
+        "Un fabbro zoppo con martello e incudine. Ha l'aria di uno che costruisce robot alle tre di notte."
+      ]
+    },
+    "statue_rea": {
+      "lines": [
+        "Una madre che tiene in braccio un sasso fasciato come un neonato. Lunga storia, dice la targhetta."
+      ]
+    },
+    "statue_orfeo": {
+      "lines": [
+        "Un cantore con la lira. Sembra sul punto di voltarsi a guardare indietro. Non farlo, amico."
+      ]
+    },
+    "statue_eros": {
+      "lines": [
+        "Un bambino con le ali, l'arco e un sorriso da combinaguai."
+      ]
+    },
+    "statue_atena": {
+      "lines": [
+        "Elmo, lancia, civetta. Ti guarda come Nicole quando sbagli un genitivo."
+      ]
+    },
+    "statue_ermes": {
+      "lines": [
+        "Sandali con le ali e un bastone con due serpenti. Il corriere più veloce dell'Olimpo."
+      ]
+    },
+    "statue_ade": {
+      "lines": [
+        "Scettro a due punte, faccia scura. Non sembra uno che va alle feste."
+      ]
+    },
+    "statue_ercole": {
+      "lines": [
+        "Pelle di leone e clava. Bicipiti di marmo. Masia lo prenderebbe come sfida personale."
+      ]
+    },
+    "cabinet": {
+      "lines": [
+        "Un cabinato di PUGNI DI FERRO SARDI 3. Lo schermo lampeggia: INSERT COIN. Leryn ti guarda male."
+      ]
+    },
+    "sewing": {
+      "lines": [
+        "Una macchina da cucire con un post-it: \"NON TOCCARE. — Erika\"."
+      ]
+    },
+    "duck_basket": {
+      "lines": [
+        "Un cesto pieno di paperelle di gomma verdi. Una ti fissa. Quack."
+      ]
+    },
+    "dnd_table": {
+      "lines": [
+        "Un tavolo con una mappa fantasy, miniature e... una macchia rosa di glassa sul bordo. Fresca."
+      ]
+    },
+    "d20": {
+      "lines": [
+        "Sull'erba dietro Su Nuraghe c'è un dado. Venti facce. Coperto di glassa rosa.",
+        {
+          "who": "kiril",
+          "text": "Glassa rosa. La mia torta era rosa. Chi si porta un dado da venti a un furto di torte?"
+        }
+      ],
+      "do": [
+        "give:d20_glassa"
+      ]
+    },
+    "sword": {
+      "lines": [
+        "Una spada conficcata in un carciofo gigante. Sull'elsa c'è un'incisione: \"Solo chi è degno. O chi tira forte.\""
+      ],
+      "choices": [
+        {
+          "text": "Tira.",
+          "goto": "sword_2"
+        },
+        {
+          "text": "Lascia stare.",
+          "goto": "sword_leave"
+        }
+      ]
+    },
+    "sword_2": {
+      "lines": [
+        "Non si muove di un millimetro. Il carciofo sembra deriderti."
+      ],
+      "choices": [
+        {
+          "text": "TIRA!",
+          "goto": "sword_3"
+        }
+      ]
+    },
+    "sword_3": {
+      "lines": [
+        "Si muove. Di un millimetro. Il carciofo geme come un vecchio portone."
+      ],
+      "choices": [
+        {
+          "text": "TIRAAAAAA!!!",
+          "goto": "sword_out"
+        }
+      ]
+    },
+    "sword_out": {
+      "lines": [
+        "SHHHING! La spada esce. Dentro il cuore del carciofo c'è una busta con il sigillo di Marco."
+      ],
+      "do": [
+        "set:sword_out",
+        "sound:solve"
+      ],
+      "next": "marco:word_coraggio"
+    },
+    "sword_leave": {
+      "lines": [
+        {
+          "who": "kiril",
+          "text": "Dopo. Prima mi faccio i bicipiti."
+        }
+      ]
+    },
+    "sword_after": {
+      "lines": [
+        {
+          "who": "kiril",
+          "text": "Il carciofo, ora vuoto, sembra fiero di me."
+        }
+      ]
+    }
   }
 }

@@ -1,0 +1,145 @@
+{
+  "speaker": "Leryn",
+  "portrait": "leryn",
+  "entry": [
+    {
+      "if": "got_broncio",
+      "goto": "after"
+    },
+    {
+      "if": "met_leryn",
+      "goto": "menu"
+    },
+    {
+      "goto": "intro"
+    }
+  ],
+  "nodes": {
+    "intro": {
+      "do": [
+        "set:met_leryn"
+      ],
+      "lines": [
+        "...",
+        "Mh.",
+        "Ah. Sei tu. Auguri. Credo. Boh.",
+        "Marco mi ha dato una busta per te. Te la do se mi batti a Pugni di Ferro Sardi 3. Sono le regole. Le ha fatte lui, non io. Io non faccio regole. Io gioco."
+      ],
+      "next": "menu"
+    },
+    "menu": {
+      "lines": [
+        {
+          "cond": "leryn_losses<2",
+          "text": "Allora? Giochi o guardi?"
+        },
+        {
+          "cond": "leryn_losses>=2",
+          "text": "Ancora tu. Hai preso qualche lezione nel frattempo? No. Si vede."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Sfida accettata.",
+          "goto": "challenge"
+        },
+        {
+          "text": "Non puoi darmela e basta?",
+          "goto": "nope"
+        },
+        {
+          "text": "Leryn... pietà.",
+          "if": "leryn_losses>=2",
+          "goto": "pity"
+        },
+        {
+          "text": "Mi offendo.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "offended"
+        },
+        {
+          "text": "Torno dopo.",
+          "goto": "menu_bye"
+        }
+      ]
+    },
+    "challenge": {
+      "lines": [
+        "Guarda la combo finché è sullo schermo. Poi rifalla. Frecce e Z. Se sbagli, perdi il round. Facile. Per me."
+      ],
+      "puzzle": {
+        "id": "combo",
+        "win": "win",
+        "lose": "lose"
+      }
+    },
+    "nope": {
+      "lines": [
+        "No. Le regole sono regole.",
+        "E poi mi annoio. Tu sei il contenuto di oggi."
+      ],
+      "next": "menu"
+    },
+    "offended": {
+      "lines": [
+        "Offenditi pure. Tanto non cambia la frame data."
+      ],
+      "next": "menu"
+    },
+    "lose": {
+      "do": [
+        "inc:leryn_losses"
+      ],
+      "lines": [
+        "Scarso.",
+        {
+          "cond": "leryn_losses>=1",
+          "text": "...porc* miseria, mi fai quasi tenerezza. Quasi."
+        }
+      ],
+      "next": "menu"
+    },
+    "pity": {
+      "do": [
+        "set:leryn_pity"
+      ],
+      "lines": [
+        "...",
+        "Ok. Ti lascio vincere perché mi fai pena. Non è vero. Sì, è vero.",
+        "Non dirlo a nessuno. Ho una reputazione. Da solo, ma ce l'ho."
+      ],
+      "next": "reward"
+    },
+    "win": {
+      "lines": [
+        "...porc*. Ok. Hai vinto. Non dirlo a nessuno. Lag. Era lag."
+      ],
+      "next": "reward"
+    },
+    "reward": {
+      "lines": [
+        "Tieni la busta. Pesa più del previsto. Marco scrive tanto.",
+        "Ah. Un'altra cosa.",
+        "Stanotte alle tre ero qui a grindare. Fuori dalla vetrina è passato uno col mantello. Si trascinava una scatola da torta.",
+        "Camminava come uno che dorme. Tipo zombie, ma più lento. Non ho fatto domande. Non faccio mai domande."
+      ],
+      "do": [
+        "give:testimone_leryn"
+      ],
+      "next": "marco:word_broncio"
+    },
+    "after": {
+      "lines": [
+        "Ho detto tutto. Uno col mantello, una scatola, le tre di notte.",
+        "Ora lasciami alla mia combo. È la mia unica relazione stabile."
+      ]
+    },
+    "menu_bye": {
+      "lines": [
+        "Mh."
+      ]
+    }
+  }
+}

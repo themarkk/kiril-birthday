@@ -1,0 +1,70 @@
+{
+  "speaker": "Maki",
+  "portrait": "maki",
+  "entry": [
+    { "if": "has.cassa_maki", "goto": "after" },
+    { "goto": "m1" }
+  ],
+  "nodes": {
+    "m1": {
+      "do": ["set:met_maki"],
+      "lines": [
+        "KIRIL! Oggi è la giornata più bella di tutta la mia vita! Il sole! Il mare! La CASSA! Tutto è perfetto e niente fa male!"
+      ],
+      "choices": [
+        { "text": "SÌÌÌ! FESTA! VOLUME!", "goto": "m2" },
+        { "text": "Calma, è solo un sabato.", "goto": "wrong" },
+        { "text": "Mi offendo, non è il TUO giorno.", "do": ["inc:offended"], "goto": "wrong" }
+      ]
+    },
+    "m2": {
+      "lines": [
+        "...aspetta.",
+        "Ho appena realizzato che le estati finiscono. Che tutto finisce. Che anche questa cassa un giorno morirà. E io con lei. Siamo polvere, Kiril. Polvere con il bluetooth."
+      ],
+      "choices": [
+        { "text": "Dai, non esagerare.", "goto": "wrong" },
+        { "text": "Hai ragione. È una tragedia immensa.", "goto": "m3" },
+        { "text": "Mettiamo una canzone allegra?", "goto": "wrong" }
+      ]
+    },
+    "m3": {
+      "lines": [
+        "E SAI COSA? Il barista mi ha dato il latte di mandorla quando io avevo chiesto QUELLO D'AVENA. Lo odio. Voglio vederlo fallire. Voglio che il suo bar diventi una banca."
+      ],
+      "choices": [
+        { "text": "Magari si è solo sbagliato.", "goto": "wrong" },
+        { "text": "Mi offendo anch'io, per te. Che stronzo.", "do": ["inc:offended"], "goto": "m4" },
+        { "text": "Ha tutta la mia disapprovazione.", "goto": "m4" }
+      ]
+    },
+    "m4": {
+      "lines": ["...grazie Kiril. Sei l'unico che mi capisce. Ho bisogno di un abbraccio. Subito. È un'emergenza."],
+      "choices": [
+        { "text": "Vieni qui. Abbraccio.", "goto": "win" },
+        { "text": "Ho le mani sporche di glassa.", "goto": "wrong" }
+      ]
+    },
+    "wrong": {
+      "lines": [
+        "...",
+        "Non mi capisci. Nessuno mi capisce. Neanche la regina capirebbe questo tradimento.",
+        "Riparliamone quando sei più sintonizzato sulla mia frequenza."
+      ]
+    },
+    "win": {
+      "lines": [
+        "Ti voglio bene. Tantissimo. Per sempre. O almeno fino a stasera.",
+        "Cosa ti serve? La cassa? Per svegliare uno che dorme come un morto? È fatta apposta. Volume massimo: illegale in tre comuni.",
+        "Ah! E se cerchi Bea: stanotte era con me al rave in spiaggia. Ha fatto un discorso sui piccioni che ancora ci penso. Male."
+      ],
+      "do": ["give:cassa_maki", "give:alibi_bea", "sound:solve"]
+    },
+    "after": {
+      "lines": [
+        "La mia cassa è in buone mani. Trattala bene. Accarezzala ogni tanto. Lei sente.",
+        "Ora scusami, devo avere un crollo emotivo in pace sotto l'ombrellone. Poi torno brillante. Promesso."
+      ]
+    }
+  }
+}

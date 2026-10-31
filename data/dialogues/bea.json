@@ -1,0 +1,105 @@
+{
+  "speaker": "Bea",
+  "portrait": "bea",
+  "entry": [
+    {
+      "if": "met_bea",
+      "goto": "menu"
+    },
+    {
+      "goto": "intro"
+    }
+  ],
+  "nodes": {
+    "intro": {
+      "do": [
+        "set:met_bea"
+      ],
+      "lines": [
+        "Kiril. Shh. Abbassa la voce. Ci ascoltano.",
+        "Chi? I piccioni. I piccioni di Santu Brugaru sono droni del governo. Si ricaricano sui fili della luce. L'hai mai visto un piccione bambino? Esatto.",
+        "Buon compleanno, comunque. Se è davvero il tuo compleanno. Se il tempo esiste."
+      ],
+      "next": "menu"
+    },
+    "menu": {
+      "lines": [
+        "Parla. Ma copri la bocca, leggono le labbra."
+      ],
+      "choices": [
+        {
+          "text": "Chi ha rubato la mia torta?",
+          "goto": "cake"
+        },
+        {
+          "text": "Dove eri stanotte?",
+          "goto": "night"
+        },
+        {
+          "text": "Fammi vedere una mossa speciale.",
+          "goto": "move"
+        },
+        {
+          "text": "Mi offendo.",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "offended"
+        },
+        {
+          "text": "Ciao Bea.",
+          "goto": "menu_bye"
+        }
+      ]
+    },
+    "cake": {
+      "lines": [
+        "Ovvio: i piccioni. Per studiare la glassa. La glassa contiene frequenze.",
+        "Ho le prove. Tieni questo volantino. L'ho stampato io. È vero perché è stampato."
+      ],
+      "do": [
+        "give:volantino_complotto"
+      ],
+      "next": "menu"
+    },
+    "night": {
+      "lines": [
+        "Stanotte ero al rave in spiaggia con Maki. Ho spiegato i piccioni a quaranta sconosciuti. Due ci hanno creduto. Due su quaranta è un movimento.",
+        "Chiedi a Maki. Se Maki si ricorda. Se Maki esiste."
+      ],
+      "next": "menu"
+    },
+    "move": {
+      "lines": [
+        "Va bene. Ma non è colpa mia se poi ti cambia la vita.",
+        "ESPANSIONE DEL DOMINIO: UFFICIO POSTALE INFINITO!",
+        "...",
+        "Ecco. Ora sei in fila per sempre. Spiritualmente."
+      ],
+      "next": "menu"
+    },
+    "offended": {
+      "lines": [
+        "Offenderti è esattamente quello che vogliono loro. I piccioni. Respira. Guardano."
+      ],
+      "next": "menu"
+    },
+    "accused": {
+      "lines": [
+        "Mi accusi? Interessante. È proprio quello che direbbe un piccione.",
+        "ESPANSIONE DEL DOMINIO: TRIBUNALE INFINITO DEI PICCIONI!",
+        "...non è successo niente. Di nuovo. Ma dentro di me è successo tutto.",
+        {
+          "who": "bullone",
+          "text": "BZZT. Accusa respinta. Bea ha un alibi. E probabilmente un'aura."
+        }
+      ],
+      "next": "davi:retry"
+    },
+    "menu_bye": {
+      "lines": [
+        "Vai. E se un piccione ti fissa, non ricambiare lo sguardo."
+      ]
+    }
+  }
+}

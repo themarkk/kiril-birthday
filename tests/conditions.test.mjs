@@ -70,3 +70,10 @@ test('non-state verbs go to hooks with their args', () => {
   });
   assert.deepEqual(calls, [['warp', ['town', '3', '4', 'up']], ['sound', ['door']]]);
 });
+
+test('give of an item already owned does not call the gave hook again', () => {
+  const s = stateWith({ items: ['k'] });
+  let calls = 0;
+  applyEffects(['give:k', 'give:j'], s, { gave: () => calls++ });
+  assert.equal(calls, 1);
+});

@@ -1,0 +1,52 @@
+{
+  "speaker": "Martina",
+  "portrait": "martina",
+  "entry": [
+    { "if": "has.tessuto_rosso | costume", "goto": "after" },
+    { "if": "martina_hurt", "goto": "hurt_again" },
+    { "goto": "intro" }
+  ],
+  "nodes": {
+    "intro": {
+      "do": ["set:met_martina"],
+      "lines": [
+        "♪ Kiriiil, Kiril Kiril, che bella giornataaa ♪",
+        "Scusa. Se smetto di cantare mi ricordo che sono di Sassari. E qui per questo mi odiano tutti.",
+        "Tziu Efisio stamattina mi ha detto «buongiorno» con un tono che voleva dire «tornatene a Sassari». Lo so. Lo sento."
+      ],
+      "choices": [
+        { "text": "Anche io sono straniero qui. Siamo in due.", "goto": "friend" },
+        { "text": "Mi offendo io per te, per solidarietà.", "do": ["inc:offended"], "goto": "friend" },
+        { "text": "Eh, un po' ve lo meritate.", "do": ["set:martina_hurt"], "goto": "hurt" }
+      ]
+    },
+    "friend": {
+      "lines": [
+        "♪ Due straniiieri in un paese che non ci capisceee ♪",
+        "Ecco! Uno che capisce! Un bulgaro e una sassarese contro tutta la Sardegna del sud. Sembra un film. Lo canterei.",
+        "Erika mi ha chiesto il mio foulard di scena per un lavoro segreto. Non so cosa. ♪ Non so cosaaa ♪ Portaglielo tu, va'."
+      ],
+      "do": ["give:tessuto_rosso"]
+    },
+    "hurt": {
+      "lines": [
+        "♪ Vaffa... ♪",
+        "...fammi pensare. No. Niente foulard per i traditori. Torna quando sei più simpatico."
+      ]
+    },
+    "hurt_again": {
+      "lines": ["♪ Il traditore ritornaaa ♪ Che vuoi?"],
+      "choices": [
+        { "text": "Scusa, ero nervoso. Anche io sono straniero qui.", "do": ["unset:martina_hurt"], "goto": "friend" },
+        { "text": "Niente.", "goto": "bye" }
+      ]
+    },
+    "bye": { "lines": ["♪ Niente di niente, niente di nienteee ♪"] },
+    "after": {
+      "lines": [
+        "♪ Stanotte dalla taverna qualcuno russava fortissimooo, così forte che tremavano i vetriii ♪",
+        "Davvero eh. Non è una metafora. Tremavano."
+      ]
+    }
+  }
+}

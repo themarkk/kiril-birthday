@@ -4,11 +4,24 @@ import { evaluate, applyEffects } from './conditions.js';
 
 const capitalize = s => (s ? s[0].toUpperCase() + s.slice(1) : '');
 
-export function createRunner(dialogue, state, { startNode, hooks = {}, names = {} } = {}) {
-  const nodes = dialogue.nodes || {};
+export function createRunner(dialogue, state, { startNode, hooks = {}, names = {}, dialogues = {} } = {}) {
+  let nodes = dialogue.nodes || {};
   const r = { done: false, nodeId: null, lines: [], i: 0 };
 
-  function enter(id) {
+  // "nodo" resta nel file corrente; "file:nodo" salta in un altro file di dialogo.
+  function enter(target) {
+    let id = target;
+    if (typeof target === 'string' && target.includes(':')) {
+      const [file, nodeName] = target.split(':');
+      if (!dialogues[file]) {
+        console.warn(`[dialogo] file "${file}" inesistente: dialogo chiuso`);
+        r.done = true;
+        return;
+      }
+      dialogue = dialogues[file];
+      nodes = dialogue.nodes || {};
+      id = nodeName;
+    }
     const node = nodes[id];
     if (!node) {
       console.warn(`[dialogo ${dialogue.speaker || '?'}] nodo "${id}" inesistente: dialogo chiuso`);
@@ -16,14 +29,17 @@ export function createRunner(dialogue, state, { startNode, hooks = {}, names = {
       return;
     }
     r.nodeId = id;
-    applyEffects(node.do, state, hooks);
+    // Le righe si scelgono con lo stato di arrivo; gli effetti del nodo valgono da qui in poi.
     r.lines = (node.lines || []).filter(l => typeof l === 'string' || evaluate(l.cond, state));
+    applyEffects(node.do, state, hooks);
     r.i = 0;
     if (!r.lines.length && !node.choices && !node.puzzle) finish(node);
   }
 
   function finish(node) {
-    if (node.next) enter(node.next);
+    const b = (node.branch || []).find(x => evaluate(x.if, state));
+    if (b) enter(b.goto);
+    else if (node.next) enter(node.next);
     else r.done = true;
   }
 

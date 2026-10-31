@@ -1,0 +1,83 @@
+{
+  "_nota": "Marco: questi sono i tuoi biglietti e messaggi. Ritoccali come vuoi (resta solo dentro le virgolette).",
+  "speaker": "Marco",
+  "portrait": "marco",
+  "entry": [{ "goto": "wake" }],
+  "nodes": {
+    "wake": {
+      "lines": [
+        { "who": "kiril", "text": "Mmmh... altri cinque minuti..." },
+        { "who": "kiril", "text": "...Marco?" },
+        { "who": "kiril", "text": "Il suo lato del letto è vuoto. E freddo. Sul cuscino c'è un biglietto." },
+        "«Buon compleanno, amore. Oggi non mi trovi. Non è un incidente: è un PIANO. E i piani di Marco non falliscono mai.»",
+        "«Per cominciare ti ho lasciato un regalino. L'ho nascosto dove dormi quando ti offendi con me. Cioè, spesso.»",
+        "«P.S. Non ti offendere per il P.S.»"
+      ],
+      "choices": [
+        { "text": "Io non mi offendo MAI.", "do": ["inc:offended"], "goto": "wake_offended" },
+        { "text": "Il divano. Ovviamente il divano.", "goto": "wake_ok" },
+        { "text": "Che piano? Marco, dove sei?", "goto": "wake_ok" }
+      ]
+    },
+    "wake_offended": {
+      "lines": [{ "who": "kiril", "text": "...ok, mi sono offeso. Ci ho messo un secondo. Record personale." }],
+      "next": "wake_ok"
+    },
+    "wake_ok": {
+      "lines": [{ "who": "kiril", "text": "Va bene, genio miliardario. Giochiamo." }]
+    },
+    "bullone_found": {
+      "lines": [
+        { "who": "kiril", "text": "Sotto i cuscini del divano c'è... un robottino? Con un bullone in testa?" },
+        { "who": "bullone", "text": "BZZT. Unità BULLONE attivata. Versione 0.9 beta. Costruita da Marco in tre notti e mezza." },
+        { "who": "bullone", "text": "Ho un messaggio registrato per te. Riproduco." },
+        "«Se senti questo, hai trovato Bullone. È il mio assistente personale. Dà consigli, fa domande, a volte prende fuoco.»",
+        "«Quando sei bloccato premi H e chiedi a lui. Premi I per il taccuino: ci finiscono indizi, prove e oggetti.»",
+        "«Primo passo: vai a Su Nuraghe, il locale di pietra in cima al paese. Io ti guardo. Da lontano. Come un genio.»",
+        { "who": "bullone", "text": "Fine messaggio. Ora ti seguo. Non calpestarmi, sono costato 14 euro di componenti." }
+      ],
+      "do": ["set:got_bullone", "sound:item"]
+    },
+    "sabotage": {
+      "lines": [
+        { "who": "kiril", "text": "Su Nuraghe è chiuso. E per terra..." },
+        { "who": "kiril", "text": "Gli inviti della mia festa. Strappati. Tutti." },
+        { "who": "kiril", "text": "E in mezzo ai pezzi... una ciocca di capelli lunghi e neri." },
+        { "who": "bullone", "text": "BZZT. Messaggio d'emergenza di Marco, registrato alle 5:12. Riproduco." },
+        "«Kiril. Ho un problema. Qualcuno ha incasinato il piano: la torta è sparita e gli inviti sono a pezzi.»",
+        "«Non posso farmi vedere, o salta la sorpresa. Quindi tocca a te. Ho dato TRE PAROLE a tre amici: le tre parole aprono la porta di Su Nuraghe.»",
+        "«Trova le parole. Trova chi ha fatto il disastro. E trova me. In quest'ordine, possibilmente.»",
+        "«Ah, sii gentile con tutti. Tranne con il colpevole.»",
+        { "who": "kiril", "text": "Un giallo. Il giorno del mio compleanno. Ovviamente." }
+      ],
+      "do": ["set:sabotage_seen", "give:invito_strappato", "give:ciocca_capelli"]
+    },
+    "word_risata": {
+      "lines": [
+        "«Prima cosa che amo di te: la tua RISATA. Quella che fai quando ridi delle mie battute brutte. Cioè tutte.»"
+      ],
+      "do": ["word:nicole:RISATA", "set:got_risata", "sound:solve"]
+    },
+    "word_broncio": {
+      "lines": [
+        "«Seconda cosa che amo di te: il tuo BRONCIO. Sì, proprio quello. Quando ti offendi fai una faccia che vorrei incorniciare.»"
+      ],
+      "do": ["word:leryn:BRONCIO", "set:got_broncio", "sound:solve"]
+    },
+    "word_coraggio": {
+      "lines": [
+        "«Terza cosa che amo di te: il tuo CORAGGIO. Sei venuto a vivere su un'isola dove nessuno sa pronunciare il tuo nome. E ridi lo stesso.»"
+      ],
+      "do": ["word:elisa:CORAGGIO", "set:got_coraggio", "sound:solve"]
+    },
+    "permaloso": {
+      "lines": [
+        { "who": "bullone", "text": "BZZT. Rilevate cinque offese in un giorno solo. Sblocco il messaggio segreto numero 5." },
+        "«Lo sapevo che ti saresti offeso cinque volte prima di sera. Ti conosco.»",
+        "«Ti amo lo stesso. Anzi, un pochino di più per ogni volta.»",
+        { "who": "kiril", "text": "...questo non vale. Non si può essere offesi e commossi insieme." }
+      ],
+      "do": ["set:permalosometro"]
+    }
+  }
+}

@@ -93,8 +93,67 @@
   "S": "stone",
   "G": "stone_door"
  },
- "npcs": [],
- "objects": [],
+ "npcs": [
+  {
+   "id": "martina",
+   "x": 26,
+   "y": 15,
+   "dir": "left",
+   "person": "martina",
+   "dialogue": "martina"
+  },
+  {
+   "id": "efisio",
+   "x": 21,
+   "y": 12,
+   "dir": "down",
+   "person": "efisio",
+   "dialogue": "efisio"
+  },
+  {
+   "id": "bea",
+   "x": 31,
+   "y": 15,
+   "dir": "down",
+   "person": "bea",
+   "dialogue": "bea",
+   "wander": 2
+  },
+  {
+   "id": "masia",
+   "x": 39,
+   "y": 23,
+   "dir": "down",
+   "person": "masia",
+   "dialogue": "masia"
+  },
+  {
+   "id": "maki",
+   "x": 17,
+   "y": 29,
+   "dir": "down",
+   "person": "maki",
+   "dialogue": "maki"
+  }
+ ],
+ "objects": [
+  {
+   "id": "d20",
+   "x": 28,
+   "y": 4,
+   "img": "d20",
+   "dialogue": "objects",
+   "node": "d20",
+   "if": "!has.d20_glassa & sabotage_seen"
+  },
+  {
+   "id": "sign",
+   "x": 21,
+   "y": 20,
+   "dialogue": "objects",
+   "node": "sign"
+  }
+ ],
  "warps": [
   {
    "x": 8,
@@ -155,5 +214,34 @@
    "locked": "objects:nuraghe_locked"
   }
  ],
- "triggers": []
+ "triggers": [
+  {
+   "x": 23,
+   "y": 8,
+   "dialogue": "marco",
+   "node": "sabotage",
+   "if": "!sabotage_seen"
+  },
+  {
+   "x": 24,
+   "y": 8,
+   "dialogue": "marco",
+   "node": "sabotage",
+   "if": "!sabotage_seen"
+  },
+  {
+   "x": 23,
+   "y": 7,
+   "dialogue": "marco",
+   "node": "sabotage",
+   "if": "!sabotage_seen"
+  },
+  {
+   "x": 24,
+   "y": 7,
+   "dialogue": "marco",
+   "node": "sabotage",
+   "if": "!sabotage_seen"
+  }
+ ]
 }

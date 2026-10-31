@@ -1,0 +1,71 @@
+{
+  "speaker": "Elisa",
+  "portrait": "elisa",
+  "entry": [
+    { "if": "got_coraggio", "goto": "after" },
+    { "if": "lab_solved", "goto": "solved" },
+    { "if": "met_elisa", "goto": "menu" },
+    { "goto": "intro" }
+  ],
+  "nodes": {
+    "intro": {
+      "do": ["set:met_elisa"],
+      "lines": [
+        "Kiril! FERMO! Non muoverti!",
+        "...ok, stavi in una luce bellissima. Controluce, finestra a sinistra. Potevi essere un quadro. Ora sei di nuovo un ragazzo.",
+        "Benvenuto nel mio laboratorio. Qui nascono le scenografie per la tua festa. Che non esiste. Non so di che festa parli.",
+        "Marco mi ha chiesto di nascondere una busta. L'ho nascosta nella mia opera migliore: la Spada nel Carciofo."
+      ],
+      "next": "menu"
+    },
+    "menu": {
+      "lines": [
+        "Per liberare la spada devi mettere in scena i carciofi giganti: tre carciofi, tre piastre. A Samassi i bambini lo fanno a cinque anni. Prima della scuola."
+      ],
+      "choices": [
+        { "text": "Spingo i carciofi.", "goto": "push" },
+        { "text": "Rimetti tutto a posto, mi sono incastrato.", "goto": "reset" },
+        { "text": "Perché proprio i carciofi?", "goto": "why" },
+        { "text": "Hai visto qualcosa stanotte?", "goto": "night" }
+      ]
+    },
+    "push": {
+      "lines": ["Cammina contro un carciofo per spingerlo. Non tirarli, non sono tende. Ogni piastra deve avere il suo carciofo."],
+      "puzzle": { "id": "lab", "win": "solved_now", "lose": "menu_short" }
+    },
+    "menu_short": { "lines": ["Prenditi il tuo tempo. Anche Michelangelo ci ha messo quattro anni per un soffitto."] },
+    "reset": {
+      "lines": ["Cambio scena! Carciofi ai loro posti. Il teatro perdona sempre."],
+      "do": ["reset_lab"]
+    },
+    "why": {
+      "lines": [
+        "Perché sono di SAMASSI, Kiril. Il regno dei carciofi. Capitale mondiale. C'è la sagra, c'è il museo, c'è l'orgoglio.",
+        "Il carciofo è teatro puro: fuori spine, dentro cuore. Come certe persone permalose che conosco."
+      ],
+      "choices": [
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "why_off" },
+        { "text": "Va bene, va bene.", "goto": "menu" }
+      ]
+    },
+    "why_off": { "lines": ["Visto? Spine fuori. Cuore dentro. Avevo ragione io, come sempre in scenografia."], "next": "menu" },
+    "night": {
+      "lines": [
+        "Ho lavorato fino a tardi. Mi mancava una parrucca nera dal baule di scena. Una di quelle lunghe e lisce.",
+        "Qualcuno me l'ha presa. Non è grave, ma chi ruba una parrucca alle tre di notte? Un attore. O un criminale. Che poi è uguale."
+      ],
+      "next": "menu"
+    },
+    "solved_now": {
+      "do": ["set:lab_solved", "sound:solve"],
+      "lines": ["SÌ! Guarda che composizione! Tre carciofi, tre piastre, simmetria perfetta. Mi viene da piangere.", "La spada ora si può estrarre. Tirala. Con convinzione. Con PATHOS."]
+    },
+    "solved": { "lines": ["La spada ti aspetta. Tirala con PATHOS. Il carciofo vuole essere guardato negli occhi."] },
+    "after": {
+      "lines": [
+        "Il carciofo ti ha scelto. Lo sapevo dal primo controluce.",
+        "Ora vai. Io devo finire una cosa. Una cosa enorme. Per stasera. Non chiedere."
+      ]
+    }
+  }
+}

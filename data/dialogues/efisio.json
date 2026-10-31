@@ -1,0 +1,71 @@
+{
+  "speaker": "Tziu Efisio",
+  "portrait": "efisio",
+  "entry": [
+    { "if": "efisio_talks==0", "goto": "t0" },
+    { "if": "efisio_talks==1", "goto": "t1" },
+    { "if": "efisio_talks==2", "goto": "t2" },
+    { "if": "efisio_talks==3", "goto": "t3" },
+    { "if": "efisio_talks==4", "goto": "t4" },
+    { "if": "efisio_talks==5", "goto": "t5" },
+    { "if": "efisio_talks==6", "goto": "t6" },
+    { "goto": "t7" }
+  ],
+  "nodes": {
+    "t0": {
+      "do": ["inc:efisio_talks"],
+      "lines": ["Oh, Cirillo! Augurius! Sei quello della Romania, no?"],
+      "choices": [
+        { "text": "Bulgaria, tziu. Kiril.", "goto": "ok" },
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "off" }
+      ]
+    },
+    "t1": {
+      "do": ["inc:efisio_talks"],
+      "lines": ["Kirill con due elle! Ancora qui? Ti piace la Sardegna eh. Da voi c'è il mare? No, eh. Poverino."],
+      "choices": [
+        { "text": "C'è il Mar Nero, tziu.", "goto": "black" },
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "off" }
+      ]
+    },
+    "t2": {
+      "do": ["inc:efisio_talks"],
+      "lines": [
+        "Ciao, Chirichetto. Stanotte ho visto un fantasma passare in piazza. Col mantello lungo.",
+        "O era Davi. Uguale: tutti e due non pagano il caffè."
+      ]
+    },
+    "t3": {
+      "do": ["inc:efisio_talks"],
+      "lines": ["Kilimangiaro! Mangi bene? Da voi si mangia lo yogurt e basta, no? Qua c'è il porceddu. Ti faccio diventare sardo io."],
+      "choices": [
+        { "text": "Lo yogurt bulgaro è il migliore del mondo.", "goto": "yogurt" },
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "off" }
+      ]
+    },
+    "t4": {
+      "do": ["inc:efisio_talks"],
+      "lines": ["Kiwi! Quella di Sassari canta ancora? Mi fa venire il mal di testa. E mi fa venire voglia di Sassari. Il che è peggio."]
+    },
+    "t5": {
+      "do": ["inc:efisio_talks"],
+      "lines": ["Cìrilu! Ti ho dato il nome sardo, sei contento? Ora sei uno di noi. Quasi. Al cinquanta per cento. Il resto è... Bulgaria."]
+    },
+    "t6": {
+      "do": ["inc:efisio_talks"],
+      "lines": ["Bulgarellu mio! Oggi è il tuo compleanno? E non mi dici niente? Augurius, a chent'annos! Cento anni, eh. Anche se da voi non ci arriva nessuno."],
+      "choices": [
+        { "text": "Grazie tziu. Anche a te.", "goto": "warm" },
+        { "text": "Mi offendo. Ma un pochino.", "do": ["inc:offended"], "goto": "off" }
+      ]
+    },
+    "t7": {
+      "lines": ["Kiril! ...visto? Lo so dire. Lo sapevo dire dal primo giorno. Era per vedere se ti offendevi. E ti offendevi."]
+    },
+    "ok": { "lines": ["Bulgaria, Romania... sono vicine, no? Come Cagliari e Sassari. Cioè no, quelle sono lontanissime."] },
+    "black": { "lines": ["Nero? E com'è un mare nero? Ma ci fate il bagno? Madonna santa."] },
+    "yogurt": { "lines": ["Eh, va bene. Ma il porceddu è il porceddu. Lo yogurt non ha le cotiche."] },
+    "warm": { "lines": ["A chent'annos, Cirillo. Cioè, Kiril. Vai, vai, che ti aspettano."] },
+    "off": { "lines": ["Ajò, che permaloso! Come il mio gatto. Anche lui è straniero. Viene da Quartu."] }
+  }
+}

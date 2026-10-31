@@ -1,18 +1,118 @@
 {
   "speaker": "Nicole",
   "portrait": "nicole",
-  "entry": [{ "if": "met_nicole", "goto": "again" }, { "goto": "intro" }],
+  "entry": [
+    {
+      "if": "got_risata",
+      "goto": "after"
+    },
+    {
+      "if": "met_nicole",
+      "goto": "menu"
+    },
+    {
+      "goto": "intro"
+    }
+  ],
   "nodes": {
     "intro": {
-      "do": ["set:met_nicole"],
-      "lines": ["Kiril! Auguri! Cioè, non dovevo dirtelo. Fai finta di niente."],
+      "do": [
+        "set:met_nicole"
+      ],
+      "lines": [
+        "Kiril! Salve! Ave! Χαῖρε! Buon dies natalis!",
+        "Cioè. Non sapevo fosse il tuo compleanno. Non so niente. Sono solo una ragazza in una biblioteca, circondata da dèi di marmo.",
+        "...ok, Marco mi ha dato una busta per te. Ma c'è una prova. Come le dodici fatiche, solo che è una. Sei tu, mica Ercole."
+      ],
+      "next": "menu"
+    },
+    "menu": {
+      "lines": [
+        "Marco ha scritto quattro indovinelli in latino. Metti in ordine le quattro statue giuste sui piedistalli e la busta è tua."
+      ],
       "choices": [
-        { "text": "Che succede?", "goto": "what" },
-        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "offended" }
+        {
+          "text": "Proviamo con le statue.",
+          "goto": "challenge"
+        },
+        {
+          "text": "Mi traduci gli indovinelli?",
+          "goto": "translate"
+        },
+        {
+          "text": "Hai visto qualcosa stanotte?",
+          "goto": "night"
+        },
+        {
+          "text": "Mi offendo: perché in latino?",
+          "do": [
+            "inc:offended"
+          ],
+          "goto": "offended"
+        },
+        {
+          "text": "Torno dopo.",
+          "goto": "menu_bye"
+        }
       ]
     },
-    "what": { "lines": ["Niente! Assolutamente niente. Guarda che belle statue."] },
-    "offended": { "lines": ["Ah, il broncio. Come Achille sotto la tenda. Uguale identico."] },
-    "again": { "lines": ["Le statue, Kiril. Guarda le statue."] }
+    "challenge": {
+      "lines": [
+        "Quattro piedistalli, otto statue. Scegli bene. Gli dèi non perdonano. Io sì, ma loro no."
+      ],
+      "puzzle": {
+        "id": "cipher",
+        "win": "win",
+        "lose": "lose"
+      }
+    },
+    "translate": {
+      "lines": [
+        "Con piacere! Il latino tradotto è come il gelato sciolto, ma va bene.",
+        "Primo: «Faber claudus, ferrum in igne domat». Un fabbro zoppo doma il ferro nel fuoco. Il fabbro degli dèi. Quello che costruisce cose. Ti ricorda qualcuno?",
+        "Secondo: «Mater deorum, lapidem pro filio dedit». La madre degli dèi diede un sasso al posto del figlio. E quel boccalone di Crono se l'è mangiato.",
+        "Terzo: «Cantor qui ad inferos descendit». Il cantore che scese agli inferi. Per AMORE, Kiril. Con la lira. Io piango ogni volta.",
+        "Quarto: «Puer alatus, sagittis corda ferit». Un bambino alato che colpisce i cuori con le frecce. Questo lo sai anche tu."
+      ],
+      "next": "menu"
+    },
+    "night": {
+      "lines": [
+        "Stanotte? Ero a letto con l'Eneide. Libro sesto, la discesa agli inferi. Rilassantissimo.",
+        "Però verso le tre ho sentito qualcuno trascinarsi per la strada. Passi pesanti. E un fruscio, tipo... un mantello? Vabbè, magari sognavo Enea."
+      ],
+      "next": "menu"
+    },
+    "offended": {
+      "lines": [
+        "Ah! Il broncio! Come Achille sotto la tenda. Identico. Anche lui si offendeva per tutto e poi distruggeva Troia.",
+        "Tranquillo, ti traduco tutto io. Sono qui per questo. E per i genitivi."
+      ],
+      "next": "menu"
+    },
+    "lose": {
+      "lines": [
+        "No no no. Errore tragico, proprio nel senso greco. Ma la tragedia insegna! Riprova."
+      ],
+      "next": "menu"
+    },
+    "win": {
+      "lines": [
+        "OPTIME! Efesto, Rea, Orfeo, Eros. Lo sapevo! Hai la testa di Atena e il fascino di... vabbè, non esageriamo.",
+        "Ecco la busta. Marco l'ha sigillata con la ceralacca. CON LA CERALACCA. Quell'uomo è un poema epico."
+      ],
+      "next": "marco:word_risata"
+    },
+    "after": {
+      "lines": [
+        "Lo sai che i Romani festeggiavano il compleanno con il Genius, uno spirito protettore personale? Il tuo oggi ha il bullone in testa.",
+        "Vai, Kiril. Carpe diem. E carpe anche il colpevole."
+      ]
+    },
+    "menu_bye": {
+      "lines": [
+        "Vale! Che in latino vuol dire ciao, ma con più dignità."
+      ]
+    }
   }
 }

@@ -110,7 +110,9 @@ export function applyEffects(effects, state, hooks = {}) {
       case 'unset': state.flags.delete(args[0]); break;
       case 'inc': state.counters[args[0]] = (state.counters[args[0]] || 0) + 1; break;
       case 'dec': state.counters[args[0]] = Math.max(0, (state.counters[args[0]] || 0) - 1); break;
-      case 'give': state.items.add(args[0]); hooks.gave?.(args); break;
+      case 'give':
+        if (!state.items.has(args[0])) { state.items.add(args[0]); hooks.gave?.(args); }
+        break;
       case 'take': state.items.delete(args[0]); break;
       case 'word': state.words[args[0]] = args.slice(1).join(':'); break;
       default:

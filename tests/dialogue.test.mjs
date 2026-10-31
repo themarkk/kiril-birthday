@@ -105,3 +105,32 @@ test('hooks receive non-state effects', () => {
   createRunner(d, createState(), { hooks: { sound: a => calls.push(a[0]) } });
   assert.deepEqual(calls, ['item']);
 });
+
+test('goto other:node jumps into another dialogue file with its speaker', () => {
+  const a = { speaker: 'A', entry: [{ goto: 'x' }], nodes: { x: { lines: ['da A'], next: 'b:y' } } };
+  const b = { speaker: 'B', portrait: 'b', nodes: { y: { lines: ['da B'] } } };
+  const r = createRunner(a, createState(), { dialogues: { a, b } });
+  r.next();
+  assert.equal(r.current().text, 'da B');
+  assert.equal(r.current().name, 'B');
+});
+
+test('branch picks the first matching goto when the node ends, else next', () => {
+  const d = {
+    speaker: 'S', entry: [{ goto: 'n' }],
+    nodes: {
+      n: { lines: [], branch: [{ if: 'k', goto: 'yes' }], next: 'no' },
+      yes: { lines: ['si'] },
+      no: { lines: ['no'] },
+    },
+  };
+  const s = createState();
+  assert.equal(createRunner(d, s).current().text, 'no');
+  s.flags.add('k');
+  assert.equal(createRunner(d, s).current().text, 'si');
+});
+
+test('cond lines are chosen with the state on arrival, before node effects', () => {
+  const d = { speaker: 'S', entry: [{ goto: 'n' }], nodes: { n: { do: ['give:x'], lines: [{ cond: '!has.x', text: 'prima volta' }] } } };
+  assert.equal(createRunner(d, createState()).current().text, 'prima volta');
+});
