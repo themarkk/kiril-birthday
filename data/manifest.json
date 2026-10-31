@@ -1,0 +1,6 @@
+{
+  "maps": ["town"],
+  "dialogues": [],
+  "art": ["tiles", "characters", "portraits", "objects"],
+  "other": ["music"]
+}
