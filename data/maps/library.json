@@ -93,6 +93,15 @@
       "img": "statue_ercole",
       "dialogue": "objects",
       "node": "statue_ercole"
+    },
+    {
+      "id": "duck_4",
+      "x": 10,
+      "y": 8,
+      "img": "duck",
+      "dialogue": "objects",
+      "node": "duck_4",
+      "if": "!duck_4"
     }
   ],
   "npcs": [
@@ -102,7 +111,8 @@
       "y": 4,
       "dir": "down",
       "person": "nicole",
-      "dialogue": "nicole"
+      "dialogue": "nicole",
+      "alert": "!met_nicole & sabotage_seen"
     }
   ],
   "triggers": [],

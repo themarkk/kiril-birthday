@@ -59,7 +59,8 @@
       "y": 3,
       "dir": "down",
       "person": "erika",
-      "dialogue": "erika"
+      "dialogue": "erika",
+      "alert": "!met_erika & sabotage_seen"
     },
     {
       "id": "moka",
@@ -67,7 +68,8 @@
       "y": 4,
       "dir": "down",
       "person": "moka",
-      "dialogue": "moka"
+      "dialogue": "moka",
+      "alert": "!met_moka & sabotage_seen"
     }
   ],
   "triggers": [],

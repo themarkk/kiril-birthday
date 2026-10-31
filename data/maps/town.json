@@ -100,7 +100,8 @@
    "y": 15,
    "dir": "left",
    "person": "martina",
-   "dialogue": "martina"
+   "dialogue": "martina",
+   "alert": "!met_martina & sabotage_seen"
   },
   {
    "id": "efisio",
@@ -108,7 +109,8 @@
    "y": 12,
    "dir": "down",
    "person": "efisio",
-   "dialogue": "efisio"
+   "dialogue": "efisio",
+   "alert": "efisio_talks==0 & sabotage_seen"
   },
   {
    "id": "bea",
@@ -117,7 +119,8 @@
    "dir": "down",
    "person": "bea",
    "dialogue": "bea",
-   "wander": 2
+   "wander": 2,
+   "alert": "!met_bea & sabotage_seen"
   },
   {
    "id": "masia",
@@ -125,7 +128,8 @@
    "y": 23,
    "dir": "down",
    "person": "masia",
-   "dialogue": "masia"
+   "dialogue": "masia",
+   "alert": "!met_masia & sabotage_seen"
   },
   {
    "id": "maki",
@@ -133,7 +137,8 @@
    "y": 29,
    "dir": "down",
    "person": "maki",
-   "dialogue": "maki"
+   "dialogue": "maki",
+   "alert": "!met_maki & sabotage_seen"
   }
  ],
  "objects": [
@@ -152,6 +157,42 @@
    "y": 20,
    "dialogue": "objects",
    "node": "sign"
+  },
+  {
+   "id": "duck_1",
+   "x": 24,
+   "y": 12,
+   "img": "duck",
+   "dialogue": "objects",
+   "node": "duck_1",
+   "if": "!duck_1"
+  },
+  {
+   "id": "duck_2",
+   "x": 9,
+   "y": 33,
+   "img": "duck",
+   "dialogue": "objects",
+   "node": "duck_2",
+   "if": "!duck_2"
+  },
+  {
+   "id": "duck_3",
+   "x": 34,
+   "y": 29,
+   "img": "duck",
+   "dialogue": "objects",
+   "node": "duck_3",
+   "if": "!duck_3"
+  },
+  {
+   "id": "duck_7",
+   "x": 19,
+   "y": 3,
+   "img": "duck",
+   "dialogue": "objects",
+   "node": "duck_7",
+   "if": "!duck_7"
   }
  ],
  "warps": [

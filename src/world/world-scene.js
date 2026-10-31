@@ -101,7 +101,10 @@ export class WorldScene {
     const p = this.player;
     const arrived = p.update(dt);
     this.follower?.update(dt);
-    for (const n of this.npcs) n.update(dt);
+    for (const n of this.npcs) {
+      n.update(dt);
+      if (n.def.wander) this.wander(n, dt);
+    }
     if (arrived) {
       this.state.x = p.x;
       this.state.y = p.y;
@@ -149,6 +152,23 @@ export class WorldScene {
     } else if (input.pressed(dir)) {
       this.game.hooks.sound?.(['bump']);
     }
+  }
+
+  // PNG che passeggiano: un passo ogni tanto, entro `wander` caselle dal punto di partenza.
+  wander(n, dt) {
+    n.wait = (n.wait ?? 2) - dt;
+    if (n.moving || n.wait > 0) return;
+    n.wait = 1.5 + Math.random() * 2.5;
+    const dirs = Object.keys(DIRS);
+    const dir = dirs[Math.floor(Math.random() * dirs.length)];
+    const [dx, dy] = DIRS[dir];
+    const nx = n.x + dx, ny = n.y + dy;
+    const far = Math.abs(nx - n.def.x) > n.def.wander || Math.abs(ny - n.def.y) > n.def.wander;
+    const p = this.player, f = this.follower;
+    const occupied = (x, y) => (p.x === x && p.y === y) || (f && f.x === x && f.y === y) || this.map.warpAt(x, y) || this.map.triggerAt(x, y);
+    if (far) { n.dir = dir; return; }
+    n.tryMove(dir, (x, y) => this.blocked(x, y) || occupied(x, y));
+    n.stepTime = 0.3;
   }
 
   // Ritorna true se l'arrivo ha avviato qualcosa (porta, trigger).
@@ -238,6 +258,13 @@ export class WorldScene {
     sprites.push({ y: this.player.py / TILE, draw: () => this.drawPerson(ctx, this.player, cx, cy) });
     sprites.sort((a, b) => a.y - b.y).forEach(s => s.draw());
     this.drawTiles(ctx, cx, cy, true);
+    // "!" sopra chi non hai ancora incontrato
+    const bob = Math.round(Math.sin(this.time * 5) * 1.5);
+    for (const n of this.npcs) {
+      if (!n.def.alert || !evaluate(n.def.alert, this.state)) continue;
+      const h = this.game.art.person(n.person).h;
+      ctx.drawImage(this.game.art.object('bubble_excl'), Math.round(n.px - cx), Math.round(n.py - cy + TILE - h - 15 + bob));
+    }
     this.game.decorate?.(ctx, this, cx, cy);
   }
 }

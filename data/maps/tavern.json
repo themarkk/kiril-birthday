@@ -36,6 +36,15 @@
       "y": 3,
       "dialogue": "objects",
       "node": "dnd_table"
+    },
+    {
+      "id": "duck_6",
+      "x": 9,
+      "y": 3,
+      "img": "duck",
+      "dialogue": "objects",
+      "node": "duck_6",
+      "if": "!duck_6"
     }
   ],
   "npcs": [
@@ -45,7 +54,8 @@
       "y": 5,
       "dir": "right",
       "person": "davi",
-      "dialogue": "davi"
+      "dialogue": "davi",
+      "alert": "!davi_awake & sabotage_seen"
     }
   ],
   "triggers": [],

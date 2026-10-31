@@ -57,7 +57,8 @@
       "y": 3,
       "dir": "right",
       "person": "elisa",
-      "dialogue": "elisa"
+      "dialogue": "elisa",
+      "alert": "!met_elisa & sabotage_seen"
     }
   ],
   "triggers": [],

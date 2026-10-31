@@ -71,6 +71,15 @@
       "y": 2,
       "dialogue": "objects",
       "node": "cabinet"
+    },
+    {
+      "id": "duck_5",
+      "x": 10,
+      "y": 8,
+      "img": "duck",
+      "dialogue": "objects",
+      "node": "duck_5",
+      "if": "!duck_5"
     }
   ],
   "npcs": [
@@ -80,7 +89,8 @@
       "y": 3,
       "dir": "up",
       "person": "leryn",
-      "dialogue": "leryn"
+      "dialogue": "leryn",
+      "alert": "!met_leryn & sabotage_seen"
     }
   ],
   "triggers": [],

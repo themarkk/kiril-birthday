@@ -18,6 +18,7 @@ import { setupDebug } from './game/debug.js';
 import { AccusationScene } from './puzzles/accusation-scene.js';
 import { createPushables } from './world/pushables.js';
 import { registerPuzzles } from './puzzles/puzzle-scenes.js';
+import { createAudio } from './engine/audio.js';
 
 async function boot() {
   let data;
@@ -37,6 +38,7 @@ async function boot() {
   const fadeEl = Object.assign(document.createElement('div'), { className: 'fade' });
   ui.append(fadeEl);
   const story = data.story;
+  const audio = createAudio(data.music || {});
 
   const saved = load();
   const game = {
@@ -110,7 +112,26 @@ async function boot() {
     })),
     ending: () => game.transition(() => scenes.replace(new EndingScene(game))),
     reset_lab: () => game.pushables?.reset(game.world),
+    sound: ([name]) => audio.sfx(name),
+    blip: ([who]) => audio.blip(who),
+    music: ([name]) => audio.music(name),
+    unlockAudio: () => audio.unlock(),
+    confetti: () => {
+      const box = Object.assign(document.createElement('div'), { className: 'confetti' });
+      const colors = ['#d6453d', '#f2b544', '#2f6fb0', '#3d8f3d', '#d13f9b', '#fff8ec'];
+      for (let i = 0; i < 70; i++) {
+        const c = document.createElement('i');
+        c.style.left = `${Math.random() * 100}%`;
+        c.style.background = colors[i % colors.length];
+        c.style.animationDelay = `${Math.random() * 3}s`;
+        c.style.animationDuration = `${3 + Math.random() * 3}s`;
+        c.style.setProperty('--r', `${Math.random() * 720 - 360}deg`);
+        box.append(c);
+      }
+      ui.append(box);
+    },
   });
+  input.onAnyKey = () => audio.unlock();
 
   game.pushables = createPushables(game);
   registerPuzzles(game);
@@ -141,6 +162,7 @@ async function boot() {
   function step(now) {
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
+    if (input.pressed('mute')) game.toast(audio.toggleMute() ? 'Audio spento (M)' : 'Audio acceso (M)');
     if (!game.busy) scenes.update(dt);
     scenes.draw(screen.ctx);
     input.endFrame();

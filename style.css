@@ -262,3 +262,9 @@ html, body {
 .combo-key.typed { background: var(--gold); }
 .combo-bar { height: calc(var(--s) * 4px); background: var(--paper-2); border-radius: 99px; overflow: hidden; margin: 0 15%; }
 .combo-fill { height: 100%; background: var(--accent); }
+
+/* ---------- Coriandoli ---------- */
+.confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.confetti i { position: absolute; top: -10px; width: calc(var(--s) * 3px); height: calc(var(--s) * 5px); animation: fall linear infinite; }
+@keyframes fall { to { transform: translateY(calc(var(--s) * 200px)) rotate(var(--r)); } }
+@media (prefers-reduced-motion: reduce) { .confetti, .ending-people canvas, .gift-btn { animation: none !important; } .confetti { display: none; } }
