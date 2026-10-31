@@ -1,0 +1,66 @@
+{
+  "id": "nuraghe",
+  "name": "Su Nuraghe",
+  "music": "tension",
+  "rows": [
+    "WWWWWWWWWWWWWWW",
+    "WWWwWWWWWWWwWWW",
+    "ssssssssssssss.",
+    "ssssssssssssss.",
+    "...............",
+    "..T.......T....",
+    "..h.......h....",
+    "...............",
+    "...............",
+    "...............",
+    "...............",
+    "VVVVVVVmVVVVVVV"
+  ],
+  "spawn": {
+    "x": 7,
+    "y": 10,
+    "dir": "up"
+  },
+  "warps": [
+    {
+      "x": 7,
+      "y": 11,
+      "to": "town",
+      "tx": 23,
+      "ty": 7,
+      "dir": "down"
+    }
+  ],
+  "objects": [],
+  "npcs": [],
+  "triggers": [],
+  "legend": {
+    "W": "wall_in",
+    "w": "wall_in_window",
+    ".": "floor_wood",
+    "t": "floor_tile",
+    "c": "carpet",
+    "m": "mat",
+    "V": "void",
+    "F": "fridge",
+    "K": "kitchen",
+    "T": "table",
+    "h": "chair",
+    "S": "sofa",
+    "B": "bed",
+    "v": "tv",
+    "p": "plant",
+    "b": "bookshelf",
+    "P": "pedestal",
+    "A": "arcade",
+    "R": "barrel",
+    "C": "counter",
+    "M": "sewing",
+    "Q": "mannequin",
+    "U": "duck_basket",
+    "X": "set_panel",
+    "o": "plate",
+    "D": "table_dnd",
+    "s": "stage"
+  }
+}

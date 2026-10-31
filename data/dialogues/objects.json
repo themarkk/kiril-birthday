@@ -1,0 +1,11 @@
+{
+  "speaker": "",
+  "nodes": {
+    "door_locked": { "lines": [{ "who": "kiril", "text": "Prima devo capire dov'è finito Marco." }] },
+    "nuraghe_locked": { "lines": ["La porta di Su Nuraghe è chiusa. Ci sono tre serrature."] },
+    "bed": { "lines": ["Il letto. Il lato di Marco è vuoto e freddo."] },
+    "fridge": { "lines": ["Yogurt, yogurt, yogurt. Quello vero, quello bulgaro."] },
+    "tv": { "lines": ["Spenta. Strano: Marco la lascia sempre accesa."] },
+    "sofa": { "lines": ["Il divano."] }
+  }
+}

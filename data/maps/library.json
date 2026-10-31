@@ -1,0 +1,138 @@
+{
+  "id": "library",
+  "name": "Biblioteca Civica",
+  "music": "library",
+  "rows": [
+    "WWWWWWWWWWW",
+    "bbbbbwbbbbb",
+    "ttttttttttt",
+    "tPtPtttPtPt",
+    "ttttttttttt",
+    "ttttttttttt",
+    "tPtPtttPtPt",
+    "ttttttttttt",
+    "ttttttttTTt",
+    "VVVVVmVVVVV"
+  ],
+  "spawn": {
+    "x": 5,
+    "y": 8,
+    "dir": "up"
+  },
+  "warps": [
+    {
+      "x": 5,
+      "y": 9,
+      "to": "town",
+      "tx": 8,
+      "ty": 8,
+      "dir": "down"
+    }
+  ],
+  "objects": [
+    {
+      "id": "statue_efesto",
+      "x": 1,
+      "y": 3,
+      "img": "statue_efesto",
+      "dialogue": "objects",
+      "node": "statue_efesto"
+    },
+    {
+      "id": "statue_rea",
+      "x": 3,
+      "y": 3,
+      "img": "statue_rea",
+      "dialogue": "objects",
+      "node": "statue_rea"
+    },
+    {
+      "id": "statue_orfeo",
+      "x": 7,
+      "y": 3,
+      "img": "statue_orfeo",
+      "dialogue": "objects",
+      "node": "statue_orfeo"
+    },
+    {
+      "id": "statue_eros",
+      "x": 9,
+      "y": 3,
+      "img": "statue_eros",
+      "dialogue": "objects",
+      "node": "statue_eros"
+    },
+    {
+      "id": "statue_atena",
+      "x": 1,
+      "y": 6,
+      "img": "statue_atena",
+      "dialogue": "objects",
+      "node": "statue_atena"
+    },
+    {
+      "id": "statue_ermes",
+      "x": 3,
+      "y": 6,
+      "img": "statue_ermes",
+      "dialogue": "objects",
+      "node": "statue_ermes"
+    },
+    {
+      "id": "statue_ade",
+      "x": 7,
+      "y": 6,
+      "img": "statue_ade",
+      "dialogue": "objects",
+      "node": "statue_ade"
+    },
+    {
+      "id": "statue_ercole",
+      "x": 9,
+      "y": 6,
+      "img": "statue_ercole",
+      "dialogue": "objects",
+      "node": "statue_ercole"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "nicole",
+      "x": 5,
+      "y": 4,
+      "dir": "down",
+      "person": "nicole",
+      "dialogue": "nicole"
+    }
+  ],
+  "triggers": [],
+  "legend": {
+    "W": "wall_in",
+    "w": "wall_in_window",
+    ".": "floor_wood",
+    "t": "floor_tile",
+    "c": "carpet",
+    "m": "mat",
+    "V": "void",
+    "F": "fridge",
+    "K": "kitchen",
+    "T": "table",
+    "h": "chair",
+    "S": "sofa",
+    "B": "bed",
+    "v": "tv",
+    "p": "plant",
+    "b": "bookshelf",
+    "P": "pedestal",
+    "A": "arcade",
+    "R": "barrel",
+    "C": "counter",
+    "M": "sewing",
+    "Q": "mannequin",
+    "U": "duck_basket",
+    "X": "set_panel",
+    "o": "plate",
+    "D": "table_dnd",
+    "s": "stage"
+  }
+}

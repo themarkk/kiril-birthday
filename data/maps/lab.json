@@ -1,0 +1,74 @@
+{
+  "id": "lab",
+  "name": "Laboratorio di Elisa",
+  "music": "lab",
+  "rows": [
+    "WWWWWWWWWWWWW",
+    "WXXWWwWWWXXWW",
+    ".............",
+    ".............",
+    ".............",
+    ".............",
+    ".............",
+    ".............",
+    ".............",
+    ".............",
+    "VVVVVVmVVVVVV"
+  ],
+  "spawn": {
+    "x": 6,
+    "y": 9,
+    "dir": "up"
+  },
+  "warps": [
+    {
+      "x": 6,
+      "y": 10,
+      "to": "town",
+      "tx": 39,
+      "ty": 8,
+      "dir": "down"
+    }
+  ],
+  "objects": [],
+  "npcs": [
+    {
+      "id": "elisa",
+      "x": 1,
+      "y": 3,
+      "dir": "right",
+      "person": "elisa",
+      "dialogue": "elisa"
+    }
+  ],
+  "triggers": [],
+  "legend": {
+    "W": "wall_in",
+    "w": "wall_in_window",
+    ".": "floor_wood",
+    "t": "floor_tile",
+    "c": "carpet",
+    "m": "mat",
+    "V": "void",
+    "F": "fridge",
+    "K": "kitchen",
+    "T": "table",
+    "h": "chair",
+    "S": "sofa",
+    "B": "bed",
+    "v": "tv",
+    "p": "plant",
+    "b": "bookshelf",
+    "P": "pedestal",
+    "A": "arcade",
+    "R": "barrel",
+    "C": "counter",
+    "M": "sewing",
+    "Q": "mannequin",
+    "U": "duck_basket",
+    "X": "set_panel",
+    "o": "plate",
+    "D": "table_dnd",
+    "s": "stage"
+  }
+}

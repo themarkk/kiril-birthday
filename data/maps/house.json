@@ -1,0 +1,116 @@
+{
+  "id": "house",
+  "name": "Casa di Kiril e Marco",
+  "music": "house",
+  "rows": [
+    "WWWWWWWWWWW",
+    "WwWWWWWWWwW",
+    "FK...p..BBv",
+    ".....c.....",
+    "..TT.c.....",
+    "..hh.c..SS.",
+    "...........",
+    "p.........p",
+    "...........",
+    "VVVVVmVVVVV"
+  ],
+  "spawn": {
+    "x": 7,
+    "y": 3,
+    "dir": "down"
+  },
+  "warps": [
+    {
+      "x": 5,
+      "y": 9,
+      "to": "town",
+      "tx": 7,
+      "ty": 26,
+      "dir": "down",
+      "if": "got_bullone",
+      "locked": "objects:door_locked"
+    }
+  ],
+  "objects": [
+    {
+      "id": "bed",
+      "x": 8,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "bed"
+    },
+    {
+      "id": "bed2",
+      "x": 9,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "bed"
+    },
+    {
+      "id": "fridge",
+      "x": 0,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "fridge"
+    },
+    {
+      "id": "kitchen",
+      "x": 1,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "fridge"
+    },
+    {
+      "id": "tv",
+      "x": 10,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "tv"
+    },
+    {
+      "id": "sofa",
+      "x": 8,
+      "y": 5,
+      "dialogue": "objects",
+      "node": "sofa"
+    },
+    {
+      "id": "sofa2",
+      "x": 9,
+      "y": 5,
+      "dialogue": "objects",
+      "node": "sofa"
+    }
+  ],
+  "npcs": [],
+  "triggers": [],
+  "legend": {
+    "W": "wall_in",
+    "w": "wall_in_window",
+    ".": "floor_wood",
+    "t": "floor_tile",
+    "c": "carpet",
+    "m": "mat",
+    "V": "void",
+    "F": "fridge",
+    "K": "kitchen",
+    "T": "table",
+    "h": "chair",
+    "S": "sofa",
+    "B": "bed",
+    "v": "tv",
+    "p": "plant",
+    "b": "bookshelf",
+    "P": "pedestal",
+    "A": "arcade",
+    "R": "barrel",
+    "C": "counter",
+    "M": "sewing",
+    "Q": "mannequin",
+    "U": "duck_basket",
+    "X": "set_panel",
+    "o": "plate",
+    "D": "table_dnd",
+    "s": "stage"
+  }
+}

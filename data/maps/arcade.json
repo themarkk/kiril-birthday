@@ -1,0 +1,116 @@
+{
+  "id": "arcade",
+  "name": "Sala giochi Game Over",
+  "music": "arcade",
+  "rows": [
+    "WWWWWWWWWWW",
+    "WWWwWWWwWWW",
+    "AcA.A.AcA.A",
+    "ccccccccccc",
+    "ccccccccccc",
+    "...........",
+    "R...CCC...R",
+    "...........",
+    "...........",
+    "VVVVVmVVVVV"
+  ],
+  "spawn": {
+    "x": 5,
+    "y": 8,
+    "dir": "up"
+  },
+  "warps": [
+    {
+      "x": 5,
+      "y": 9,
+      "to": "town",
+      "tx": 41,
+      "ty": 16,
+      "dir": "down"
+    }
+  ],
+  "objects": [
+    {
+      "id": "cab1",
+      "x": 0,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "cabinet"
+    },
+    {
+      "id": "cab2",
+      "x": 2,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "cabinet"
+    },
+    {
+      "id": "cab3",
+      "x": 4,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "cabinet"
+    },
+    {
+      "id": "cab4",
+      "x": 6,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "cabinet"
+    },
+    {
+      "id": "cab5",
+      "x": 8,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "cabinet"
+    },
+    {
+      "id": "cab6",
+      "x": 10,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "cabinet"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "leryn",
+      "x": 5,
+      "y": 3,
+      "dir": "up",
+      "person": "leryn",
+      "dialogue": "leryn"
+    }
+  ],
+  "triggers": [],
+  "legend": {
+    "W": "wall_in",
+    "w": "wall_in_window",
+    ".": "floor_wood",
+    "t": "floor_tile",
+    "c": "carpet",
+    "m": "mat",
+    "V": "void",
+    "F": "fridge",
+    "K": "kitchen",
+    "T": "table",
+    "h": "chair",
+    "S": "sofa",
+    "B": "bed",
+    "v": "tv",
+    "p": "plant",
+    "b": "bookshelf",
+    "P": "pedestal",
+    "A": "arcade",
+    "R": "barrel",
+    "C": "counter",
+    "M": "sewing",
+    "Q": "mannequin",
+    "U": "duck_basket",
+    "X": "set_panel",
+    "o": "plate",
+    "D": "table_dnd",
+    "s": "stage"
+  }
+}

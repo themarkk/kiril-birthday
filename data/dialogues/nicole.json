@@ -1,0 +1,18 @@
+{
+  "speaker": "Nicole",
+  "portrait": "nicole",
+  "entry": [{ "if": "met_nicole", "goto": "again" }, { "goto": "intro" }],
+  "nodes": {
+    "intro": {
+      "do": ["set:met_nicole"],
+      "lines": ["Kiril! Auguri! Cioè, non dovevo dirtelo. Fai finta di niente."],
+      "choices": [
+        { "text": "Che succede?", "goto": "what" },
+        { "text": "Mi offendo.", "do": ["inc:offended"], "goto": "offended" }
+      ]
+    },
+    "what": { "lines": ["Niente! Assolutamente niente. Guarda che belle statue."] },
+    "offended": { "lines": ["Ah, il broncio. Come Achille sotto la tenda. Uguale identico."] },
+    "again": { "lines": ["Le statue, Kiril. Guarda le statue."] }
+  }
+}

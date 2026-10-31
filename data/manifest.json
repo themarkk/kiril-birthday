@@ -1,6 +1,6 @@
 {
-  "maps": ["town"],
-  "dialogues": [],
+  "maps": ["town", "house", "library", "arcade", "lab", "atelier", "tavern", "nuraghe"],
+  "dialogues": ["objects", "nicole"],
   "art": ["tiles", "characters", "portraits", "objects"],
   "other": ["music"]
 }

@@ -1,0 +1,81 @@
+{
+  "id": "tavern",
+  "name": "Taverna Il Drago Ubriaco",
+  "music": "tavern",
+  "rows": [
+    "WWWWWWWWWWW",
+    "WRWwWWWwWRW",
+    "CCCC.......",
+    ".......DD..",
+    "......hDDh.",
+    ".......DD..",
+    "R.........R",
+    "...T.......",
+    "...h.......",
+    "VVVVVmVVVVV"
+  ],
+  "spawn": {
+    "x": 5,
+    "y": 8,
+    "dir": "up"
+  },
+  "warps": [
+    {
+      "x": 5,
+      "y": 9,
+      "to": "town",
+      "tx": 31,
+      "ty": 26,
+      "dir": "down"
+    }
+  ],
+  "objects": [
+    {
+      "id": "dnd",
+      "x": 7,
+      "y": 3,
+      "dialogue": "objects",
+      "node": "dnd_table"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "davi",
+      "x": 6,
+      "y": 5,
+      "dir": "right",
+      "person": "davi",
+      "dialogue": "davi"
+    }
+  ],
+  "triggers": [],
+  "legend": {
+    "W": "wall_in",
+    "w": "wall_in_window",
+    ".": "floor_wood",
+    "t": "floor_tile",
+    "c": "carpet",
+    "m": "mat",
+    "V": "void",
+    "F": "fridge",
+    "K": "kitchen",
+    "T": "table",
+    "h": "chair",
+    "S": "sofa",
+    "B": "bed",
+    "v": "tv",
+    "p": "plant",
+    "b": "bookshelf",
+    "P": "pedestal",
+    "A": "arcade",
+    "R": "barrel",
+    "C": "counter",
+    "M": "sewing",
+    "Q": "mannequin",
+    "U": "duck_basket",
+    "X": "set_panel",
+    "o": "plate",
+    "D": "table_dnd",
+    "s": "stage"
+  }
+}

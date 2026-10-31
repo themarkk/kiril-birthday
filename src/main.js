@@ -8,6 +8,7 @@ import { ArtCache } from './engine/art.js';
 import { FALLBACK_TILES } from './engine/fallback-tiles.js';
 import { WorldScene } from './world/world-scene.js';
 import { createState, save, load } from './game/state.js';
+import { DialogueScene, debugPuzzle } from './game/dialogue-scene.js';
 
 async function boot() {
   let data;
@@ -53,6 +54,21 @@ async function boot() {
     },
   };
   window.__game = game;
+
+  const items = () => data.story?.items || {};
+  game.openDialogue = (id, opts = {}) => {
+    if (!data.dialogues[id]) { console.warn(`[dialogo] "${id}" non esiste`); return; }
+    scenes.push(new DialogueScene(game, id, opts));
+  };
+  game.puzzles.debug = debugPuzzle;
+  Object.assign(game.hooks, {
+    gave: ([id]) => { game.toast(`Ottenuto: ${items()[id]?.name || id}`); game.hooks.sound?.(['item']); },
+    warp: ([map, x, y, dir]) => game.transition(() => { game.world.loadMap(map, Number(x), Number(y), dir); game.save(); }),
+    face: ([npcId, dir]) => { const n = game.world.npcs.find(e => e.id === npcId); if (n) n.dir = dir; },
+    costume: ([mode]) => { game.state.person = mode === 'off' ? 'kiril' : 'kiril_costume'; game.world.refresh(); },
+    save: () => game.save(),
+    fade: () => game.transition(() => {}),
+  });
 
   game.world = new WorldScene(game);
   const s = game.state;

@@ -1,0 +1,103 @@
+{
+  "id": "atelier",
+  "name": "Atelier dell'Accademia",
+  "music": "atelier",
+  "rows": [
+    "WWWWWWWWWWW",
+    "WwWWWWWWWwW",
+    "Q.M.Q...UU.",
+    "...........",
+    "...........",
+    ".cccccccc..",
+    ".cccccccc..",
+    "Q.........Q",
+    "...........",
+    "VVVVVmVVVVV"
+  ],
+  "spawn": {
+    "x": 5,
+    "y": 8,
+    "dir": "up"
+  },
+  "warps": [
+    {
+      "x": 5,
+      "y": 9,
+      "to": "town",
+      "tx": 7,
+      "ty": 16,
+      "dir": "down"
+    }
+  ],
+  "objects": [
+    {
+      "id": "sewing",
+      "x": 2,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "sewing"
+    },
+    {
+      "id": "basket",
+      "x": 8,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "duck_basket"
+    },
+    {
+      "id": "basket2",
+      "x": 9,
+      "y": 2,
+      "dialogue": "objects",
+      "node": "duck_basket"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "erika",
+      "x": 3,
+      "y": 3,
+      "dir": "down",
+      "person": "erika",
+      "dialogue": "erika"
+    },
+    {
+      "id": "moka",
+      "x": 8,
+      "y": 4,
+      "dir": "down",
+      "person": "moka",
+      "dialogue": "moka"
+    }
+  ],
+  "triggers": [],
+  "legend": {
+    "W": "wall_in",
+    "w": "wall_in_window",
+    ".": "floor_wood",
+    "t": "floor_tile",
+    "c": "carpet",
+    "m": "mat",
+    "V": "void",
+    "F": "fridge",
+    "K": "kitchen",
+    "T": "table",
+    "h": "chair",
+    "S": "sofa",
+    "B": "bed",
+    "v": "tv",
+    "p": "plant",
+    "b": "bookshelf",
+    "P": "pedestal",
+    "A": "arcade",
+    "R": "barrel",
+    "C": "counter",
+    "M": "sewing",
+    "Q": "mannequin",
+    "U": "duck_basket",
+    "X": "set_panel",
+    "o": "plate",
+    "D": "table_dnd",
+    "s": "stage"
+  }
+}
