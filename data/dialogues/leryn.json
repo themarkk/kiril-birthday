@@ -139,7 +139,7 @@
         "set:leryn_pity"
       ],
       "lines": [
-        "...",
+        { "text": "...", "fx": "droop" },
         "Ok. Ti lascio vincere perché mi fai pena. Non è vero. Sì, è vero.",
         "Non dirlo a nessuno. Ho una reputazione. Da solo, ma ce l'ho."
       ],
@@ -147,7 +147,7 @@
     },
     "win": {
       "lines": [
-        "...porc*. Ok. Hai vinto. Non dirlo a nessuno. Lag. Era lag.",
+        { "text": "...porc*. Ok. Hai vinto. Non dirlo a nessuno. Lag. Era lag.", "fx": "droop" },
         {
           "cond": "leryn_losses==0",
           "text": "Al primo tentativo. *sbuffo* Mi serve un minuto. E un'altra vita. Con più pratica."
@@ -230,7 +230,7 @@
     },
     "rematch_lose": {
       "lines": [
-        "AH. Visto? Era lag anche prima. Ora siamo pari. Anzi, io sono avanti di stile.",
+        { "text": "AH. Visto? Era lag anche prima. Ora siamo pari. Anzi, io sono avanti di stile.", "fx": "bounce" },
         "...è stato bello. Non dirlo. *sbuffo*"
       ]
     },

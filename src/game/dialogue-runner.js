@@ -60,6 +60,7 @@ export function createRunner(dialogue, state, { startNode, hooks = {}, names = {
       name: who ? (names[who] || capitalize(who)) : dialogue.speaker,
       portrait: who || dialogue.portrait,
       text: line.text ?? '',
+      fx: line.fx || null,
       node: r.nodeId,
     };
     const last = r.i >= r.lines.length - 1;

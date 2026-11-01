@@ -24,7 +24,7 @@
         "set:met_elisa"
       ],
       "lines": [
-        "Kiril! FERMO! Non muoverti!",
+        { "text": "Kiril! FERMO! Non muoverti!", "fx": "shake" },
         "...ok, stavi in una luce bellissima. Controluce, finestra a sinistra. Eri un Caravaggio. Ora sei di nuovo un ragazzo spettinato.",
         {
           "cond": "costume & !costume_off",
@@ -116,7 +116,7 @@
         "Qualcuno me l'ha presa. Non è grave, ma chi ruba una parrucca alle tre di notte? Un attore. O un criminale. Che poi è uguale.",
         {
           "cond": "has.ciocca_capelli",
-          "text": "Aspetta. Quella ciocca che hai in tasca. Fammi vedere... è la MIA parrucca! L'hanno tagliata! Con le forbici da cucina! Barbari!"
+          "text": "Aspetta. Quella ciocca che hai in tasca. Fammi vedere... è la MIA parrucca! L'hanno tagliata! Con le forbici da cucina! Barbari!", "fx": "shake"
         },
         {
           "cond": "has.ciocca_capelli",
@@ -142,7 +142,7 @@
         "sound:solve"
       ],
       "lines": [
-        "SÌ! Guarda che composizione! Tre carciofi, tre piastre, simmetria perfetta. Mi viene da piangere.",
+        { "text": "SÌ! Guarda che composizione! Tre carciofi, tre piastre, simmetria perfetta. Mi viene da piangere.", "fx": "bounce" },
         "Sto piangendo. Non guardarmi. Guardami. No. Sì.",
         "La spada ora si può estrarre. Tirala. Con convinzione. Con PATHOS."
       ]
@@ -232,7 +232,7 @@
     },
     "after_off": {
       "lines": [
-        "FERMO. Così. Mento basso, sguardo di lato, luce radente. Questo broncio è un fondale intero.",
+        { "text": "FERMO. Così. Mento basso, sguardo di lato, luce radente. Questo broncio è un fondale intero.", "fx": "shake" },
         {
           "cond": "offended>=5",
           "text": "Con tutte le offese di oggi ci monto un'opera in tre atti. Il terzo atto ti scusi. Forse."

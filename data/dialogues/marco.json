@@ -29,7 +29,7 @@
     "bullone_found": {
       "lines": [
         { "who": "kiril", "text": "Sotto i cuscini del divano c'è... un robottino? Con un bullone in testa?" },
-        { "who": "bullone", "text": "BZZT. Unità BULLONE attivata. Versione 0.9 beta. Costruita da Marco in tre notti e mezza." },
+        { "who": "bullone", "text": "BZZT. Unità BULLONE attivata. Versione 0.9 beta. Costruita da Marco in tre notti e mezza.", "fx": "glitch" },
         { "who": "bullone", "text": "Ho un messaggio registrato per te. Riproduco." },
         "«Se senti questo, hai trovato Bullone. È il mio assistente personale. Dà consigli, fa domande, a volte prende fuoco.»",
         "«Quando sei bloccato premi H e chiedi a lui. Premi I per il taccuino: ci finiscono indizi, prove e oggetti.»",
@@ -43,7 +43,7 @@
         { "who": "kiril", "text": "Su Nuraghe è chiuso. E per terra..." },
         { "who": "kiril", "text": "Gli inviti della mia festa. Strappati. Tutti." },
         { "who": "kiril", "text": "E in mezzo ai pezzi... una ciocca di capelli lunghi e neri." },
-        { "who": "bullone", "text": "BZZT. Messaggio d'emergenza di Marco, registrato alle 5:12. Riproduco." },
+        { "who": "bullone", "text": "BZZT. Messaggio d'emergenza di Marco, registrato alle 5:12. Riproduco.", "fx": "glitch" },
         "«Kiril. Ho un problema. Qualcuno ha incasinato il piano: la torta è sparita e gli inviti sono a pezzi.»",
         "«Non posso farmi vedere, o salta la sorpresa. Quindi tocca a te. Ho dato TRE PAROLE a tre amici: le tre parole aprono la porta di Su Nuraghe.»",
         "«Trova le parole. Trova chi ha fatto il disastro. E trova me. In quest'ordine, possibilmente.»",
@@ -72,7 +72,7 @@
     },
     "permaloso": {
       "lines": [
-        { "who": "bullone", "text": "BZZT. Rilevate cinque offese in un giorno solo. Sblocco il messaggio segreto numero 5." },
+        { "who": "bullone", "text": "BZZT. Rilevate cinque offese in un giorno solo. Sblocco il messaggio segreto numero 5.", "fx": "glitch" },
         "«Lo sapevo che ti saresti offeso cinque volte prima di sera. Ti conosco.»",
         "«Ti voglio tanto bene lo stesso. Anzi, un pochino di più per ogni volta.»",
         { "who": "kiril", "text": "...questo non vale. Non si può essere offesi e commossi insieme." }

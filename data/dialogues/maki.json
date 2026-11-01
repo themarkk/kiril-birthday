@@ -9,9 +9,9 @@
     "m1": {
       "do": ["set:met_maki"],
       "lines": [
-        "KIRIL! Oggi è la giornata più bella di tutta la mia vita! Il sole! Il mare! La CASSA! Tutto è perfetto e niente fa male!",
-        "Ho la regina in cuffia dalle sei di stamattina! Il telefono dice «volume non consigliato». Io dico CONSIGLIATISSIMO!",
-        { "cond": "costume", "text": "E sei vestito da RAGNO! Ti adoro! Ne voglio uno anch'io! Da medusa! Che punge chi mi sta antipatico!" }
+        { "text": "KIRIL! Oggi è la giornata più bella di tutta la mia vita! Il sole! Il mare! La CASSA! Tutto è perfetto e niente fa male!", "fx": "bounce" },
+        { "text": "Ho la regina in cuffia dalle sei di stamattina! Il telefono dice «volume non consigliato». Io dico CONSIGLIATISSIMO!", "fx": "bounce" },
+        { "cond": "costume", "text": "E sei vestito da RAGNO! Ti adoro! Ne voglio uno anch'io! Da medusa! Che punge chi mi sta antipatico!", "fx": "bounce" }
       ],
       "choices": [
         { "text": "SÌÌÌ! FESTA! VOLUME!", "goto": "m2" },
@@ -21,10 +21,10 @@
     },
     "m2": {
       "lines": [
-        "...aspetta.",
+        { "text": "...aspetta.", "fx": "droop" },
         "Ho appena realizzato che le estati finiscono. Che tutto finisce. Che anche questa cassa un giorno morirà.",
         "E io con lei. Siamo polvere, Kiril. Polvere con il bluetooth.",
-        "Anche la regina un giorno smetterà di fare dischi. E io dovrò ascoltare la radio. LA RADIO, Kiril."
+        { "text": "Anche la regina un giorno smetterà di fare dischi. E io dovrò ascoltare la radio. LA RADIO, Kiril.", "fx": "droop" }
       ],
       "choices": [
         { "text": "Dai, non esagerare.", "goto": "wrong" },
@@ -34,7 +34,7 @@
     },
     "m3": {
       "lines": [
-        "E SAI COSA? Il barista mi ha dato il latte di mandorla. Io avevo chiesto QUELLO D'AVENA. A voce alta. Scandendo.",
+        { "text": "E SAI COSA? Il barista mi ha dato il latte di mandorla. Io avevo chiesto QUELLO D'AVENA. A voce alta. Scandendo.", "fx": "shake" },
         "Lo odio. Voglio vederlo fallire. Voglio che il suo bar diventi una banca. Chiusa. Di domenica. Che bastardo."
       ],
       "choices": [
@@ -45,7 +45,7 @@
     },
     "m4": {
       "lines": [
-        "...",
+        { "text": "...", "fx": "droop" },
         "...grazie Kiril. Sei l'unico che mi capisce. Ho bisogno di un abbraccio. Subito. È un'emergenza."
       ],
       "choices": [
@@ -56,10 +56,10 @@
     "wrong": {
       "do": ["inc:maki_fails"],
       "lines": [
-        "...",
+        { "text": "...", "fx": "droop" },
         "Non mi capisci. Nessuno mi capisce. Neanche la regina capirebbe questo tradimento.",
         "Riparliamone quando sei più sintonizzato sulla mia frequenza.",
-        { "cond": "maki_fails>=1", "text": "E ascoltami davvero, la prossima volta. Rispondi a come sto ADESSO. Non a come stavo un secondo fa." },
+        { "cond": "maki_fails>=1", "text": "E ascoltami davvero, la prossima volta. Rispondi a come sto ADESSO. Non a come stavo un secondo fa.", "fx": "shake" },
         { "cond": "maki_fails>=2", "text": "Guarda che capirmi non è difficile. Sono solo quattro umori in fila. Come una playlist. Ma col cuore." }
       ]
     },
@@ -112,20 +112,20 @@
     },
     "bulgaria": {
       "lines": [
-        "SÌ! Dov'è? No, non dirmelo, voglio la sorpresa. Prendo un aereo a caso e vedo dove atterro.",
+        { "text": "SÌ! Dov'è? No, non dirmelo, voglio la sorpresa. Prendo un aereo a caso e vedo dove atterro.", "fx": "bounce" },
         "C'è il mare? Il Mar NERO? Nero come i vestiti di Masia? Ci sto. Porto la cassa. Li sveglio tutti."
       ],
       "next": "after_menu"
     },
     "after_offended": {
       "lines": [
-        "Ti offendi? Con ME? OGGI?!",
+        { "text": "Ti offendi? Con ME? OGGI?!", "fx": "shake" },
         "...ok. Hai ragione. Offendiamoci insieme. Contro chi? Scegli tu. Io propongo il barista."
       ],
       "next": "after_menu"
     },
     "after_bye": {
-      "lines": ["Ciao! Ti voglio tanto bene! Vai! Non voltarti, se no piango! ...ti sei voltato. Piango."]
+      "lines": [{ "text": "Ciao! Ti voglio tanto bene! Vai! Non voltarti, se no piango! ...ti sei voltato. Piango.", "fx": "bounce" }]
     }
   }
 }

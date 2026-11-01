@@ -148,7 +148,7 @@
         "inc:nicole_fails"
       ],
       "lines": [
-        "No no no. Errore tragico, proprio nel senso greco. Ma la tragedia insegna! Riprova.",
+        { "text": "No no no. Errore tragico, proprio nel senso greco. Ma la tragedia insegna! Riprova.", "fx": "droop" },
         {
           "cond": "nicole_fails>=1",
           "text": "Di nuovo? Sisifo almeno aveva un sasso solo. Chiedimi la traduzione, dai. Non mi offendo. Un po' sì."
@@ -158,7 +158,7 @@
     },
     "win": {
       "lines": [
-        "OPTIME! Efesto, Rea, Orfeo, Eros. Lo sapevo! Hai la testa di Atena e il fascino di... vabbè, non esageriamo.",
+        { "text": "OPTIME! Efesto, Rea, Orfeo, Eros. Lo sapevo! Hai la testa di Atena e il fascino di... vabbè, non esageriamo.", "fx": "bounce" },
         "Ecco la busta. Marco l'ha sigillata con la ceralacca. CON LA CERALACCA. Quell'uomo è un poema epico con la saldatrice."
       ],
       "next": "marco:word_risata"

@@ -20,7 +20,7 @@
         "set:met_moka"
       ],
       "lines": [
-        "Quack! Kiril! Auguri! Quack.",
+        { "text": "Quack! Kiril! Auguri! Quack.", "fx": "bounce" },
         "Scusa, quando sono emozionata faccio quack. Sono emozionata sempre. Al ricevimento in Accademia il prof mi ha chiesto di smettere. Quack.",
         "Sto cercando le mie paperelle verdi. Ne ho perse sette in giro per il paese.",
     "Le paperelle scappano, è nella loro natura. Come i gatti. Ma gialle. Cioè verdi. Quack, mi confondo."
@@ -32,7 +32,7 @@
         "set:moka_costume"
       ],
       "lines": [
-        "QUACK! Il costume! Erika ci ha messo il mio filo verde, si vede sulle cuciture! Da vicino. Molto vicino. Fermo.",
+        { "text": "QUACK! Il costume! Erika ci ha messo il mio filo verde, si vede sulle cuciture! Da vicino. Molto vicino. Fermo.", "fx": "bounce" },
         "Sei un ragno con un cuore di paperella. Che è la cosa più bella che ho detto quest'anno. Me lo segno."
       ],
       "next": "menu",
@@ -216,9 +216,9 @@
       "lines": [
         {
           "who": "bullone",
-          "text": "BZZT. Messaggio da Moka, inoltrato a tutto volume."
+          "text": "BZZT. Messaggio da Moka, inoltrato a tutto volume.", "fx": "glitch"
         },
-        "TUTTE E SETTE! Kiril, sei ufficialmente Paperello d'Onore di Santu Brugaru. Quack di gala!",
+        { "text": "TUTTE E SETTE! Kiril, sei ufficialmente Paperello d'Onore di Santu Brugaru. Quack di gala!", "fx": "bounce" },
         "Le ho messe in fila sul davanzale. Gertrude è in prima fila, ha preteso. Ti mando una foto. Sono verdi. Lo sai."
       ]
     }

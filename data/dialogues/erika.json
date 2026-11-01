@@ -100,7 +100,7 @@
       ],
       "lines": [
         "PERFETTO. Taglia, imbastisci, cuci, ricuci, bestemmia sottovoce, cuci...",
-        "FATTO.",
+        { "text": "FATTO.", "fx": "bounce" },
         "Un costume da supereroe. Ragno, sì. Ma NOSTRO: il ragno l'ho disegnato io, a otto zampe e mezzo. Gli avvocati possono dormire tranquilli.",
         "Il rosso è il foulard di Martina. Il verde è il filo di Moka: le cuciture si vedono solo da vicino. Come le cose fatte bene.",
         {
@@ -115,7 +115,7 @@
       "lines": [
         "Fammi toccare.",
         "...",
-        "Questo velluto lo conosco. È il MIO velluto. Rosso vinaccia, trama pesante, l'ho pagato un rene.",
+        { "text": "Questo velluto lo conosco. È il MIO velluto. Rosso vinaccia, trama pesante, l'ho pagato un rene.", "fx": "shake" },
         "L'ho cucito io, per un mantello. Il mantello da master di Davi. Quello che non si toglie neanche per dormire. E Davi dorme sempre.",
         {
           "cond": "davi_lied",

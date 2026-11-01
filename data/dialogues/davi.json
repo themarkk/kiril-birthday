@@ -30,11 +30,11 @@
         },
         {
           "cond": "davi_snores==2",
-          "text": "Zzz... non ero io... era il mio PNG... zzz..."
+          "text": "Zzz... non ero io... era il mio PNG... zzz...", "fx": "snore"
         },
         {
           "cond": "davi_snores>=3",
-          "text": "ZZZZZZZZZZ."
+          "text": "ZZZZZZZZZZ.", "fx": "snore"
         },
         {
           "cond": "has.d20_glassa",
@@ -64,9 +64,9 @@
         },
         {
           "who": "maki",
-          "text": "♫ BOOM BOOM BOOM BOOM ♫"
+          "text": "♫ BOOM BOOM BOOM BOOM ♫", "fx": "shake"
         },
-        "AAAAAAH! I DRAGHI! LE ROCCE! IL MASTER SONO IO!",
+        { "text": "AAAAAAH! I DRAGHI! LE ROCCE! IL MASTER SONO IO!", "fx": "shake" },
         "Ho tirato salvezza su Costituzione. Ho fatto uno. Sono morto. Sono risorto. Sono confuso.",
         "...Kiril? Che ore sono? Che giorno è? Chi è il presidente?",
         {
@@ -444,7 +444,7 @@
         "Proposta: facciamo che è una sessione. Io sono il giudice. No? Ok. Ok.",
         {
           "who": "bullone",
-          "text": "BZZT. Kiril, è il momento. Indica chi ha sabotato la festa e presenta due prove."
+          "text": "BZZT. Kiril, è il momento. Indica chi ha sabotato la festa e presenta due prove.", "fx": "glitch"
         }
       ],
       "do": [
@@ -499,7 +499,7 @@
         "Per coprirmi ho improvvisato una campagna. Con indizi falsi. La ciocca era una parrucca di Elisa.",
         {
           "who": "masia",
-          "text": "Mi hai incastrato con una PARRUCCA? Io ti ammazzo. Con rispetto. Dopo la torta."
+          "text": "Mi hai incastrato con una PARRUCCA? Io ti ammazzo. Con rispetto. Dopo la torta.", "fx": "shake"
         },
         {
           "who": "bea",

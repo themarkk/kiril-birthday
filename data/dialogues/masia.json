@@ -132,7 +132,7 @@
         "inc:masia_losses"
       ],
       "lines": [
-        "AHAHAHAH. Sei scarso. Scarsissimo. Torna quando hai fatto pace con la tua mediocrità.",
+        { "text": "AHAHAHAH. Sei scarso. Scarsissimo. Torna quando hai fatto pace con la tua mediocrità.", "fx": "bounce" },
         {
           "cond": "masia_losses>=1",
           "text": "Comunque gioco sempre in modo PERFETTO. Ogni mossa è una risposta. Studiami, se ci riesci."
@@ -146,7 +146,7 @@
     },
     "win": {
       "lines": [
-        "...impossibile.",
+        { "text": "...impossibile.", "fx": "droop" },
         "Hai barato. No. Ho barato io e tu mi hai letto. Che schifo. Che rispetto.",
         "Va bene. Stanotte ero in palestra fino alle quattro. Ecco il timbro. Record personale di trazioni. Lo so, a nessuno frega un cazzo.",
         "E già che ci sei: io non incastro la gente con le parrucche. Io la gente la batto in faccia. Davanti a testimoni.",
@@ -258,8 +258,8 @@
         "set:accused_masia"
       ],
       "lines": [
-        "IO?!",
-        "Mi accusi davanti a tutti?! Ma vaffan... no. No. Ho troppa classe. E troppo nero addosso per sporcarmi.",
+        { "text": "IO?!", "fx": "shake" },
+        { "text": "Mi accusi davanti a tutti?! Ma vaffan... no. No. Ho troppa classe. E troppo nero addosso per sporcarmi.", "fx": "shake" },
         "Hai sbagliato, detective. E io non dimentico. Mai. Ricordo ancora chi mi ha battuto a briscola nel 2014.",
         {
           "cond": "has.alibi_masia",
@@ -267,11 +267,11 @@
         },
         {
           "cond": "accused_masia",
-          "text": "Due volte. DUE. Questa la racconto ai miei nipoti. Come esempio."
+          "text": "Due volte. DUE. Questa la racconto ai miei nipoti. Come esempio.", "fx": "shake"
         },
         {
           "who": "bullone",
-          "text": "BZZT. Accusa respinta. Suggerisco di ricontrollare le prove. E di non guardare Masia negli occhi."
+          "text": "BZZT. Accusa respinta. Suggerisco di ricontrollare le prove. E di non guardare Masia negli occhi.", "fx": "glitch"
         }
       ],
       "next": "davi:retry"

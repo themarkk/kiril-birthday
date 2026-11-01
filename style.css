@@ -119,6 +119,46 @@ html, body {
 }
 @keyframes bob { 50% { transform: translateY(calc(var(--s) * 1.5px)); } }
 
+/* Enfasi emotiva del box (campo "fx" nelle righe di dialogo). Movimenti a scatti, in stile pixel. */
+.dialogue[data-fx="shake"] { animation: fx-shake .45s steps(1) both; }
+.dialogue[data-fx="bounce"] { animation: fx-bounce .5s steps(5) both; }
+.dialogue[data-fx="droop"] { animation: fx-droop .6s steps(4) both; }
+.dialogue[data-fx="glitch"] { animation: fx-glitch .5s steps(1) both; }
+.dialogue[data-fx="snore"] { animation: fx-snore 2.4s steps(6) infinite; }
+.dialogue[data-fx="droop"] .text { opacity: .8; }
+@keyframes fx-shake {
+  0%   { transform: translate(calc(var(--s) * -3px), 0); }
+  15%  { transform: translate(calc(var(--s) * 3px), calc(var(--s) * 1px)); }
+  30%  { transform: translate(calc(var(--s) * -3px), calc(var(--s) * -1px)); }
+  45%  { transform: translate(calc(var(--s) * 2px), 0); }
+  60%  { transform: translate(calc(var(--s) * -2px), calc(var(--s) * 1px)); }
+  75%  { transform: translate(calc(var(--s) * 1px), 0); }
+  90%  { transform: translate(calc(var(--s) * -1px), 0); }
+  100% { transform: none; }
+}
+@keyframes fx-bounce {
+  0%, 100% { transform: none; }
+  25% { transform: translateY(calc(var(--s) * -4px)); }
+  50% { transform: none; }
+  75% { transform: translateY(calc(var(--s) * -2px)); }
+}
+@keyframes fx-droop {
+  0% { transform: none; }
+  100% { transform: translateY(calc(var(--s) * 2px)); }
+}
+@keyframes fx-glitch {
+  0%   { transform: translateX(calc(var(--s) * 3px)); filter: hue-rotate(90deg); }
+  20%  { transform: translateX(calc(var(--s) * -3px)); filter: invert(1); }
+  40%  { transform: translateX(calc(var(--s) * 2px)) skewX(-6deg); filter: hue-rotate(200deg); }
+  60%  { transform: translateX(calc(var(--s) * -1px)); filter: none; }
+  80%  { transform: translateX(calc(var(--s) * 1px)); filter: hue-rotate(40deg); }
+  100% { transform: none; filter: none; }
+}
+@keyframes fx-snore {
+  0%, 100% { transform: none; }
+  50% { transform: translateY(calc(var(--s) * 2px)); }
+}
+
 .choices {
   right: calc(var(--s) * 4px);
   bottom: calc(var(--s) * 60px);
@@ -267,4 +307,5 @@ html, body {
 .confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 .confetti i { position: absolute; top: -10px; width: calc(var(--s) * 3px); height: calc(var(--s) * 5px); animation: fall linear infinite; }
 @keyframes fall { to { transform: translateY(calc(var(--s) * 200px)) rotate(var(--r)); } }
+@media (prefers-reduced-motion: reduce) { .dialogue[data-fx] { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .confetti, .ending-people canvas, .gift-btn { animation: none !important; } .confetti { display: none; } }

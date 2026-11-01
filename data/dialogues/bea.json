@@ -149,7 +149,7 @@
         },
         {
           "cond": "bea_moves==0",
-          "text": "ESPANSIONE DEL DOMINIO: UFFICIO POSTALE INFINITO!"
+          "text": "ESPANSIONE DEL DOMINIO: UFFICIO POSTALE INFINITO!", "fx": "shake"
         },
         {
           "cond": "bea_moves==0",
@@ -161,7 +161,7 @@
         },
         {
           "cond": "bea_moves==1",
-          "text": "ESPANSIONE DEL DOMINIO: DOMENICA POMERIGGIO ETERNA!"
+          "text": "ESPANSIONE DEL DOMINIO: DOMENICA POMERIGGIO ETERNA!", "fx": "shake"
         },
         {
           "cond": "bea_moves==1",
@@ -169,7 +169,7 @@
         },
         {
           "cond": "bea_moves==2",
-          "text": "ESPANSIONE DEL DOMINIO: GRUPPO DEL CONDOMINIO!"
+          "text": "ESPANSIONE DEL DOMINIO: GRUPPO DEL CONDOMINIO!", "fx": "shake"
         },
         {
           "cond": "bea_moves==2",
@@ -177,7 +177,7 @@
         },
         {
           "cond": "bea_moves==3",
-          "text": "ESPANSIONE DEL DOMINIO: CONFINE BULGARO INVISIBILE!"
+          "text": "ESPANSIONE DEL DOMINIO: CONFINE BULGARO INVISIBILE!", "fx": "shake"
         },
         {
           "cond": "bea_moves==3",
@@ -214,11 +214,11 @@
           "cond": "accused_bea",
           "text": "Di nuovo io? Allora è un segno. Lo metto sul prossimo volantino. In grassetto."
         },
-        "ESPANSIONE DEL DOMINIO: TRIBUNALE INFINITO DEI PICCIONI!",
-        "...non è successo niente. Di nuovo. Ma dentro di me è successo tutto.",
+        { "text": "ESPANSIONE DEL DOMINIO: TRIBUNALE INFINITO DEI PICCIONI!", "fx": "shake" },
+        { "text": "...non è successo niente. Di nuovo. Ma dentro di me è successo tutto.", "fx": "droop" },
         {
           "who": "bullone",
-          "text": "BZZT. Accusa respinta. Bea ha un alibi. E probabilmente un'aura."
+          "text": "BZZT. Accusa respinta. Bea ha un alibi. E probabilmente un'aura.", "fx": "glitch"
         }
       ],
       "next": "davi:retry"

@@ -62,7 +62,7 @@
     },
     "hurt_offended": {
       "lines": [
-        "TU ti offendi? Mi hai detto che me lo merito! ♪ Che faccia toostaaa ♪",
+        { "text": "TU ti offendi? Mi hai detto che me lo merito! ♪ Che faccia toostaaa ♪", "fx": "shake" },
         "...vabbè. Almeno sei coerente. È già più di quanto faccia un cagliaritano."
       ],
       "next": "hurt_again"

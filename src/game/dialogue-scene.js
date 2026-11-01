@@ -85,6 +85,7 @@ export class DialogueScene {
     this.name.textContent = step.name || '';
     this.name.hidden = !step.name;
     this.name.style.setProperty('--name-bg', this.colors[step.who || step.portrait] || '');
+    this.applyFx(step.fx);
     this.full = step.text;
     this.shown = 0;
     this.text.textContent = '';
@@ -92,6 +93,14 @@ export class DialogueScene {
     this.choicesBox?.remove();
     this.choicesBox = null;
     this.sel = 0;
+  }
+
+  // Enfasi emotiva: l'attributo data-fx attiva l'animazione CSS; si riavvia a ogni riga.
+  applyFx(fx) {
+    delete this.box.dataset.fx;
+    if (!fx) return;
+    void this.box.offsetWidth;
+    this.box.dataset.fx = fx;
   }
 
   typing() {

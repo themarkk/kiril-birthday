@@ -199,7 +199,7 @@
     },
     "sword_out": {
       "lines": [
-        "SHHHING! La spada esce. Dentro il cuore del carciofo c'è una busta con il sigillo di Marco."
+        { "text": "SHHHING! La spada esce. Dentro il cuore del carciofo c'è una busta con il sigillo di Marco.", "fx": "bounce" }
       ],
       "do": [
         "set:sword_out",
