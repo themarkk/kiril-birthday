@@ -5,7 +5,7 @@
       "lines": [
         {
           "who": "kiril",
-          "text": "Non esco senza prima aver capito il biglietto di Marco. Dove dormo quando mi offendo...?"
+          "text": "Non esco senza prima aver capito il biglietto di Marco. Dove mi siedo quando sono offeso...?"
         }
       ]
     },
@@ -42,7 +42,7 @@
       "lines": [
         {
           "cond": "!got_bullone",
-          "text": "Il letto. Il lato di Marco è vuoto. Il biglietto parlava di un altro posto dove dormi..."
+          "text": "Il letto. Il lato di Marco è vuoto. Il biglietto parlava di un altro posto dove ti siedi quando sei offeso..."
         },
         {
           "cond": "got_bullone",
