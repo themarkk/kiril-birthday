@@ -311,6 +311,7 @@ html, body {
 @media (prefers-reduced-motion: reduce) { .confetti, .ending-people canvas, .gift-btn { animation: none !important; } .confetti { display: none; } }
 
 /* ---------- Minigioco a ragnatele ---------- */
+.dialogue:has(~ .swing-ui) { display: none; }
 .swing-ui { position: absolute; inset: 0; pointer-events: none; color: var(--paper); text-shadow: 0 calc(var(--s) * 1px) 0 var(--ink); }
 .swing-title { position: absolute; top: calc(var(--s) * 12px); left: 0; right: 0; text-align: center; font-family: var(--font-title); font-size: calc(var(--s) * 13px); color: var(--accent); }
 .swing-sub { position: absolute; top: calc(var(--s) * 32px); left: 0; right: 0; text-align: center; }
@@ -323,5 +324,6 @@ html, body {
 .swing-bugle { position: absolute; inset: calc(var(--s) * 10px) calc(var(--s) * 16px); padding: calc(var(--s) * 8px); background: var(--paper); color: var(--ink); text-shadow: none; }
 .swing-bugle h2 { margin: 0; text-align: center; font-family: var(--font-title); font-size: calc(var(--s) * 11px); border-bottom: calc(var(--s) * 1px) solid var(--ink); padding-bottom: calc(var(--s) * 4px); }
 .swing-bugle h3 { margin: calc(var(--s) * 6px) 0 calc(var(--s) * 4px); font-family: var(--font-title); font-size: calc(var(--s) * 6.5px); line-height: 1.4; color: var(--accent); }
+.swing-photo { display: block; margin: 0 auto calc(var(--s) * 4px); width: calc(var(--s) * 32px); image-rendering: pixelated; background: var(--paper-2); }
 .swing-bugle p { margin: 0 0 calc(var(--s) * 4px); }
 .swing-bugle .swing-hint { position: static; margin-top: calc(var(--s) * 4px); }

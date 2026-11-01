@@ -64,6 +64,26 @@
         "La TV è spenta. Strano: Marco la lascia sempre accesa sui documentari di ingegneria."
       ]
     },
+    "switch": {
+      "lines": [
+        "Una Switch sul dock, con un solo gioco dentro: Spider-Man. Marco giura che è per te. Il salvataggio al 98% dice altro."
+      ],
+      "puzzle": {
+        "id": "swing",
+        "win": "switch_win",
+        "lose": "switch_lose"
+      }
+    },
+    "switch_win": {
+      "lines": [
+        "Rimetti la console sul dock con aria da eroe. Jameson non te la perdonerà mai."
+      ]
+    },
+    "switch_lose": {
+      "lines": [
+        "Spegni la console. New York dovrà cavarsela senza di te, per ora."
+      ]
+    },
     "sofa": {
       "lines": [
         {

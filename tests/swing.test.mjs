@@ -147,3 +147,15 @@ test('spiderman has a full mask, no hair, and all directions', () => {
     assert.equal(composePixels(chars, 'spiderman', dir, 0).h, 24);
   }
 });
+
+test('the Switch sits under the TV and leaves the TV reachable', () => {
+  const house = JSON.parse(readFileSync('data/maps/house.json', 'utf8'));
+  assert.equal([...house.rows[4]][10], 'n');
+  assert.equal(house.legend.n, 'switch');
+  assert.equal([...house.rows[3]][10], '.');
+  const sw = house.objects.find(o => o.id === 'switch');
+  assert.deepEqual([sw.x, sw.y, sw.node], [10, 4, 'switch']);
+  const objects = JSON.parse(readFileSync('data/dialogues/objects.json', 'utf8'));
+  assert.equal(objects.nodes.switch.puzzle.id, 'swing');
+  assert.equal(objects.nodes.tv.lines[0], 'La TV è spenta. Strano: Marco la lascia sempre accesa sui documentari di ingegneria.');
+});

@@ -24,12 +24,13 @@ Online: https://themarkk.github.io/kiril-birthday/ (GitHub Pages, repo pubblico 
 - Il link del regalo è SOLO cifrato in `data/secret.json` (chiave = tre parole RISATA|BRONCIO|CORAGGIO + colpevole `davi`). Non scriverlo mai in chiaro in nessun file. Per ricifrare: `node tools/encrypt-code.mjs "<link>"`.
 - Genere: Maki e Bea al neutro; Masia, Leryn, Davi al maschile; Moka, Erika, Elisa, Nicole, Martina al femminile.
 - Marco e Kiril non si dicono "amore" né "ti amo": usare "ciccio" e "ti voglio tanto bene". Tono sboccato ammesso dove è nel personaggio.
-- Niente personaggi o grafica protetti (Marvel, Nintendo, Pokémon): solo omaggi originali.
+- Niente personaggi o grafica protetti (Marvel, Nintendo, Pokémon): solo omaggi originali. Eccezione voluta da Marco: Spider-Man e Nintendo Switch veri, ma solo nel minigioco della Switch e con sprite disegnati da noi.
 - Ogni menu di dialogo deve avere un'uscita; ogni enigma deve poter essere ripetuto. Il validatore lo controlla.
 
 ## Decisioni importanti
 - Stack: JS puro + canvas 256x192, pixel art come griglie di caratteri nei JSON. Hosting: GitHub Pages.
 - Colpevole: Davi. Falsi sospettati: Masia e Bea. Tre finali (perfetto, buono, pasticciato).
+- Minigioco della Switch (casa, sotto la TV): solo uno sfizio, nessun effetto su storia e salvataggio. Fisica in `src/puzzles/swing.js`, scena in `swing-scene.js`, schermate e testi in `data/swing.json`.
 - Sul sito pubblico resta raggiungibile `?debug=1` (pannello di prova). Da valutare se toglierlo.
 
 ## Tenere aggiornato questo file

@@ -104,7 +104,13 @@ export class SwingScene {
   renderBugle() {
     const page = el('div', 'swing-bugle');
     const tally = this.falls === 1 ? '1 caduta' : `${this.falls} cadute`;
-    page.append(el('h2', '', 'DAILY BUGLE'), el('h3', '', this.hero.headline), el('p', '', this.hero.article), el('p', '', `Danni accertati: ${tally}.`), el('div', 'swing-hint', 'Z spegni la console'));
+    const art = this.game.art.person(HEROES[this.sel]);
+    const photo = document.createElement('canvas');
+    photo.width = art.w;
+    photo.height = art.h;
+    photo.className = 'swing-photo';
+    photo.getContext('2d').drawImage(art.frames.down[0], 0, 0);
+    page.append(el('h2', '', 'DAILY BUGLE'), el('h3', '', this.hero.headline), photo, el('p', '', this.hero.article), el('p', '', `Danni accertati: ${tally}.`), el('div', 'swing-hint', 'Z spegni la console'));
     this.ui.replaceChildren(page);
   }
 

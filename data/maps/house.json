@@ -7,7 +7,7 @@
     "WwWWWWWWWwW",
     "FK...p..BBv",
     ".....c.....",
-    "..TT.c.....",
+    "..TT.c....n",
     "..hh.c..SS.",
     "...........",
     "p.........p",
@@ -68,6 +68,13 @@
       "node": "tv"
     },
     {
+      "id": "switch",
+      "x": 10,
+      "y": 4,
+      "dialogue": "objects",
+      "node": "switch"
+    },
+    {
       "id": "sofa",
       "x": 8,
       "y": 5,
@@ -111,6 +118,7 @@
     "X": "set_panel",
     "o": "plate",
     "D": "table_dnd",
-    "s": "stage"
+    "s": "stage",
+    "n": "switch"
   }
 }
