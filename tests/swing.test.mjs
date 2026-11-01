@@ -134,6 +134,36 @@ test('five screens, roofs thick enough, both heroes complete', () => {
   }
 });
 
+function finishRate(sc) {
+  let ok = 0;
+  let tries = 0;
+  for (let wait = 0; wait <= 3; wait += 0.25, tries++) if (tryScreen(sc, wait)) ok++;
+  return ok / tries;
+}
+
+test('no screen depends on narrow timing', () => {
+  data.screens.forEach((sc, i) => assert.ok(finishRate(sc) >= 0.5, `schermata ${i + 1}: ${finishRate(sc)}`));
+});
+
+test('every screen has a hook reachable from the starting roof', () => {
+  data.screens.forEach((sc, i) => {
+    const roof = sc.roofs[0];
+    let reachable = false;
+    for (let x = roof.x + 5; x <= roof.x + roof.w; x++) if (pickAnchor(sc.anchors, x, roof.y)) reachable = true;
+    assert.ok(reachable, `schermata ${i + 1}`);
+  });
+});
+
+test('no bomb sweeps over the starting roof', () => {
+  data.screens.forEach((sc, i) => {
+    const roof = sc.roofs[0];
+    for (const b of sc.bombs || []) {
+      const reach = b.x - Math.abs(b.ax) - 5;
+      assert.ok(reach > roof.x + roof.w + 5 || b.y + Math.abs(b.ay) + 5 < roof.y - 22, `schermata ${i + 1}`);
+    }
+  });
+});
+
 test('a simple bot can finish every screen', () => {
   data.screens.forEach((sc, i) => assert.ok(canFinish(sc), `schermata ${i + 1}`));
 });
