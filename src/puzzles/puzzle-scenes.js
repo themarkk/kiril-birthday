@@ -5,6 +5,7 @@ import { el, portraitNode } from '../game/dialogue-scene.js';
 import { checkStatues } from './cipher.js';
 import { MOVES, createRps } from './rps.js';
 import { createComboMatch } from './combo.js';
+import { SwingScene } from './swing-scene.js';
 
 class PuzzleScene {
   constructor(game, onResult, cls) {
@@ -222,4 +223,5 @@ export function registerPuzzles(game) {
   game.puzzles.cipher = (g, onResult) => new CipherScene(g, onResult);
   game.puzzles.rps = (g, onResult) => new RpsScene(g, onResult);
   game.puzzles.combo = (g, onResult) => new ComboScene(g, onResult);
+  game.puzzles.swing = (g, onResult) => new SwingScene(g, onResult);
 }

@@ -309,3 +309,19 @@ html, body {
 @keyframes fall { to { transform: translateY(calc(var(--s) * 200px)) rotate(var(--r)); } }
 @media (prefers-reduced-motion: reduce) { .dialogue[data-fx] { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .confetti, .ending-people canvas, .gift-btn { animation: none !important; } .confetti { display: none; } }
+
+/* ---------- Minigioco a ragnatele ---------- */
+.swing-ui { position: absolute; inset: 0; pointer-events: none; color: var(--paper); text-shadow: 0 calc(var(--s) * 1px) 0 var(--ink); }
+.swing-title { position: absolute; top: calc(var(--s) * 12px); left: 0; right: 0; text-align: center; font-family: var(--font-title); font-size: calc(var(--s) * 13px); color: var(--accent); }
+.swing-sub { position: absolute; top: calc(var(--s) * 32px); left: 0; right: 0; text-align: center; }
+.swing-name { position: absolute; top: calc(var(--s) * 124px); width: 50%; text-align: center; font-family: var(--font-title); font-size: calc(var(--s) * 6px); opacity: .6; }
+.swing-name.sel { opacity: 1; color: var(--gold); }
+.swing-pitch { position: absolute; top: calc(var(--s) * 142px); left: calc(var(--s) * 20px); right: calc(var(--s) * 20px); text-align: center; }
+.swing-hint { position: absolute; bottom: calc(var(--s) * 3px); left: 0; right: 0; text-align: center; font-size: calc(var(--s) * 6px); opacity: .8; }
+.swing-say { position: absolute; top: calc(var(--s) * 3px); left: calc(var(--s) * 6px); right: calc(var(--s) * 6px); font-size: calc(var(--s) * 6.5px); }
+.swing-say b { color: var(--gold); font-weight: normal; }
+.swing-bugle { position: absolute; inset: calc(var(--s) * 10px) calc(var(--s) * 16px); padding: calc(var(--s) * 8px); background: var(--paper); color: var(--ink); text-shadow: none; }
+.swing-bugle h2 { margin: 0; text-align: center; font-family: var(--font-title); font-size: calc(var(--s) * 11px); border-bottom: calc(var(--s) * 1px) solid var(--ink); padding-bottom: calc(var(--s) * 4px); }
+.swing-bugle h3 { margin: calc(var(--s) * 6px) 0 calc(var(--s) * 4px); font-family: var(--font-title); font-size: calc(var(--s) * 6.5px); line-height: 1.4; color: var(--accent); }
+.swing-bugle p { margin: 0 0 calc(var(--s) * 4px); }
+.swing-bugle .swing-hint { position: static; margin-top: calc(var(--s) * 4px); }

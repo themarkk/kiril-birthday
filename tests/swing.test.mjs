@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createSwing, stepSwing, pickAnchor, bombPos } from '../src/puzzles/swing.js';
+import { composePixels } from '../src/engine/art.js';
 
 const floor = { x: 0, y: 100, w: 256, h: 92 };
 
@@ -135,4 +136,14 @@ test('five screens, roofs thick enough, both heroes complete', () => {
 
 test('a simple bot can finish every screen', () => {
   data.screens.forEach((sc, i) => assert.ok(canFinish(sc), `schermata ${i + 1}`));
+});
+
+const chars = JSON.parse(readFileSync('data/art/characters.json', 'utf8'));
+
+test('spiderman has a full mask, no hair, and all directions', () => {
+  assert.equal(chars.people.spiderman.hairStyle, 'none');
+  assert.ok(chars.people.spiderman.extras.includes('spiderman_suit'));
+  for (const dir of ['down', 'up', 'left', 'right']) {
+    assert.equal(composePixels(chars, 'spiderman', dir, 0).h, 24);
+  }
 });
