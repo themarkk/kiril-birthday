@@ -2,14 +2,16 @@
 
 export const STEP = 1 / 60;
 
-const GRAVITY = 420;
-const WALK = 70;
-const JUMP = 170;
-const AIR = 120;
-const PUMP = 160;
+const GRAVITY = 300;
+const WALK = 64;
+const JUMP = 145;
+const AIR = 90;
+const PUMP = 110;
 const RANGE = 110;
 const MIN_ROPE = 24;
-const MAX_SPEED = 260;
+const TARGET_ROPE = 60;
+const REEL = 120;
+const MAX_SPEED = 190;
 const HALF_W = 5;
 const BODY_H = 22;
 const BOMB_R = 5;
@@ -77,6 +79,8 @@ export function stepSwing(s, screen, keys) {
     const a = pickAnchor(screen.anchors, s.x, s.y);
     if (a) s.rope = { x: a.x, y: a.y, len: Math.max(MIN_ROPE, Math.hypot(a.x - s.x, a.y - s.y)) };
   }
+
+  if (s.rope && s.rope.len > TARGET_ROPE) s.rope.len = Math.max(TARGET_ROPE, s.rope.len - REEL * STEP);
 
   const dir = (keys.right ? 1 : 0) - (keys.left ? 1 : 0);
   if (dir) s.facing = dir;

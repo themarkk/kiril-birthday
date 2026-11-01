@@ -2,5 +2,5 @@
   "maps": ["town", "house", "library", "arcade", "lab", "atelier", "tavern", "nuraghe"],
   "dialogues": ["objects", "marco", "nicole", "leryn", "elisa", "erika", "moka", "masia", "bea", "maki", "martina", "davi", "efisio"],
   "art": ["tiles", "characters", "portraits", "objects"],
-  "other": ["story", "ending", "secret", "music"]
+  "other": ["story", "ending", "secret", "music", "swing"]
 }

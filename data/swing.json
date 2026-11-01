@@ -1,0 +1,241 @@
+{
+ "screens": [
+  {
+   "say": "Tieni premuto Z vicino a un gancio e buttati. Zia May dice di metterti la maglia.",
+   "start": {
+    "x": 16,
+    "y": 130
+   },
+   "roofs": [
+    {
+     "x": 0,
+     "y": 130,
+     "w": 84,
+     "h": 62
+    },
+    {
+     "x": 112,
+     "y": 130,
+     "w": 60,
+     "h": 62
+    },
+    {
+     "x": 200,
+     "y": 124,
+     "w": 56,
+     "h": 68
+    }
+   ],
+   "anchors": [
+    {
+     "x": 98,
+     "y": 48
+    },
+    {
+     "x": 186,
+     "y": 44
+    }
+   ]
+  },
+  {
+   "say": "Zio Ben diceva: da grandi vuoti derivano grandi cadute.",
+   "start": {
+    "x": 16,
+    "y": 140
+   },
+   "roofs": [
+    {
+     "x": 0,
+     "y": 140,
+     "w": 50,
+     "h": 52
+    },
+    {
+     "x": 200,
+     "y": 130,
+     "w": 56,
+     "h": 62
+    }
+   ],
+   "anchors": [
+    {
+     "x": 86,
+     "y": 40
+    },
+    {
+     "x": 160,
+     "y": 38
+    }
+   ]
+  },
+  {
+   "say": "Muro alto. Prendi slancio e lascia Z mentre sali.",
+   "start": {
+    "x": 16,
+    "y": 140
+   },
+   "roofs": [
+    {
+     "x": 0,
+     "y": 140,
+     "w": 110,
+     "h": 52
+    },
+    {
+     "x": 150,
+     "y": 96,
+     "w": 40,
+     "h": 96
+    },
+    {
+     "x": 190,
+     "y": 140,
+     "w": 66,
+     "h": 52
+    }
+   ],
+   "anchors": [
+    {
+     "x": 118,
+     "y": 22
+    },
+    {
+     "x": 206,
+     "y": 40
+    }
+   ]
+  },
+  {
+   "say": "Goblin lancia zucche esplosive. Halloween era ieri, ma nessuno glielo dice.",
+   "start": {
+    "x": 16,
+    "y": 130
+   },
+   "roofs": [
+    {
+     "x": 0,
+     "y": 130,
+     "w": 60,
+     "h": 62
+    },
+    {
+     "x": 118,
+     "y": 130,
+     "w": 42,
+     "h": 62
+    },
+    {
+     "x": 216,
+     "y": 130,
+     "w": 40,
+     "h": 62
+    }
+   ],
+   "anchors": [
+    {
+     "x": 82,
+     "y": 46
+    },
+    {
+     "x": 182,
+     "y": 46
+    }
+   ],
+   "bombs": [
+    {
+     "x": 90,
+     "y": 70,
+     "ax": 0,
+     "ay": 30,
+     "period": 2.6
+    },
+    {
+     "x": 190,
+     "y": 70,
+     "ax": 0,
+     "ay": 30,
+     "period": 2.2
+    }
+   ]
+  },
+  {
+   "say": "Ultimo tetto. Jameson sta già scrivendo la prima pagina contro di te.",
+   "start": {
+    "x": 16,
+    "y": 135
+   },
+   "roofs": [
+    {
+     "x": 0,
+     "y": 135,
+     "w": 40,
+     "h": 57
+    },
+    {
+     "x": 112,
+     "y": 84,
+     "w": 28,
+     "h": 108
+    },
+    {
+     "x": 222,
+     "y": 125,
+     "w": 34,
+     "h": 67
+    }
+   ],
+   "anchors": [
+    {
+     "x": 72,
+     "y": 30
+    },
+    {
+     "x": 172,
+     "y": 34
+    }
+   ],
+   "bombs": [
+    {
+     "x": 64,
+     "y": 120,
+     "ax": 22,
+     "ay": 0,
+     "period": 3
+    },
+    {
+     "x": 178,
+     "y": 92,
+     "ax": 0,
+     "ay": 22,
+     "period": 2.4
+    }
+   ]
+  }
+ ],
+ "heroes": {
+  "spiderman": {
+   "name": "Spider-Man",
+   "pitch": "L'originale. Ragnatele di serie, affitto in ritardo.",
+   "fall": [
+    "Peter, la gravità è ancora una legge.",
+    "Zia May ha visto tutto e vuole parlarne.",
+    "Jameson ha scattato la foto. Esce domani.",
+    "Il senso di ragno era in pausa caffè."
+   ],
+   "headline": "SPIDER-MAN: EROE O MINACCIA? MINACCIA.",
+   "article": "Il mascherato ha scorrazzato sui nostri tetti seminando zucche e ragnatele. Il direttore Jameson chiede le foto e l'arresto, in quest'ordine."
+  },
+  "kiril": {
+   "name": "Kiril",
+   "pitch": "Nessun morso radioattivo. Nessuna spiegazione. Compie gli anni.",
+   "fall": [
+    "Da grandi poteri... no, aspetta, tu non ne hai.",
+    "Marco non deve saperlo. Marco lo saprà.",
+    "Caduto, ma al compleanno non conta.",
+    "Jameson ha già il titolo: FESTEGGIATO IN PICCHIATA."
+   ],
+   "headline": "CHI È IL FESTEGGIATO CHE VOLA SU NEW YORK?",
+   "article": "Un giovane in maglietta, senza costume né permessi, ha attraversato Manhattan a colpi di ragnatela. Il direttore Jameson esige le scuse e una fetta di torta."
+  }
+ }
+}

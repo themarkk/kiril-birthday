@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { createSwing, stepSwing, pickAnchor, bombPos } from '../src/puzzles/swing.js';
 
 const floor = { x: 0, y: 100, w: 256, h: 92 };
@@ -77,4 +78,61 @@ test('bombPos follows a sine', () => {
   const b = { x: 100, y: 50, ax: 20, ay: 0, period: 2 };
   assert.equal(bombPos(b, 0).x, 100);
   assert.ok(Math.abs(bombPos(b, 0.5).x - 120) < 1e-9);
+});
+
+test('a long rope reels in to 60 px', () => {
+  const sc = { start: { x: 40, y: 130 }, roofs: [{ x: 0, y: 130, w: 100, h: 62 }], anchors: [{ x: 100, y: 45 }] };
+  const s = createSwing(sc);
+  for (let i = 0; i < 60; i++) stepSwing(s, sc, { web: true });
+  assert.equal(s.rope.len, 60);
+  assert.ok(Math.hypot(s.x - s.rope.x, s.y - s.rope.y) <= 60.5);
+});
+
+const data = JSON.parse(readFileSync('data/swing.json', 'utf8'));
+
+function tryScreen(sc, wait) {
+  const s = createSwing(sc);
+  let lastX = s.x;
+  for (let i = 0; i < 40 * 60; i++) {
+    if (i / 60 < wait) {
+      if (stepSwing(s, sc, {})) return false;
+      continue;
+    }
+    let web;
+    if (s.rope) {
+      const past = s.x - s.rope.x > 0.3 * s.rope.len;
+      web = !(past && (s.vy < 0 || s.onGround));
+    } else {
+      const a = pickAnchor(sc.anchors, s.x, s.y);
+      web = Boolean(a && a.x > s.x);
+    }
+    const jump = s.onGround && s.x === lastX;
+    lastX = s.x;
+    const r = stepSwing(s, sc, { right: true, web, jump });
+    if (r === 'exit') return true;
+    if (r) return false;
+  }
+  return false;
+}
+
+function canFinish(sc) {
+  for (let wait = 0; wait <= 3; wait += 0.25) if (tryScreen(sc, wait)) return true;
+  return false;
+}
+
+test('five screens, roofs thick enough, both heroes complete', () => {
+  assert.equal(data.screens.length, 5);
+  for (const sc of data.screens) {
+    assert.ok(sc.say);
+    for (const r of sc.roofs || []) assert.ok(r.h >= 8);
+  }
+  assert.ok(data.screens[3].bombs?.length && data.screens[4].bombs?.length);
+  for (const h of ['spiderman', 'kiril']) {
+    for (const k of ['name', 'pitch', 'headline', 'article']) assert.ok(data.heroes[h][k]);
+    assert.ok(data.heroes[h].fall.length >= 3);
+  }
+});
+
+test('a simple bot can finish every screen', () => {
+  data.screens.forEach((sc, i) => assert.ok(canFinish(sc), `schermata ${i + 1}`));
 });
