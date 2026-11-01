@@ -1,3 +1,4 @@
+// SUPERATO: town.json è stato ritoccato a mano e rilanciare questo file cancellerebbe PNG, oggetti e decorazioni.
 // Genera data/maps/town.json (layout di Santu Brugaru). Uso: node build-town.mjs <project-root>
 import { writeFileSync } from 'node:fs';
 const root = process.argv[2];

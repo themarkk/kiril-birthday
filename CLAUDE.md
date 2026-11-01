@@ -31,6 +31,7 @@ Online: https://themarkk.github.io/kiril-birthday/ (GitHub Pages, repo pubblico 
 - Stack: JS puro + canvas 256x192, pixel art come griglie di caratteri nei JSON. Hosting: GitHub Pages.
 - Colpevole: Davi. Falsi sospettati: Masia e Bea. Tre finali (perfetto, buono, pasticciato).
 - Minigioco della Switch (casa, sotto la TV): solo uno sfizio, nessun effetto su storia e salvataggio. Fisica in `src/puzzles/swing.js`, scena in `swing-scene.js`, schermate e testi in `data/swing.json`.
+- Grafica del paese in stile sardo: `tools/build-town-decor.mjs` disegna le decorazioni e riscrive `decor`, `edges`, `ambient` di `town.json`; si ritoccano lì, non nel JSON. Non rilanciare `tools/build-town.mjs` (superato).
 - Sul sito pubblico resta raggiungibile `?debug=1` (pannello di prova). Da valutare se toglierlo.
 
 ## Tenere aggiornato questo file

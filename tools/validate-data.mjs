@@ -87,8 +87,17 @@ export function validate(data) {
     const solidAt = (map, x, y) => {
       const row = map.rows?.[y];
       if (!row || x < 0 || x >= [...row].length) return true;
-      return Boolean(tiles[map.legend[[...row][x]]]?.solid);
+      return Boolean(tiles[map.legend[[...row][x]]]?.solid) || (map.decor || []).some(d => d.solid && d.x === x && d.y === y);
     };
+    // Una decorazione solida non deve mai coprire porte, trigger, PNG, oggetti o il punto di partenza.
+    const occupied = [...(m.warps || []), ...(m.triggers || []), ...(m.npcs || []), ...(m.objects || []), ...(m.spawn ? [m.spawn] : [])];
+    for (const d of m.decor || []) {
+      if (d.img && !objectsArt[d.img]) err(`${where} decor ${d.x},${d.y}`, `immagine "${d.img}" non in objects.json`);
+      if (d.solid && occupied.some(o => o.x === d.x && o.y === d.y)) err(`${where} decor ${d.x},${d.y}`, 'decorazione solida su una casella che serve al gioco');
+    }
+    for (const e of m.edges || []) {
+      for (const t of [...e.on, ...e.from]) if (!tiles[t]) err(`${where} edges`, `tile "${t}" inesistente`);
+    }
     for (const n of m.npcs || []) {
       checkDialogueRef(`${where} npc ${n.id}`, n.dialogue, n.node);
       checkCond(`${where} npc ${n.id}`, n.if);

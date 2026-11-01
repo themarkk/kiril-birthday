@@ -106,11 +106,12 @@ function pixelsToCanvas({ w, h, pixels }) {
   const data = ctx.createImageData(w, h);
   pixels.forEach((col, i) => {
     if (!col) return;
-    const n = parseInt(col.slice(1), 16);
+    const n = parseInt(col.slice(1, 7), 16);
     const full = col.length === 4
       ? [((n >> 8) & 15) * 17, ((n >> 4) & 15) * 17, (n & 15) * 17]
       : [(n >> 16) & 255, (n >> 8) & 255, n & 255];
-    data.data.set([...full, 255], i * 4);
+    const alpha = col.length === 9 ? parseInt(col.slice(7), 16) : 255;
+    data.data.set([...full, alpha], i * 4);
   });
   ctx.putImageData(data, 0, 0);
   return c;

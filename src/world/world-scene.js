@@ -4,6 +4,7 @@ import { parseMap } from './tilemap.js';
 import { Entity, TILE, DIRS } from './entity.js';
 import { evaluate } from '../game/conditions.js';
 import { W, H } from '../engine/screen.js';
+import { drawAmbient } from './ambient.js';
 
 const MOVE_KEYS = ['up', 'down', 'left', 'right'];
 
@@ -232,6 +233,23 @@ export class WorldScene {
     }
   }
 
+  drawEdges(ctx, cx, cy) {
+    const art = this.game.art;
+    for (const e of this.map.edges) {
+      const x = e.x * TILE - cx, y = e.y * TILE - cy;
+      if (x <= -TILE || y <= -TILE || x >= W || y >= H) continue;
+      ctx.drawImage(art.object(e.img), x, y);
+    }
+  }
+
+  drawDecor(ctx, d, cx, cy) {
+    const img = this.game.art.object(d.img);
+    const x = d.x * TILE - cx + Math.floor((TILE - img.width) / 2) + (d.dx || 0);
+    const y = d.y * TILE - cy + TILE - img.height + (d.dy || 0);
+    if (x + img.width <= 0 || y + img.height <= 0 || x >= W || y >= H) return;
+    ctx.drawImage(img, x, y);
+  }
+
   drawPerson(ctx, e, cx, cy) {
     const spr = this.game.art.person(e.person);
     const img = spr.frames[e.dir]?.[e.frame] || spr.frames.down[0];
@@ -243,8 +261,10 @@ export class WorldScene {
     ctx.fillStyle = '#1a1020';
     ctx.fillRect(0, 0, W, H);
     this.drawTiles(ctx, cx, cy, false);
+    this.drawEdges(ctx, cx, cy);
+    for (const d of this.map.decor.ground) this.drawDecor(ctx, d, cx, cy);
     this.game.pushables?.draw(ctx, this, cx, cy);
-    const sprites = [];
+    const sprites = this.map.decor.sprite.map(d => ({ y: d.sortY ?? d.y, draw: () => this.drawDecor(ctx, d, cx, cy) }));
     for (const o of this.objects) {
       if (!o.img) continue;
       sprites.push({ y: o.y, draw: () => {
@@ -258,6 +278,8 @@ export class WorldScene {
     sprites.push({ y: this.player.py / TILE, draw: () => this.drawPerson(ctx, this.player, cx, cy) });
     sprites.sort((a, b) => a.y - b.y).forEach(s => s.draw());
     this.drawTiles(ctx, cx, cy, true);
+    for (const d of this.map.decor.over) this.drawDecor(ctx, d, cx, cy);
+    drawAmbient(ctx, this.map.json.ambient, this.time, cx, cy, { w: W, h: H }, this.game.art);
     // "!" sopra chi non hai ancora incontrato
     const bob = Math.round(Math.sin(this.time * 5) * 1.5);
     for (const n of this.npcs) {
